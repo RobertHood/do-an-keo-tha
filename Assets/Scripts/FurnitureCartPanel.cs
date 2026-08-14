@@ -27,11 +27,7 @@ public class FurnitureCartPanel : MonoBehaviour
 
     void Start()
     {
-        if (FurnitureTotalTracker.Instance == null)
-        {
-            GameObject trackerGo = new GameObject("FurnitureTotalTracker");
-            trackerGo.AddComponent<FurnitureTotalTracker>();
-        }
+        FurnitureTotalTracker.EnsureInstance();
 
         Subscribe();
         BuildUI();
@@ -81,13 +77,11 @@ public class FurnitureCartPanel : MonoBehaviour
         panelLayout.childControlHeight = true;
         panelLayout.childForceExpandHeight = false;
 
-        TextMeshProUGUI title = CreateText("Title", panel.transform, panelTitle);
-        title.fontSize = 20f;
-        title.fontStyle = FontStyles.Bold;
-        title.color = new Color(0.15f, 0.15f, 0.15f, 1f);
-        title.alignment = TextAlignmentOptions.Center;
-        LayoutElement titleLayout = title.gameObject.AddComponent<LayoutElement>();
-        titleLayout.preferredHeight = 32f;
+        Button hideButton;
+        PanelCollapse.CreateHeader(panel.transform, panelTitle, out hideButton);
+        RectTransform capturedPanelRt = panelRt;
+        RectTransform capturedCanvasRt = canvasRt;
+        hideButton.onClick.AddListener(() => PanelCollapse.Collapse(capturedPanelRt, capturedCanvasRt, panelTitle));
 
         GameObject viewport = Create("Item List", panel.transform);
         RectTransform viewportRt = viewport.GetComponent<RectTransform>();
@@ -228,10 +222,7 @@ public class FurnitureCartPanel : MonoBehaviour
     {
         GameObject go = Create(name, parent);
         TextMeshProUGUI tmp = go.AddComponent<TextMeshProUGUI>();
-        TMP_FontAsset font = TMP_Settings.defaultFontAsset;
-        if (font == null)
-            font = Resources.Load<TMP_FontAsset>("Fonts & Materials/LiberationSans SDF");
-        tmp.font = font;
+        tmp.font = CatalogUI.GetDefaultFont();
         tmp.fontSize = 16f;
         tmp.text = content;
         tmp.raycastTarget = false;

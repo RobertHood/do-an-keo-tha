@@ -10,9 +10,6 @@ public class RoomCamera : MonoBehaviour
     public float rotateSpeed = 100f;
 
     private Camera cam;
-    private Vector3 panOffset;
-    private bool isPanning = false;
-    private bool isRotating = false;
 
     void Start()
     {

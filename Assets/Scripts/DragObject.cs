@@ -17,7 +17,7 @@ public class DragObject : MonoBehaviour
     [Tooltip("Overlap (in meters) required before the side snap kicks in, to avoid spurious snaps from resting contact.")]
     public float minOverlapThreshold = 0.02f;
 
-    private bool isDragging = false;
+    private bool isDragging;
     private Camera mainCamera;
     private Rigidbody rb;
     private Vector3 grabOffset;
@@ -62,6 +62,9 @@ public class DragObject : MonoBehaviour
             targetPoint = RoomManager.Instance.SnapToGrid(targetPoint);
 
         Vector3 resolved = ResolveSideBySide(targetPoint);
+
+        if (RoomManager.Instance != null)
+            resolved = RoomManager.Instance.ClampToRoom(resolved);
 
         Vector3 nextPos = new Vector3(resolved.x, dragY, resolved.z);
         rb.MovePosition(nextPos);
@@ -124,6 +127,8 @@ public class DragObject : MonoBehaviour
             return;
 
         Vector3 resolved = ResolveSideBySide(transform.position);
+        if (RoomManager.Instance != null)
+            resolved = RoomManager.Instance.ClampToRoom(resolved);
         if (resolved != transform.position)
             rb.position = new Vector3(resolved.x, transform.position.y, resolved.z);
 

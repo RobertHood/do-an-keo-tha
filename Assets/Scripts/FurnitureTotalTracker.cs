@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FurnitureTotalTracker : MonoBehaviour
 {
@@ -22,9 +23,19 @@ public class FurnitureTotalTracker : MonoBehaviour
         Instance = this;
     }
 
+    public static FurnitureTotalTracker EnsureInstance()
+    {
+        if (Instance != null)
+            return Instance;
+
+        GameObject go = new GameObject("FurnitureTotalTracker");
+        return go.AddComponent<FurnitureTotalTracker>();
+    }
+
     void Start()
     {
         UpdateUI();
+        EnsureCollapseButton();
     }
 
     public IReadOnlyList<PlacedItem> PlacedItems => items;
@@ -65,5 +76,31 @@ public class FurnitureTotalTracker : MonoBehaviour
     {
         if (totalText != null)
             totalText.text = $"{labelPrefix}{currencySymbol}{TotalPrice.ToString("0.00")}";
+    }
+
+    void EnsureCollapseButton()
+    {
+        if (totalText == null || totalText.transform.parent == null)
+            return;
+
+        RectTransform panelRt = totalText.transform.parent as RectTransform;
+        if (panelRt == null || panelRt.Find("Hide Button") != null)
+            return;
+
+        RectTransform canvasRt = totalText.canvas != null ? totalText.canvas.transform as RectTransform : null;
+        if (canvasRt == null)
+            return;
+
+        Button button = PanelCollapse.CreateButton("Hide Button", panelRt, "\u2014", 30f, 26f);
+        RectTransform buttonRt = button.GetComponent<RectTransform>();
+        buttonRt.anchorMin = new Vector2(1f, 0.5f);
+        buttonRt.anchorMax = new Vector2(1f, 0.5f);
+        buttonRt.pivot = new Vector2(1f, 0.5f);
+        buttonRt.anchoredPosition = new Vector2(-4f, 0f);
+        buttonRt.sizeDelta = new Vector2(30f, 26f);
+
+        RectTransform capturedPanelRt = panelRt;
+        RectTransform capturedCanvasRt = canvasRt;
+        button.onClick.AddListener(() => PanelCollapse.Collapse(capturedPanelRt, capturedCanvasRt, "Total"));
     }
 }

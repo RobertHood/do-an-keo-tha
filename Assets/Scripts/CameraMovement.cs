@@ -117,7 +117,7 @@ public class CameraMovement : MonoBehaviour
 
         if (RoomManager.Instance != null)
         {
-            Room room = RoomManager.Instance.GetRoomAt(RoomManager.Instance.transform.position);
+            Room room = RoomManager.Instance.MainRoom;
             if (room != null)
                 center = room.transform.position + new Vector3(room.width / 2f, 0f, room.length / 2f);
         }

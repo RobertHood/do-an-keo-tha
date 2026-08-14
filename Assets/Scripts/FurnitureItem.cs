@@ -7,6 +7,9 @@ public class FurnitureItem
     [Tooltip("Name shown under the catalog button.")]
     public string displayName = "Item";
 
+    [Tooltip("Category this item belongs to. The catalog shows one tab per category (e.g. Plants, Furniture, Lighting, Decor).")]
+    public string category = "Plants";
+
     [Tooltip("Prefab that gets spawned into the room when this item is chosen.")]
     public GameObject prefab;
 
