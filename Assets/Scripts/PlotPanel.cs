@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PlotPanel : MonoBehaviour
 {
-    public string panelTitle = "Plot Settings";
+    public string panelTitle = "Room Settings";
     public float panelWidth = 280f;
     public float panelHeight = 310f;
 
@@ -54,13 +54,16 @@ public class PlotPanel : MonoBehaviour
             return;
         }
 
-        GameObject panel = Create("Plot Panel", transform);
+        GameObject panel = Create("Room Panel", transform);
         panelRt = panel.GetComponent<RectTransform>();
         panelRt.anchorMin = new Vector2(1f, 0f);
         panelRt.anchorMax = new Vector2(1f, 0f);
         panelRt.pivot = new Vector2(1f, 0f);
         panelRt.anchoredPosition = new Vector2(-16f, 16f);
-        panelRt.sizeDelta = new Vector2(panelWidth, panelHeight);
+        float cartHeight;
+        float fitHeight;
+        CatalogUI.GetRightPanelHeights(canvasRt.rect.height, CatalogUI.CartPanelMaxHeight, panelHeight, out cartHeight, out fitHeight);
+        panelRt.sizeDelta = new Vector2(panelWidth, fitHeight);
 
         Image panelBg = panel.AddComponent<Image>();
         panelBg.color = new Color(1f, 1f, 1f, 0.92f);
@@ -208,7 +211,7 @@ public class PlotPanel : MonoBehaviour
 
     void CreateApplyButton(Transform parent)
     {
-        Button apply = PanelCollapse.CreateButton("Apply Button", parent, "Apply Plot", 0f, 36f);
+        Button apply = PanelCollapse.CreateButton("Apply Button", parent, "Apply Room", 0f, 36f);
         LayoutElement layout = apply.GetComponent<LayoutElement>();
         layout.flexibleWidth = 1f;
         apply.onClick.AddListener(ApplyPlot);
@@ -268,9 +271,9 @@ public class PlotPanel : MonoBehaviour
 
         RoomManager rm = RoomManager.Instance;
         if (rm != null && rm.MainRoom != null)
-            statusText.text = $"Plot: {rm.MainRoom.length:0.#} x {rm.MainRoom.width:0.#}  ({rm.plotShape})";
+            statusText.text = $"Room: {rm.MainRoom.length:0.#} x {rm.MainRoom.width:0.#}  ({rm.plotShape})";
         else
-            statusText.text = "Plot not set";
+            statusText.text = "Room not set";
     }
 
     static void Stretch(RectTransform rt)

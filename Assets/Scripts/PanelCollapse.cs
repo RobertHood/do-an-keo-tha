@@ -22,6 +22,7 @@ public static class PanelCollapse
         headerLayout.preferredHeight = 32f;
 
         TextMeshProUGUI titleText = CreateText("Title", header.transform, title);
+        titleText.font = CatalogUI.GetBoldFont();
         titleText.fontSize = 20f;
         titleText.fontStyle = FontStyles.Bold;
         titleText.color = new Color(0.15f, 0.15f, 0.15f, 1f);
@@ -94,6 +95,7 @@ public static class PanelCollapse
         button.targetGraphic = image;
 
         TextMeshProUGUI tmp = CreateText("Label", go.transform, panelTitle + " \u25B8");
+        tmp.font = CatalogUI.GetBoldFont();
         tmp.fontSize = 18f;
         tmp.fontStyle = FontStyles.Bold;
         tmp.color = Color.white;

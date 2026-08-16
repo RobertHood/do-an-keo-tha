@@ -273,7 +273,7 @@ public class FurnitureCatalog : MonoBehaviour
         rt.offsetMax = Vector2.zero;
 
         TextMeshProUGUI tmp = go.AddComponent<TextMeshProUGUI>();
-        tmp.font = CatalogUI.GetDefaultFont();
+        tmp.font = CatalogUI.GetBoldFont();
         tmp.fontSize = 18f;
         tmp.fontStyle = FontStyles.Bold;
         tmp.alignment = TextAlignmentOptions.Center;
@@ -328,6 +328,7 @@ public class FurnitureCatalog : MonoBehaviour
         if (tmp != null)
         {
             tmp.text = labelText;
+            tmp.fontSize = 16f;
         }
         else
         {
@@ -384,13 +385,15 @@ public class FurnitureCatalog : MonoBehaviour
         instance.name = item.prefab.name;
         instance.transform.localScale *= spawnScale;
 
-        if (snapToGround)
-            SnapToGround(instance);
-
         DragObject drag = instance.GetComponent<DragObject>();
         if (drag == null)
             drag = instance.AddComponent<DragObject>();
         drag.snapToGrid = snapToGrid;
+
+        if (snapToGround)
+            SnapToGround(instance);
+
+        drag.StartDrag(mainCamera);
 
         PlacedItem placed = instance.GetComponent<PlacedItem>();
         if (placed == null)

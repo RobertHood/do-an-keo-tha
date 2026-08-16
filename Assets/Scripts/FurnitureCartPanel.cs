@@ -58,14 +58,16 @@ public class FurnitureCartPanel : MonoBehaviour
 
         RectTransform canvasRt = transform as RectTransform;
         float canvasHeight = canvasRt != null ? canvasRt.rect.height : 600f;
-        float panelHeight = Mathf.Min(panelMaxHeight, canvasHeight - 40f);
+        float panelHeight;
+        float plotHeight;
+        CatalogUI.GetRightPanelHeights(canvasHeight, panelMaxHeight, CatalogUI.PlotPanelMaxHeight, out panelHeight, out plotHeight);
 
         GameObject panel = Create("Cart Panel", transform);
         panelRt = panel.GetComponent<RectTransform>();
-        panelRt.anchorMin = new Vector2(1f, 0.5f);
-        panelRt.anchorMax = new Vector2(1f, 0.5f);
-        panelRt.pivot = new Vector2(1f, 0.5f);
-        panelRt.anchoredPosition = new Vector2(-16f, 0f);
+        panelRt.anchorMin = new Vector2(1f, 1f);
+        panelRt.anchorMax = new Vector2(1f, 1f);
+        panelRt.pivot = new Vector2(1f, 1f);
+        panelRt.anchoredPosition = new Vector2(-16f, -16f);
         panelRt.sizeDelta = new Vector2(panelWidth, panelHeight);
 
         Image panelBg = panel.AddComponent<Image>();
@@ -134,6 +136,7 @@ public class FurnitureCartPanel : MonoBehaviour
         rowTemplate.SetActive(false);
 
         totalText = CreateText("Total", panel.transform);
+        totalText.font = CatalogUI.GetBoldFont();
         totalText.fontSize = 18f;
         totalText.fontStyle = FontStyles.Bold;
         totalText.color = new Color(0.1f, 0.1f, 0.1f, 1f);

@@ -33,11 +33,6 @@ public class RoomManager : MonoBehaviour
         return go.AddComponent<RoomManager>();
     }
 
-    void Start()
-    {
-        AddRoom(Vector2Int.zero, defaultRoomWidth, defaultRoomLength, plotShape);
-    }
-
     public Room MainRoom => rooms.Count > 0 ? rooms[0] : null;
 
     public Room AddRoom(Vector2Int gridPos, float width, float length, PlotShape shape)
