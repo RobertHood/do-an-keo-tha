@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 471828}
   - component: {fileID: 3384114}
   - component: {fileID: 2377290}
+  - component: {fileID: 5950922191345146344}
   m_Layer: 0
   m_Name: Fir_Tree
   m_TagString: Untagged
@@ -90,3 +91,28 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &5950922191345146344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 192044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9df9ee434a164d7aa38b5c7039517e17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ModelMovement
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  modelLayer:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  followSmoothing: 25
+  dragLiftHeight: 0.15
+  allowRotation: 1
+  rotationSpeed: 15
+  allowScaling: 1
+  scaleSpeed: 1.5
+  targetCamera: {fileID: 0}
