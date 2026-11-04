@@ -70,6 +70,8 @@ public class SpawnInModel : MonoBehaviour
     [Tooltip("If true, automatically picks up the spawned model for dragging immediately.")]
     [SerializeField] private bool autoPickUpOnSpawn = false;
 
+    public Transform ModelsContainer => modelsContainer;
+
     private void Awake()
     {
         if (targetCamera == null)
@@ -132,12 +134,23 @@ public class SpawnInModel : MonoBehaviour
         EnsureCollider(instance);
 
         // Attach DraggableModel component so ModelMovement identifies it
-        if (!instance.TryGetComponent<DraggableModel>(out _))
+        if (!instance.TryGetComponent(out DraggableModel draggable))
         {
-            instance.AddComponent<DraggableModel>();
+            draggable = instance.AddComponent<DraggableModel>();
+        }
+        draggable.prefabId = prefab.name;
+
+        if (FindPrefab(prefab.name) == null)
+        {
+            Debug.LogWarning($"[SpawnInModel] '{prefab.name}' is not in the Model Prefabs list, so it can't be rebuilt when loading a blueprint. Add it to the list.");
         }
 
         Debug.Log($"[SpawnInModel] Successfully spawned '{prefab.name}' at: {instance.transform.position}");
+
+        if (ModelMovement.Instance != null)
+        {
+            ModelMovement.Instance.SelectModel(instance.transform);
+        }
 
         if (autoPickUpOnSpawn && ModelMovement.Instance != null)
         {
@@ -166,7 +179,7 @@ public class SpawnInModel : MonoBehaviour
     /// </summary>
     public void SpawnByName(string prefabName)
     {
-        GameObject found = modelPrefabs.Find(p => p != null && p.name.Equals(prefabName, System.StringComparison.OrdinalIgnoreCase));
+        GameObject found = FindPrefab(prefabName);
         if (found == null)
         {
             Debug.LogWarning($"[SpawnInModel] Prefab named '{prefabName}' not found in the list.");
@@ -174,6 +187,46 @@ public class SpawnInModel : MonoBehaviour
         }
 
         Spawn(found);
+    }
+
+    /// <summary>
+    /// Finds a prefab in the modelPrefabs list by name (case-insensitive). Returns null if not found.
+    /// </summary>
+    public GameObject FindPrefab(string prefabName)
+    {
+        if (string.IsNullOrEmpty(prefabName)) return null;
+        return modelPrefabs.Find(p => p != null && p.name.Equals(prefabName, System.StringComparison.OrdinalIgnoreCase));
+    }
+
+    /// <summary>
+    /// Rebuilds a model from saved blueprint data. Skips placement search, scaling and ground alignment
+    /// so the model lands exactly where it was saved.
+    /// </summary>
+    public GameObject SpawnFromBlueprint(BlueprintModelData data)
+    {
+        GameObject prefab = FindPrefab(data.prefabId);
+        if (prefab == null)
+        {
+            Debug.LogWarning($"[SpawnInModel] Cannot load '{data.prefabId}': prefab not found in the Model Prefabs list.");
+            return null;
+        }
+
+        GameObject instance = Instantiate(prefab, modelsContainer);
+        instance.name = prefab.name;
+        instance.transform.localPosition = data.position;
+        instance.transform.localRotation = data.rotation;
+        instance.transform.localScale = data.scale;
+
+        EnsureCollider(instance);
+
+        if (!instance.TryGetComponent(out DraggableModel draggable))
+        {
+            draggable = instance.AddComponent<DraggableModel>();
+        }
+        draggable.prefabId = prefab.name;
+        draggable.isLocked = data.isLocked;
+
+        return instance;
     }
 
     /// <summary>

@@ -1,18 +1,14 @@
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
-
-#if ENABLE_INPUT_SYSTEM
-using UnityEngine.InputSystem;
-#endif
 
 /// <summary>
 /// Allows resizing a selected 3D model with a fixed aspect ratio (uniform scale).
 /// Features:
 /// - Displays a rectangular bounding box around the selected model using a LineRenderer.
-/// - Places 8 interactive corner handle buttons around the bounding box.
-/// - Click-and-drag any corner handle to scale the model up or down smoothly.
-/// - Keeps the bottom of the model flush on the ground while scaling.
+/// - Places 8 corner handles that stay the same size on screen at any zoom level.
+/// - Handles are picked in screen space, so they can be grabbed even when the model is in front of them.
+/// - Hover a handle to highlight it, click-and-drag to scale. The model scales around its bottom center,
+///   so it stays planted on the ground and doesn't drift sideways.
+/// - Hold Shift to snap to 10% steps. Press Esc while dragging to cancel.
 /// - Procedural: automatically builds the visual lines and handle meshes if not assigned.
 /// </summary>
 [AddComponentMenu("Interaction/Model Resize")]
@@ -21,7 +17,7 @@ public class ModelResize : MonoBehaviour
     public static ModelResize Instance { get; private set; }
 
     [Header("Target Model")]
-    [Tooltip("The currently active model to resize. If empty, uses the last selected model from ModelMovement.")]
+    [Tooltip("The currently active model to resize. Follows the selected model from ModelMovement.")]
     [SerializeField] private Transform targetModel;
 
     [Tooltip("Whether resize mode is currently active.")]
@@ -31,15 +27,18 @@ public class ModelResize : MonoBehaviour
     [Tooltip("Color of the bounding box lines.")]
     [SerializeField] private Color boxColor = new Color(0.2f, 0.75f, 1f, 0.9f);
 
-    [Tooltip("Thickness of the bounding box lines.")]
-    [SerializeField] private float lineWidth = 0.04f;
+    [Tooltip("Thickness of the bounding box lines, in screen pixels.")]
+    [SerializeField] private float lineWidthPixels = 2f;
 
     [Tooltip("Optional custom material for the lines. If empty, a clean unlit material is created.")]
     [SerializeField] private Material lineMaterial;
 
     [Header("Corner Handles")]
-    [Tooltip("Size of the corner handle cubes.")]
-    [SerializeField] private float handleSize = 0.18f;
+    [Tooltip("Size of the corner handle cubes, in screen pixels.")]
+    [SerializeField] private float handleSizePixels = 12f;
+
+    [Tooltip("How close (in screen pixels) the cursor must be to a handle to grab it.")]
+    [SerializeField] private float handlePickRadius = 18f;
 
     [Tooltip("Normal color of the corner handles.")]
     [SerializeField] private Color handleColor = Color.white;
@@ -51,11 +50,14 @@ public class ModelResize : MonoBehaviour
     [SerializeField] private Material handleMaterial;
 
     [Header("Scale Constraints")]
-    [Tooltip("Minimum allowed uniform scale multiplier relative to original scale.")]
-    [SerializeField] private float minScaleRatio = 0.2f;
+    [Tooltip("Smallest allowed size of the model's largest dimension, in world units.")]
+    [SerializeField] private float minModelSize = 0.1f;
 
-    [Tooltip("Maximum allowed uniform scale multiplier relative to original scale.")]
-    [SerializeField] private float maxScaleRatio = 5.0f;
+    [Tooltip("Largest allowed size of the model's largest dimension, in world units.")]
+    [SerializeField] private float maxModelSize = 100f;
+
+    [Tooltip("Scale snap step when holding Shift (0.1 = 10% steps, 0 = disabled).")]
+    [SerializeField] private float snapScaleStep = 0.1f;
 
     [Header("Camera Reference")]
     [Tooltip("Main camera. If empty, automatically assigned.")]
@@ -67,19 +69,28 @@ public class ModelResize : MonoBehaviour
     private readonly Transform[] cornerHandles = new Transform[8];
     private readonly Material[] handleMatInstances = new Material[8];
 
+    // Cached geometry (reused every frame to avoid allocations)
+    private readonly Vector3[] localCorners = new Vector3[8];
+    private readonly Vector3[] worldCorners = new Vector3[8];
+    private readonly Vector3[] linePoints = new Vector3[16];
+    private Bounds localBounds;
+
     // Drag tracking state
     private bool isDraggingHandle = false;
     private int activeHandleIndex = -1;
-    private Plane dragPlane;
-    private Vector3 initialCenter;
+    private int hoveredHandleIndex = -1;
+    private int highlightedHandleIndex = -1;
+    private Vector3 scalePivot;
     private Vector3 initialScale;
-    private float initialGrabDist;
-    private float initialBottomY;
-    private Bounds localBounds;
+    private Vector3 initialPosition;
+    private float initialPointerDist;
+    private float initialMaxDimension;
 
     public bool IsResizeModeActive => isResizeModeActive;
     public bool IsDraggingHandle => isDraggingHandle;
     public Transform TargetModel => targetModel;
+
+    private UnityEngine.Camera Cam => targetCamera != null ? targetCamera : UnityEngine.Camera.main;
 
     private void Awake()
     {
@@ -104,14 +115,11 @@ public class ModelResize : MonoBehaviour
 
     private void Update()
     {
-        // Auto-sync target with ModelMovement if target is null
-        if (targetModel == null && ModelMovement.Instance != null && ModelMovement.Instance.SelectedModel != null)
-        {
-            targetModel = ModelMovement.Instance.SelectedModel;
-        }
+        SyncTargetWithSelection();
 
         if (!isResizeModeActive || targetModel == null)
         {
+            if (isDraggingHandle) EndHandleDrag();
             if (rigRoot != null && rigRoot.activeSelf)
             {
                 SetRigVisibility(false);
@@ -130,10 +138,9 @@ public class ModelResize : MonoBehaviour
         {
             UpdateHandleDrag();
         }
-        else
-        {
-            UpdateBoundingBoxTransforms();
-        }
+
+        UpdateBoundingBoxTransforms();
+        UpdateHandleHighlight();
     }
 
     /// <summary>
@@ -153,15 +160,21 @@ public class ModelResize : MonoBehaviour
 
         if (isResizeModeActive)
         {
-            // If target is missing, check ModelMovement
-            if (targetModel == null && ModelMovement.Instance != null)
+            // Close Rotate mode if active so gizmos don't conflict
+            if (ModelRotate.Instance != null && ModelRotate.Instance.IsRotateModeActive)
+            {
+                ModelRotate.Instance.EnableRotateMode(false);
+            }
+
+            // Always use the current selection so the box never opens on a previously selected model
+            if (ModelMovement.Instance != null && ModelMovement.Instance.SelectedModel != null)
             {
                 targetModel = ModelMovement.Instance.SelectedModel;
             }
 
             if (targetModel != null)
             {
-                RecalculateLocalBounds();
+                localBounds = GizmoUtility.GetLocalBounds(targetModel);
                 SetRigVisibility(true);
                 UpdateBoundingBoxTransforms();
                 Debug.Log($"[ModelResize] Resize mode enabled for: '{targetModel.name}'");
@@ -175,8 +188,8 @@ public class ModelResize : MonoBehaviour
         }
         else
         {
-            isDraggingHandle = false;
-            activeHandleIndex = -1;
+            if (isDraggingHandle) EndHandleDrag();
+            hoveredHandleIndex = -1;
             SetRigVisibility(false);
             Debug.Log("[ModelResize] Resize mode disabled.");
         }
@@ -187,10 +200,12 @@ public class ModelResize : MonoBehaviour
     /// </summary>
     public void SetTarget(Transform model)
     {
+        if (isDraggingHandle) EndHandleDrag();
+
         targetModel = model;
         if (targetModel != null)
         {
-            RecalculateLocalBounds();
+            localBounds = GizmoUtility.GetLocalBounds(targetModel);
             if (isResizeModeActive)
             {
                 SetRigVisibility(true);
@@ -199,166 +214,146 @@ public class ModelResize : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// True if the cursor is over one of the corner handles. ModelMovement uses this so clicking a handle
+    /// never picks up or deselects the model underneath it.
+    /// </summary>
+    public bool IsPointerOverHandle(Vector2 screenPos)
+    {
+        if (!isResizeModeActive || targetModel == null || rigRoot == null || !rigRoot.activeSelf) return false;
+        return GetHandleUnderPointer(screenPos) >= 0;
+    }
+
+    private void SyncTargetWithSelection()
+    {
+        if (isDraggingHandle || ModelMovement.Instance == null) return;
+
+        Transform selected = ModelMovement.Instance.SelectedModel;
+        if (selected != null && selected != targetModel)
+        {
+            SetTarget(selected);
+        }
+    }
+
     private void HandleInput()
     {
-        bool pointerDown = false;
-        bool pointerUp = false;
-        Vector2 pointerPos = Vector2.zero;
+        Vector2 pointerPos = GizmoUtility.GetPointerPosition();
 
-#if ENABLE_INPUT_SYSTEM
-        Mouse mouse = Mouse.current;
-        if (mouse != null)
+        if (isDraggingHandle)
         {
-            pointerDown = mouse.leftButton.wasPressedThisFrame;
-            pointerUp = mouse.leftButton.wasReleasedThisFrame;
-            pointerPos = mouse.position.ReadValue();
-        }
-#else
-        pointerDown = Input.GetMouseButtonDown(0);
-        pointerUp = Input.GetMouseButtonUp(0);
-        pointerPos = Input.mousePosition;
-#endif
-
-        if (pointerDown)
-        {
-            if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
+            if (GizmoUtility.WasCancelPressed())
             {
-                return;
+                CancelHandleDrag();
             }
-
-            TryGrabHandle(pointerPos);
+            else if (GizmoUtility.WasPointerReleased())
+            {
+                EndHandleDrag();
+                Debug.Log($"[ModelResize] Resizing completed. Final scale: {targetModel.localScale}");
+            }
+            return;
         }
 
-        if (pointerUp && isDraggingHandle)
+        hoveredHandleIndex = GizmoUtility.IsPointerOverUI() ? -1 : GetHandleUnderPointer(pointerPos);
+
+        if (GizmoUtility.WasPointerPressed() && hoveredHandleIndex >= 0)
         {
-            StopHandleDrag();
+            StartHandleDrag(hoveredHandleIndex, pointerPos);
         }
     }
 
-    private void TryGrabHandle(Vector2 screenPos)
+    /// <summary>
+    /// Returns the index of the handle closest to the cursor within handlePickRadius, or -1.
+    /// </summary>
+    private int GetHandleUnderPointer(Vector2 screenPos)
     {
-        UnityEngine.Camera cam = targetCamera != null ? targetCamera : UnityEngine.Camera.main;
-        if (cam == null) return;
+        UnityEngine.Camera cam = Cam;
+        if (cam == null) return -1;
 
-        Ray ray = cam.ScreenPointToRay(screenPos);
-        if (Physics.Raycast(ray, out RaycastHit hit, 500f))
+        int best = -1;
+        float bestDist = handlePickRadius;
+
+        for (int i = 0; i < 8; i++)
         {
-            for (int i = 0; i < 8; i++)
+            Vector3 sp = cam.WorldToScreenPoint(worldCorners[i]);
+            if (sp.z <= 0f) continue; // Behind camera
+
+            float d = Vector2.Distance(screenPos, sp);
+            if (d <= bestDist)
             {
-                if (cornerHandles[i] != null && hit.transform == cornerHandles[i])
-                {
-                    StartHandleDrag(i);
-                    return;
-                }
+                bestDist = d;
+                best = i;
             }
         }
+
+        return best;
     }
 
-    private void StartHandleDrag(int handleIndex)
+    private void StartHandleDrag(int handleIndex, Vector2 pointerPos)
     {
+        UnityEngine.Camera cam = Cam;
+        if (cam == null || targetModel == null) return;
+
+        if (targetModel.TryGetComponent(out DraggableModel dm) && dm.isLocked) return;
+
         isDraggingHandle = true;
         activeHandleIndex = handleIndex;
 
         initialScale = targetModel.localScale;
-        initialCenter = targetModel.TransformPoint(localBounds.center);
-        initialBottomY = GetBottomWorldY(targetModel);
+        initialPosition = targetModel.position;
 
-        Transform handle = cornerHandles[handleIndex];
-        initialGrabDist = Vector3.Distance(handle.position, initialCenter);
-        if (initialGrabDist < 0.001f) initialGrabDist = 0.001f;
+        // Scale around the bottom center so the model stays on the ground and centered in place
+        scalePivot = targetModel.TransformPoint(new Vector3(localBounds.center.x, localBounds.min.y, localBounds.center.z));
 
-        // Create a dragging plane facing the camera through the handle
-        UnityEngine.Camera cam = targetCamera != null ? targetCamera : UnityEngine.Camera.main;
-        Vector3 planeNormal = cam != null ? -cam.transform.forward : Vector3.up;
-        dragPlane = new Plane(planeNormal, handle.position);
+        // Measure from where the user actually clicked, so the model doesn't jump on grab
+        Vector2 pivotScreen = cam.WorldToScreenPoint(scalePivot);
+        initialPointerDist = Mathf.Max(Vector2.Distance(pointerPos, pivotScreen), 10f);
 
-        // Highlight active handle
-        if (handleMatInstances[handleIndex] != null)
-        {
-            handleMatInstances[handleIndex].color = handleHighlightColor;
-        }
-
-        Debug.Log($"[ModelResize] Dragging corner handle #{handleIndex}");
+        Vector3 worldSize = Vector3.Scale(localBounds.size, targetModel.lossyScale);
+        initialMaxDimension = Mathf.Max(Mathf.Abs(worldSize.x), Mathf.Abs(worldSize.y), Mathf.Abs(worldSize.z), 0.0001f);
     }
 
     private void UpdateHandleDrag()
     {
-        if (targetModel == null || activeHandleIndex < 0) return;
+        UnityEngine.Camera cam = Cam;
+        if (cam == null || targetModel == null) return;
 
-        UnityEngine.Camera cam = targetCamera != null ? targetCamera : UnityEngine.Camera.main;
-        if (cam == null) return;
+        // Ratio of how far the cursor is from the pivot now vs. when the drag started (screen space,
+        // so it behaves the same from any camera angle)
+        Vector2 pivotScreen = cam.WorldToScreenPoint(scalePivot);
+        float ratio = Vector2.Distance(GizmoUtility.GetPointerPosition(), pivotScreen) / initialPointerDist;
 
-        Vector2 pointerPos = GetPointerPos();
-        Ray ray = cam.ScreenPointToRay(pointerPos);
-
-        if (dragPlane.Raycast(ray, out float enter))
+        if (GizmoUtility.IsShiftHeld() && snapScaleStep > 0f)
         {
-            Vector3 currentPoint = ray.GetPoint(enter);
-            float currentDist = Vector3.Distance(currentPoint, initialCenter);
-
-            // Calculate uniform scale ratio (preserves 1:1:1 aspect ratio)
-            float ratio = currentDist / initialGrabDist;
-            ratio = Mathf.Clamp(ratio, minScaleRatio, maxScaleRatio);
-
-            // Apply uniform scale
-            targetModel.localScale = initialScale * ratio;
-
-            // Re-align bottom flush with ground so scaling expands upwards and outwards
-            float currentBottomY = GetBottomWorldY(targetModel);
-            float yDiff = initialBottomY - currentBottomY;
-            targetModel.position += new Vector3(0f, yDiff, 0f);
-
-            // Update visuals to match new size
-            UpdateBoundingBoxTransforms();
-        }
-    }
-
-    private void StopHandleDrag()
-    {
-        if (activeHandleIndex >= 0 && handleMatInstances[activeHandleIndex] != null)
-        {
-            handleMatInstances[activeHandleIndex].color = handleColor;
+            ratio = Mathf.Max(snapScaleStep, Mathf.Round(ratio / snapScaleStep) * snapScaleStep);
         }
 
-        isDraggingHandle = false;
-        activeHandleIndex = -1;
-        Debug.Log($"[ModelResize] Resizing completed. Final scale: {targetModel.localScale}");
+        float minRatio = minModelSize / initialMaxDimension;
+        float maxRatio = maxModelSize / initialMaxDimension;
+        ratio = Mathf.Clamp(ratio, minRatio, maxRatio);
+
+        ApplyScaleRatio(ratio);
     }
 
     /// <summary>
-    /// Computes the model's bounds in its own local coordinate space to handle any rotation cleanly.
+    /// Scales uniformly around scalePivot: every point on the model moves away from / toward the pivot.
     /// </summary>
-    private void RecalculateLocalBounds()
+    private void ApplyScaleRatio(float ratio)
     {
-        if (targetModel == null) return;
+        targetModel.localScale = initialScale * ratio;
+        targetModel.position = scalePivot + (initialPosition - scalePivot) * ratio;
+    }
 
-        Renderer[] renderers = targetModel.GetComponentsInChildren<Renderer>();
-        if (renderers.Length == 0)
-        {
-            localBounds = new Bounds(Vector3.zero, Vector3.one);
-            return;
-        }
+    private void CancelHandleDrag()
+    {
+        if (targetModel != null) ApplyScaleRatio(1f);
+        EndHandleDrag();
+        Debug.Log("[ModelResize] Resize cancelled.");
+    }
 
-        // Initialize local bounds from first renderer
-        Bounds firstBounds = renderers[0].bounds;
-        Vector3 min = targetModel.InverseTransformPoint(firstBounds.min);
-        Vector3 max = targetModel.InverseTransformPoint(firstBounds.max);
-
-        Bounds combinedLocal = new Bounds(min, Vector3.zero);
-        combinedLocal.Encapsulate(min);
-        combinedLocal.Encapsulate(max);
-
-        for (int i = 0; i < renderers.Length; i++)
-        {
-            Bounds b = renderers[i].bounds;
-            Vector3[] worldCorners = GetBoundsCorners(b);
-            for (int c = 0; c < 8; c++)
-            {
-                combinedLocal.Encapsulate(targetModel.InverseTransformPoint(worldCorners[c]));
-            }
-        }
-
-        localBounds = combinedLocal;
+    private void EndHandleDrag()
+    {
+        isDraggingHandle = false;
+        activeHandleIndex = -1;
     }
 
     /// <summary>
@@ -368,52 +363,71 @@ public class ModelResize : MonoBehaviour
     {
         if (targetModel == null) return;
 
-        Vector3 center = localBounds.center;
-        Vector3 extents = localBounds.extents;
+        Vector3 c = localBounds.center;
+        Vector3 e = localBounds.extents;
 
-        // 8 Corners in target's local space
-        Vector3[] localCorners = new Vector3[8]
-        {
-            center + new Vector3(-extents.x, -extents.y, -extents.z), // 0: Bottom Back Left
-            center + new Vector3( extents.x, -extents.y, -extents.z), // 1: Bottom Back Right
-            center + new Vector3( extents.x, -extents.y,  extents.z), // 2: Bottom Front Right
-            center + new Vector3(-extents.x, -extents.y,  extents.z), // 3: Bottom Front Left
-            center + new Vector3(-extents.x,  extents.y, -extents.z), // 4: Top Back Left
-            center + new Vector3( extents.x,  extents.y, -extents.z), // 5: Top Back Right
-            center + new Vector3( extents.x,  extents.y,  extents.z), // 6: Top Front Right
-            center + new Vector3(-extents.x,  extents.y,  extents.z)  // 7: Top Front Left
-        };
+        localCorners[0] = c + new Vector3(-e.x, -e.y, -e.z); // 0: Bottom Back Left
+        localCorners[1] = c + new Vector3( e.x, -e.y, -e.z); // 1: Bottom Back Right
+        localCorners[2] = c + new Vector3( e.x, -e.y,  e.z); // 2: Bottom Front Right
+        localCorners[3] = c + new Vector3(-e.x, -e.y,  e.z); // 3: Bottom Front Left
+        localCorners[4] = c + new Vector3(-e.x,  e.y, -e.z); // 4: Top Back Left
+        localCorners[5] = c + new Vector3( e.x,  e.y, -e.z); // 5: Top Back Right
+        localCorners[6] = c + new Vector3( e.x,  e.y,  e.z); // 6: Top Front Right
+        localCorners[7] = c + new Vector3(-e.x,  e.y,  e.z); // 7: Top Front Left
 
-        // Convert corners to world space
-        Vector3[] worldCorners = new Vector3[8];
+        UnityEngine.Camera cam = Cam;
+        int highlightIndex = isDraggingHandle ? activeHandleIndex : hoveredHandleIndex;
+
         for (int i = 0; i < 8; i++)
         {
             worldCorners[i] = targetModel.TransformPoint(localCorners[i]);
 
-            // Position each corner handle
             if (cornerHandles[i] != null)
             {
+                // Constant on-screen size; slightly larger when hovered/dragged
+                float size = GizmoUtility.PixelsToWorld(cam, worldCorners[i], handleSizePixels);
+                if (i == highlightIndex) size *= 1.35f;
+
                 cornerHandles[i].position = worldCorners[i];
                 cornerHandles[i].rotation = targetModel.rotation;
-                cornerHandles[i].localScale = Vector3.one * handleSize;
+                cornerHandles[i].localScale = Vector3.one * size;
             }
         }
 
         // 16 continuous points to draw all 12 edges of a box with a single LineRenderer
-        Vector3[] linePoints = new Vector3[16]
-        {
-            worldCorners[0], worldCorners[1], worldCorners[2], worldCorners[3], worldCorners[0], // Bottom loop
-            worldCorners[4], worldCorners[5], worldCorners[6], worldCorners[7], worldCorners[4], // Top loop
-            worldCorners[7], worldCorners[3],                                                    // Vertical edge 7-3
-            worldCorners[2], worldCorners[6],                                                    // Vertical edge 2-6
-            worldCorners[5], worldCorners[1]                                                     // Vertical edge 5-1
-        };
+        linePoints[0] = worldCorners[0]; linePoints[1] = worldCorners[1]; linePoints[2] = worldCorners[2];   // Bottom loop
+        linePoints[3] = worldCorners[3]; linePoints[4] = worldCorners[0];
+        linePoints[5] = worldCorners[4]; linePoints[6] = worldCorners[5]; linePoints[7] = worldCorners[6];   // Top loop
+        linePoints[8] = worldCorners[7]; linePoints[9] = worldCorners[4];
+        linePoints[10] = worldCorners[7]; linePoints[11] = worldCorners[3];                                  // Vertical edge 7-3
+        linePoints[12] = worldCorners[2]; linePoints[13] = worldCorners[6];                                  // Vertical edge 2-6
+        linePoints[14] = worldCorners[5]; linePoints[15] = worldCorners[1];                                  // Vertical edge 5-1
 
         if (lineRenderer != null)
         {
+            float width = GizmoUtility.PixelsToWorld(cam, targetModel.TransformPoint(c), lineWidthPixels);
+            lineRenderer.startWidth = width;
+            lineRenderer.endWidth = width;
             lineRenderer.positionCount = 16;
             lineRenderer.SetPositions(linePoints);
         }
+    }
+
+    private void UpdateHandleHighlight()
+    {
+        int highlightIndex = isDraggingHandle ? activeHandleIndex : hoveredHandleIndex;
+        if (highlightIndex == highlightedHandleIndex) return;
+
+        if (highlightedHandleIndex >= 0 && handleMatInstances[highlightedHandleIndex] != null)
+        {
+            handleMatInstances[highlightedHandleIndex].color = handleColor;
+        }
+        if (highlightIndex >= 0 && handleMatInstances[highlightIndex] != null)
+        {
+            handleMatInstances[highlightIndex].color = handleHighlightColor;
+        }
+
+        highlightedHandleIndex = highlightIndex;
     }
 
     private void SetRigVisibility(bool visible)
@@ -439,27 +453,22 @@ public class ModelResize : MonoBehaviour
 
         if (lineMaterial == null)
         {
-            Shader unlitShader = Shader.Find("Universal Render Pipeline/Unlit");
-            if (unlitShader == null) unlitShader = Shader.Find("Sprites/Default");
-            lineMaterial = new Material(unlitShader != null ? unlitShader : Shader.Find("Hidden/Internal-Colored"));
+            lineMaterial = GizmoUtility.CreateLineMaterial();
         }
 
         lineRenderer.material = lineMaterial;
         lineRenderer.startColor = boxColor;
         lineRenderer.endColor = boxColor;
-        lineRenderer.startWidth = lineWidth;
-        lineRenderer.endWidth = lineWidth;
         lineRenderer.useWorldSpace = true;
         lineRenderer.loop = false;
+        lineRenderer.numCornerVertices = 2;
         lineRenderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
         lineRenderer.receiveShadows = false;
 
         // 2. Create 8 Corner Handles
         if (handleMaterial == null)
         {
-            Shader handleShader = Shader.Find("Universal Render Pipeline/Unlit");
-            if (handleShader == null) handleShader = Shader.Find("Sprites/Default");
-            handleMaterial = new Material(handleShader != null ? handleShader : Shader.Find("Hidden/Internal-Colored"));
+            handleMaterial = GizmoUtility.CreateUnlitMaterial();
         }
 
         for (int i = 0; i < 8; i++)
@@ -468,55 +477,20 @@ public class ModelResize : MonoBehaviour
             handleObj.name = $"CornerHandle_{i}";
             handleObj.transform.SetParent(rigRoot.transform, false);
 
+            // Handles are picked in screen space, so they don't need colliders (which would also block
+            // model drag raycasts and spawn overlap checks)
+            Destroy(handleObj.GetComponent<Collider>());
+
+            Renderer handleRenderer = handleObj.GetComponent<Renderer>();
+            handleRenderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+            handleRenderer.receiveShadows = false;
+
             Material matInst = new Material(handleMaterial);
             matInst.color = handleColor;
             handleMatInstances[i] = matInst;
-            handleObj.GetComponent<Renderer>().material = matInst;
-
-            // Ensure collider is enabled for mouse clicks
-            BoxCollider col = handleObj.GetComponent<BoxCollider>();
-            col.isTrigger = false;
+            handleRenderer.material = matInst;
 
             cornerHandles[i] = handleObj.transform;
         }
-    }
-
-    private float GetBottomWorldY(Transform model)
-    {
-        Renderer[] renderers = model.GetComponentsInChildren<Renderer>();
-        if (renderers.Length == 0) return model.position.y;
-
-        float lowestY = float.MaxValue;
-        foreach (var r in renderers)
-        {
-            if (r.bounds.min.y < lowestY) lowestY = r.bounds.min.y;
-        }
-        return lowestY;
-    }
-
-    private Vector3[] GetBoundsCorners(Bounds b)
-    {
-        Vector3 min = b.min;
-        Vector3 max = b.max;
-        return new Vector3[8]
-        {
-            new Vector3(min.x, min.y, min.z),
-            new Vector3(max.x, min.y, min.z),
-            new Vector3(max.x, min.y, max.z),
-            new Vector3(min.x, min.y, max.z),
-            new Vector3(min.x, max.y, min.z),
-            new Vector3(max.x, max.y, min.z),
-            new Vector3(max.x, max.y, max.z),
-            new Vector3(min.x, max.y, max.z)
-        };
-    }
-
-    private Vector2 GetPointerPos()
-    {
-#if ENABLE_INPUT_SYSTEM
-        return Mouse.current != null ? Mouse.current.position.ReadValue() : Vector2.zero;
-#else
-        return Input.mousePosition;
-#endif
     }
 }

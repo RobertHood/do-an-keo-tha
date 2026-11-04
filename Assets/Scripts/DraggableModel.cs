@@ -8,6 +8,9 @@ using UnityEngine;
 [AddComponentMenu("Interaction/Draggable Model")]
 public class DraggableModel : MonoBehaviour
 {
+    [Tooltip("ID of the prefab this model was spawned from (used to rebuild it when loading a blueprint).")]
+    public string prefabId;
+
     [Tooltip("Optional custom height lift when dragging this specific model.")]
     public float liftOffset = 0f;
 

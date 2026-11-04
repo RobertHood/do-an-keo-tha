@@ -26,6 +26,19 @@ public class ModelMovement : MonoBehaviour
     [Tooltip("Layer mask for draggable models.")]
     [SerializeField] private LayerMask modelLayer = ~0;
 
+    [Header("Selection Box Visuals")]
+    [Tooltip("Shows a clean blue bounding box around the selected model (without corner resize handles).")]
+    [SerializeField] private bool showSelectionBox = true;
+
+    [Tooltip("Color of the selection bounding box.")]
+    [SerializeField] private Color selectionBoxColor = new Color(0.1f, 0.5f, 1f, 0.95f);
+
+    [Tooltip("Width of the selection bounding box lines.")]
+    [SerializeField] private float selectionLineWidth = 0.035f;
+
+    [Tooltip("Optional custom material for the selection box lines.")]
+    [SerializeField] private Material selectionLineMaterial;
+
     [Header("Drag Feel")]
     [Tooltip("If true, removes any mouse offset so the model centers directly on the cursor. If false, preserves grab point on the ground without jumping.")]
     [SerializeField] private bool snapToCursorCenter = true;
@@ -78,6 +91,11 @@ public class ModelMovement : MonoBehaviour
     public Transform CurrentDraggedModel => currentDraggedModel;
     public Transform SelectedModel => selectedModel != null ? selectedModel : currentDraggedModel;
 
+    // Selection Bounding Box elements
+    private GameObject selectionRig;
+    private LineRenderer selectionLineRenderer;
+    private Bounds selectedLocalBounds;
+
     private struct ColliderOffset
     {
         public Collider collider;
@@ -108,6 +126,8 @@ public class ModelMovement : MonoBehaviour
             GameObject container = GameObject.Find("SpawnedModels");
             if (container != null) modelsContainer = container.transform;
         }
+
+        BuildSelectionRig();
     }
 
     private void Start()
@@ -125,6 +145,8 @@ public class ModelMovement : MonoBehaviour
             HandleRotation();
             HandleScaling();
         }
+
+        UpdateSelectionBox();
     }
 
     private void HandleInput()
@@ -156,8 +178,16 @@ public class ModelMovement : MonoBehaviour
                 return;
             }
 
-            // Do not pick up models if clicking on a resize handle
-            if (ModelResize.Instance != null && ModelResize.Instance.IsDraggingHandle)
+            // Do not pick up (or deselect) models if clicking on a resize handle or rotation ring.
+            // Hover checks make this work regardless of which script's Update runs first.
+            if (ModelResize.Instance != null &&
+                (ModelResize.Instance.IsDraggingHandle || ModelResize.Instance.IsPointerOverHandle(pointerPosition)))
+            {
+                return;
+            }
+
+            if (ModelRotate.Instance != null &&
+                (ModelRotate.Instance.IsDraggingRing || ModelRotate.Instance.IsPointerOverRing(pointerPosition)))
             {
                 return;
             }
@@ -230,6 +260,9 @@ public class ModelMovement : MonoBehaviour
                 }
             }
         }
+
+        // If clicked on empty ground/space, deselect the model
+        DeselectModel();
     }
 
     /// <summary>
@@ -238,14 +271,10 @@ public class ModelMovement : MonoBehaviour
     public void StartDragging(Transform model, Vector3 initialHitPoint)
     {
         currentDraggedModel = model;
-        selectedModel = model;
         isDragging = true;
         baseGroundY = model.position.y;
 
-        if (ModelResize.Instance != null && ModelResize.Instance.IsResizeModeActive)
-        {
-            ModelResize.Instance.SetTarget(model);
-        }
+        SelectModel(model);
 
         // Calculate grab offset: if snapToCursorCenter is true, zero offset between cursor and model
         if (snapToCursorCenter)
@@ -585,5 +614,138 @@ public class ModelMovement : MonoBehaviour
             current = current.parent;
         }
         return current;
+    }
+
+    /// <summary>
+    /// Explicitly selects a model and shows the blue selection bounding box.
+    /// </summary>
+    public void SelectModel(Transform model)
+    {
+        selectedModel = model;
+        if (selectedModel != null)
+        {
+            RecalculateSelectedLocalBounds();
+            UpdateSelectionBox();
+
+            if (ModelResize.Instance != null && ModelResize.Instance.IsResizeModeActive)
+            {
+                ModelResize.Instance.SetTarget(model);
+            }
+        }
+        else
+        {
+            DeselectModel();
+        }
+    }
+
+    /// <summary>
+    /// Clears the currently selected model and hides the selection bounding box.
+    /// </summary>
+    public void DeselectModel()
+    {
+        selectedModel = null;
+        if (selectionRig != null) selectionRig.SetActive(false);
+        if (ModelResize.Instance != null && ModelResize.Instance.IsResizeModeActive)
+        {
+            ModelResize.Instance.EnableResizeMode(false);
+        }
+        if (ModelRotate.Instance != null && ModelRotate.Instance.IsRotateModeActive)
+        {
+            ModelRotate.Instance.EnableRotateMode(false);
+        }
+    }
+
+    private void BuildSelectionRig()
+    {
+        selectionRig = new GameObject("_ModelSelectionBox");
+        selectionRig.transform.SetParent(transform, false);
+
+        GameObject lineObj = new GameObject("SelectionLines");
+        lineObj.transform.SetParent(selectionRig.transform, false);
+        selectionLineRenderer = lineObj.AddComponent<LineRenderer>();
+
+        if (selectionLineMaterial == null)
+        {
+            selectionLineMaterial = GizmoUtility.CreateLineMaterial();
+        }
+
+        selectionLineRenderer.material = selectionLineMaterial;
+        selectionLineRenderer.startColor = selectionBoxColor;
+        selectionLineRenderer.endColor = selectionBoxColor;
+        selectionLineRenderer.startWidth = selectionLineWidth;
+        selectionLineRenderer.endWidth = selectionLineWidth;
+        selectionLineRenderer.useWorldSpace = true;
+        selectionLineRenderer.loop = false;
+        selectionLineRenderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+        selectionLineRenderer.receiveShadows = false;
+
+        selectionRig.SetActive(false);
+    }
+
+    private void RecalculateSelectedLocalBounds()
+    {
+        if (selectedModel == null) return;
+
+        // Tight local bounds, so the box doesn't inflate when a rotated model is selected
+        selectedLocalBounds = GizmoUtility.GetLocalBounds(selectedModel);
+    }
+
+    private void UpdateSelectionBox()
+    {
+        if (!showSelectionBox || selectedModel == null)
+        {
+            if (selectionRig != null && selectionRig.activeSelf) selectionRig.SetActive(false);
+            return;
+        }
+
+        // Hide simple selection box if resize mode is active (since resize box with handles is shown instead)
+        if (ModelResize.Instance != null && ModelResize.Instance.IsResizeModeActive)
+        {
+            if (selectionRig != null && selectionRig.activeSelf) selectionRig.SetActive(false);
+            return;
+        }
+
+        if (selectionRig != null && !selectionRig.activeSelf)
+        {
+            selectionRig.SetActive(true);
+        }
+
+        Vector3 center = selectedLocalBounds.center;
+        Vector3 extents = selectedLocalBounds.extents;
+
+        // 8 Corners in selected model's local space
+        Vector3[] localCorners = new Vector3[8]
+        {
+            center + new Vector3(-extents.x, -extents.y, -extents.z), // 0: Bottom Back Left
+            center + new Vector3( extents.x, -extents.y, -extents.z), // 1: Bottom Back Right
+            center + new Vector3( extents.x, -extents.y,  extents.z), // 2: Bottom Front Right
+            center + new Vector3(-extents.x, -extents.y,  extents.z), // 3: Bottom Front Left
+            center + new Vector3(-extents.x,  extents.y, -extents.z), // 4: Top Back Left
+            center + new Vector3( extents.x,  extents.y, -extents.z), // 5: Top Back Right
+            center + new Vector3( extents.x,  extents.y,  extents.z), // 6: Top Front Right
+            center + new Vector3(-extents.x,  extents.y,  extents.z)  // 7: Top Front Left
+        };
+
+        Vector3[] worldCorners = new Vector3[8];
+        for (int i = 0; i < 8; i++)
+        {
+            worldCorners[i] = selectedModel.TransformPoint(localCorners[i]);
+        }
+
+        // 16 continuous points to draw all 12 edges without corner handle cubes
+        Vector3[] points = new Vector3[16]
+        {
+            worldCorners[0], worldCorners[1], worldCorners[2], worldCorners[3], worldCorners[0], // Bottom loop
+            worldCorners[4], worldCorners[5], worldCorners[6], worldCorners[7], worldCorners[4], // Top loop
+            worldCorners[7], worldCorners[3],                                                    // Vertical 7-3
+            worldCorners[2], worldCorners[6],                                                    // Vertical 2-6
+            worldCorners[5], worldCorners[1]                                                     // Vertical 5-1
+        };
+
+        if (selectionLineRenderer != null)
+        {
+            selectionLineRenderer.positionCount = 16;
+            selectionLineRenderer.SetPositions(points);
+        }
     }
 }
