@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c0c39b5935a3224d8aa25bb02147b12, type: 3}
+  m_Name: PriceCatalog
+  m_EditorClassIdentifier: Assembly-CSharp::PriceCatalog
+  entries:
+  - prefab: {fileID: 192044, guid: 19682540d8a014522a319b1cf788aee2, type: 3}
+    prefabId: 001
+    displayName: Fir Tree 1
+    description: Its a fir tree
+    icon: {fileID: 0}
+    listedPrice: 2000
+    offers: []

@@ -16,5 +16,23 @@ public class DraggableModel : MonoBehaviour
 
     [Tooltip("If true, this model cannot be moved.")]
     public bool isLocked = false;
+
+    [Header("Pricing")]
+    [Tooltip("Store chosen in the market prices panel. Empty = cheapest offer.")]
+    public string selectedStore;
+
+    [Tooltip("If true, customPrice is used instead of market prices.")]
+    public bool useCustomPrice = false;
+
+    [Tooltip("Price typed in by the user.")]
+    public double customPrice;
+
+    /// <summary>
+    /// Raised whenever a model appears or disappears (spawn, delete, import), so ModelEstPrice can refresh.
+    /// </summary>
+    public static event System.Action ModelsChanged;
+
+    private void OnEnable() => ModelsChanged?.Invoke();
+    private void OnDisable() => ModelsChanged?.Invoke();
 }
 

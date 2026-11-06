@@ -225,6 +225,9 @@ public class SpawnInModel : MonoBehaviour
         }
         draggable.prefabId = prefab.name;
         draggable.isLocked = data.isLocked;
+        draggable.selectedStore = data.selectedStore;
+        draggable.useCustomPrice = data.useCustomPrice;
+        draggable.customPrice = data.customPrice;
 
         return instance;
     }

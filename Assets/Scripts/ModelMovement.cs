@@ -86,6 +86,7 @@ public class ModelMovement : MonoBehaviour
     private float baseGroundY;
     private Vector3 targetPosition;
     private bool isDragging;
+    private Renderer[] draggedRenderers;
 
     public bool IsDragging => isDragging;
     public Transform CurrentDraggedModel => currentDraggedModel;
@@ -272,7 +273,10 @@ public class ModelMovement : MonoBehaviour
     {
         currentDraggedModel = model;
         isDragging = true;
-        baseGroundY = model.position.y;
+        draggedRenderers = model.GetComponentsInChildren<Renderer>();
+
+        // Ground height is where the model's bottom sits, not its pivot (pivots are often above or below the mesh base)
+        baseGroundY = model.position.y - GetPivotHeightAboveBottom(model);
 
         SelectModel(model);
 
@@ -395,8 +399,10 @@ public class ModelMovement : MonoBehaviour
             }
         }
 
-        // Set desired target at ground height + lift
-        Vector3 candidatePos = new Vector3(rawGroundPos.x, baseGroundY + lift, rawGroundPos.z);
+        // Set desired target so the model's bottom (not its pivot) rests at ground height + lift.
+        // Recomputed every frame because rotating/scaling while dragging changes the pivot-to-bottom distance.
+        float pivotAboveBottom = GetPivotHeightAboveBottom(currentDraggedModel);
+        Vector3 candidatePos = new Vector3(rawGroundPos.x, baseGroundY + pivotAboveBottom + lift, rawGroundPos.z);
 
         // Scoot horizontally around other models instead of rising in Y
         targetPosition = ResolveHorizontalCollisions(candidatePos, currentDraggedModel.rotation);
@@ -577,6 +583,27 @@ public class ModelMovement : MonoBehaviour
 
         currentDraggedModel = null;
         isDragging = false;
+        draggedRenderers = null;
+    }
+
+    /// <summary>
+    /// Vertical distance from the model's pivot down to the lowest point of its meshes.
+    /// Positive if the pivot is above the base, negative if the whole mesh sits above the pivot.
+    /// </summary>
+    private float GetPivotHeightAboveBottom(Transform model)
+    {
+        Renderer[] renderers = model == currentDraggedModel && draggedRenderers != null
+            ? draggedRenderers
+            : model.GetComponentsInChildren<Renderer>();
+
+        float lowestY = float.MaxValue;
+        foreach (Renderer r in renderers)
+        {
+            if (r == null || r is LineRenderer || r is TrailRenderer || r is ParticleSystemRenderer) continue;
+            lowestY = Mathf.Min(lowestY, r.bounds.min.y);
+        }
+
+        return lowestY == float.MaxValue ? 0f : model.position.y - lowestY;
     }
 
     private Vector2 GetPointerPosition()

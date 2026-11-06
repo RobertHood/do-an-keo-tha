@@ -177,6 +177,12 @@ public class Camera : MonoBehaviour
 
     private void HandleZoom()
     {
+        // Let the scroll wheel scroll UI panels instead of zooming when hovering over them
+        if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
+        {
+            return;
+        }
+
         float scrollInput = 0f;
 
 #if ENABLE_INPUT_SYSTEM
