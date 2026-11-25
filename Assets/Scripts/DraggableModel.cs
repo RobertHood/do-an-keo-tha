@@ -32,6 +32,15 @@ public class DraggableModel : MonoBehaviour
     /// </summary>
     public static event System.Action ModelsChanged;
 
+    private static int nextRuntimeId = 1;
+
+    /// <summary>
+    /// Unique ID for this model while the app runs (not saved). The web page uses it to select / edit a model.
+    /// </summary>
+    public int RuntimeId { get; private set; }
+
+    private void Awake() => RuntimeId = nextRuntimeId++;
+
     private void OnEnable() => ModelsChanged?.Invoke();
     private void OnDisable() => ModelsChanged?.Invoke();
 }

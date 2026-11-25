@@ -167,24 +167,28 @@ public class ModelResize : MonoBehaviour
             }
 
             // Always use the current selection so the box never opens on a previously selected model
-            if (ModelMovement.Instance != null && ModelMovement.Instance.SelectedModel != null)
+            if (ModelMovement.Instance != null)
             {
                 targetModel = ModelMovement.Instance.SelectedModel;
             }
 
-            if (targetModel != null)
+            if (targetModel == null || ModelLock.IsLocked(targetModel))
             {
-                localBounds = GizmoUtility.GetLocalBounds(targetModel);
-                SetRigVisibility(true);
-                UpdateBoundingBoxTransforms();
-                Debug.Log($"[ModelResize] Resize mode enabled for: '{targetModel.name}'");
-            }
-            else
-            {
-                Debug.LogWarning("[ModelResize] No model selected to resize! Click on a model first.");
+                bool locked = targetModel != null;
+                Debug.LogWarning(locked
+                    ? $"[ModelResize] '{targetModel.name}' is locked. Unlock it to resize."
+                    : "[ModelResize] No model selected to resize! Click on a model first.");
+                UINotification.ShowError(locked ? NotificationTexts.ModelLocked : NotificationTexts.SelectModelFirst);
                 isResizeModeActive = false;
                 SetRigVisibility(false);
+                return;
             }
+
+            localBounds = GizmoUtility.GetLocalBounds(targetModel);
+            SetRigVisibility(true);
+            UpdateBoundingBoxTransforms();
+            Debug.Log($"[ModelResize] Resize mode enabled for: '{targetModel.name}'");
+            UINotification.ShowTipOnce(NotificationTips.ResizeKey, NotificationTips.Resize);
         }
         else
         {

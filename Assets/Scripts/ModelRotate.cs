@@ -175,25 +175,29 @@ public class ModelRotate : MonoBehaviour
             }
 
             // Always use the current selection so the ring never opens on a previously selected model
-            if (ModelMovement.Instance != null && ModelMovement.Instance.SelectedModel != null)
+            if (ModelMovement.Instance != null)
             {
                 targetModel = ModelMovement.Instance.SelectedModel;
             }
 
-            if (targetModel != null)
+            if (targetModel == null || ModelLock.IsLocked(targetModel))
             {
-                localBounds = GizmoUtility.GetLocalBounds(targetModel);
-                UpdateSphereDimensions();
-                SetRigVisibility(true);
-                UpdateRigTransforms();
-                Debug.Log($"[ModelRotate] Rotation mode enabled for: '{targetModel.name}'");
-            }
-            else
-            {
-                Debug.LogWarning("[ModelRotate] No model selected to rotate! Click on a model first.");
+                bool locked = targetModel != null;
+                Debug.LogWarning(locked
+                    ? $"[ModelRotate] '{targetModel.name}' is locked. Unlock it to rotate."
+                    : "[ModelRotate] No model selected to rotate! Click on a model first.");
+                UINotification.ShowError(locked ? NotificationTexts.ModelLocked : NotificationTexts.SelectModelFirst);
                 isRotateModeActive = false;
                 SetRigVisibility(false);
+                return;
             }
+
+            localBounds = GizmoUtility.GetLocalBounds(targetModel);
+            UpdateSphereDimensions();
+            SetRigVisibility(true);
+            UpdateRigTransforms();
+            Debug.Log($"[ModelRotate] Rotation mode enabled for: '{targetModel.name}'");
+            UINotification.ShowTipOnce(NotificationTips.RotateKey, NotificationTips.Rotate);
         }
         else
         {

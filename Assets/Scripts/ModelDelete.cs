@@ -33,6 +33,14 @@ public class ModelDelete : MonoBehaviour
         if (model == null)
         {
             Debug.LogWarning("[ModelDelete] No model selected to delete! Click on a model first.");
+            UINotification.ShowError(NotificationTexts.SelectModelFirst);
+            return;
+        }
+
+        if (ModelLock.IsLocked(model))
+        {
+            Debug.LogWarning($"[ModelDelete] '{model.name}' is locked. Unlock it before deleting.");
+            UINotification.ShowError(NotificationTexts.ModelLocked);
             return;
         }
 
@@ -48,5 +56,10 @@ public class ModelDelete : MonoBehaviour
 
         Debug.Log($"[ModelDelete] Deleted '{model.name}'");
         Destroy(model.gameObject);
+
+        if (!UINotification.ShowTipOnce(NotificationTips.DeleteKey, NotificationTips.Delete))
+        {
+            UINotification.ShowInfo(NotificationTexts.Deleted);
+        }
     }
 }

@@ -33,6 +33,9 @@ public class ModelMovement : MonoBehaviour
     [Tooltip("Color of the selection bounding box.")]
     [SerializeField] private Color selectionBoxColor = new Color(0.1f, 0.5f, 1f, 0.95f);
 
+    [Tooltip("Color of the selection bounding box when the selected model is locked (see ModelLock).")]
+    [SerializeField] private Color lockedSelectionBoxColor = new Color(1f, 0.65f, 0.1f, 0.95f);
+
     [Tooltip("Width of the selection bounding box lines.")]
     [SerializeField] private float selectionLineWidth = 0.035f;
 
@@ -179,6 +182,12 @@ public class ModelMovement : MonoBehaviour
                 return;
             }
 
+            // While measuring, clicks pick the two models to measure instead (see ModelMeasureDistance)
+            if (ModelMeasureDistance.Instance != null && ModelMeasureDistance.Instance.IsMeasureModeActive)
+            {
+                return;
+            }
+
             // Do not pick up (or deselect) models if clicking on a resize handle or rotation ring.
             // Hover checks make this work regardless of which script's Update runs first.
             if (ModelResize.Instance != null &&
@@ -228,7 +237,12 @@ public class ModelMovement : MonoBehaviour
             DraggableModel draggable = hitTransform.GetComponentInParent<DraggableModel>();
             if (draggable != null)
             {
-                if (!draggable.isLocked)
+                // Locked models are only selected (so they can be unlocked / priced), never picked up
+                if (draggable.isLocked)
+                {
+                    SelectModel(draggable.transform);
+                }
+                else
                 {
                     StartDragging(draggable.transform, hit.point);
                 }
@@ -771,6 +785,13 @@ public class ModelMovement : MonoBehaviour
 
         if (selectionLineRenderer != null)
         {
+            Color color = ModelLock.IsLocked(selectedModel) ? lockedSelectionBoxColor : selectionBoxColor;
+            if (selectionLineRenderer.startColor != color)
+            {
+                selectionLineRenderer.startColor = color;
+                selectionLineRenderer.endColor = color;
+            }
+
             selectionLineRenderer.positionCount = 16;
             selectionLineRenderer.SetPositions(points);
         }

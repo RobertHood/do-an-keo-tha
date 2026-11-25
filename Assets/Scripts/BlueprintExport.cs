@@ -78,7 +78,11 @@ public class BlueprintExport : MonoBehaviour
         }
 
         BlueprintData data = BlueprintSave.Instance.Capture();
-        if (data == null) return;
+        if (data == null)
+        {
+            UINotification.ShowError(NotificationTexts.ExportFailed);
+            return;
+        }
 
         string json = data.ToJson();
         string baseName = ToSafeFileName(data.name);
@@ -86,6 +90,7 @@ public class BlueprintExport : MonoBehaviour
 #if UNITY_WEBGL && !UNITY_EDITOR
         BlueprintDownloadFile(baseName + "." + BlueprintData.FileExtension, json);
         Debug.Log($"[BlueprintExport] Downloaded '{data.name}' ({data.models.Count} model(s)).");
+        NotifyExported();
 #else
   #if UNITY_EDITOR
         string path = EditorUtility.SaveFilePanel("Export Blueprint", DownloadsFolder, baseName, BlueprintData.FileExtension);
@@ -97,12 +102,22 @@ public class BlueprintExport : MonoBehaviour
         {
             File.WriteAllText(path, json);
             Debug.Log($"[BlueprintExport] Exported '{data.name}' ({data.models.Count} model(s)) to: {path}");
+            NotifyExported();
         }
         catch (Exception e)
         {
             Debug.LogError($"[BlueprintExport] Failed to write '{path}': {e.Message}");
+            UINotification.ShowError(NotificationTexts.ExportFailed);
         }
 #endif
+    }
+
+    private static void NotifyExported()
+    {
+        if (!UINotification.ShowTipOnce(NotificationTips.ExportKey, NotificationTips.Export))
+        {
+            UINotification.ShowInfo(NotificationTexts.Exported);
+        }
     }
 
     /// <summary>
@@ -111,6 +126,8 @@ public class BlueprintExport : MonoBehaviour
     /// </summary>
     public void Import()
     {
+        UINotification.ShowTipOnce(NotificationTips.ImportKey, NotificationTips.Import);
+
 #if UNITY_WEBGL && !UNITY_EDITOR
         // The browser picker is async; the file contents come back through OnWebFilePicked
         BlueprintOpenFilePicker(gameObject.name, nameof(OnWebFilePicked), BlueprintData.FileExtension);
@@ -124,6 +141,7 @@ public class BlueprintExport : MonoBehaviour
         if (path == null)
         {
             Debug.LogWarning($"[BlueprintExport] No .{BlueprintData.FileExtension} files found in Downloads or Documents/Blueprints.");
+            UINotification.ShowError(NotificationTexts.ImportNotFound);
             return;
         }
   #endif
@@ -135,6 +153,7 @@ public class BlueprintExport : MonoBehaviour
         catch (Exception e)
         {
             Debug.LogError($"[BlueprintExport] Failed to read '{path}': {e.Message}");
+            UINotification.ShowError(NotificationTexts.ImportInvalid);
             return;
         }
 
@@ -159,6 +178,7 @@ public class BlueprintExport : MonoBehaviour
         if (!BlueprintData.TryFromJson(json, out BlueprintData data))
         {
             Debug.LogError("[BlueprintExport] File is not a valid blueprint.");
+            UINotification.ShowError(NotificationTexts.ImportInvalid);
             return false;
         }
 
@@ -167,14 +187,19 @@ public class BlueprintExport : MonoBehaviour
             Debug.LogWarning($"[BlueprintExport] Blueprint version {data.version} is newer than supported ({BlueprintData.CurrentVersion}). Some data may be ignored.");
         }
 
-        if (!ApplyToScene(data)) return false;
+        if (!ApplyToScene(data))
+        {
+            UINotification.ShowError(NotificationTexts.ImportInvalid);
+            return false;
+        }
 
+        string blueprintName = !string.IsNullOrWhiteSpace(data.name) ? data.name : fallbackName;
         if (BlueprintSave.Instance != null)
         {
-            string blueprintName = !string.IsNullOrWhiteSpace(data.name) ? data.name : fallbackName;
             BlueprintSave.Instance.BeginNewBlueprint(blueprintName);
         }
 
+        UINotification.ShowInfo(string.Format(NotificationTexts.Imported, blueprintName));
         return true;
     }
 
@@ -184,6 +209,16 @@ public class BlueprintExport : MonoBehaviour
     /// </summary>
     public bool ApplyToScene(BlueprintData data)
     {
+        return ApplyToScene(data, out _);
+    }
+
+    /// <summary>
+    /// Same as ApplyToScene(data); loaded = how many models were rebuilt (models whose prefab is
+    /// missing from SpawnInModel's list are skipped).
+    /// </summary>
+    public bool ApplyToScene(BlueprintData data, out int loaded)
+    {
+        loaded = 0;
         if (spawner == null)
         {
             Debug.LogWarning("[BlueprintExport] No SpawnInModel found in the scene.");
@@ -192,7 +227,6 @@ public class BlueprintExport : MonoBehaviour
 
         ClearEnvironment();
 
-        int loaded = 0;
         foreach (BlueprintModelData model in data.models)
         {
             if (spawner.SpawnFromBlueprint(model) != null) loaded++;

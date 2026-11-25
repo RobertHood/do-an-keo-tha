@@ -64,7 +64,13 @@ public class BlueprintSave : MonoBehaviour
 
         if (Storage == null)
         {
-            Storage = new LocalBlueprintStorage(BlueprintsFolder);
+            IBlueprintStorage local = new LocalBlueprintStorage(BlueprintsFolder);
+#if UNITY_WEBGL && !UNITY_EDITOR
+            // In the browser, the host page (Suburbsim web app) stores blueprints; local files are the fallback
+            Storage = new WebBlueprintStorage(local);
+#else
+            Storage = local;
+#endif
         }
     }
 
@@ -76,7 +82,11 @@ public class BlueprintSave : MonoBehaviour
         if (IsSaving) return; // Ignore double-clicks while a (web) save is still in flight
 
         BlueprintData data = Capture();
-        if (data == null) return;
+        if (data == null)
+        {
+            UINotification.ShowError(NotificationTexts.NothingToSave);
+            return;
+        }
 
         IsSaving = true;
         Storage.Save(data, success =>
@@ -86,6 +96,14 @@ public class BlueprintSave : MonoBehaviour
             {
                 CurrentBlueprintId = data.id;
                 currentCreatedAt = data.createdAt;
+                if (!UINotification.ShowTipOnce(NotificationTips.SaveKey, NotificationTips.Save))
+                {
+                    UINotification.ShowInfo(NotificationTexts.Saved);
+                }
+            }
+            else
+            {
+                UINotification.ShowError(NotificationTexts.SaveFailed);
             }
         });
     }
@@ -108,6 +126,20 @@ public class BlueprintSave : MonoBehaviour
         CurrentBlueprintId = null;
         currentCreatedAt = null;
         SetBlueprintName(blueprintName);
+    }
+
+    /// <summary>
+    /// Makes a stored blueprint the one in use, keeping its ID, name and creation time, so the next Save()
+    /// overwrites that record. Used when the host page opens one of the user's own blueprints
+    /// (unlike BeginNewBlueprint, which is for imported files).
+    /// </summary>
+    public void OpenExisting(BlueprintData data)
+    {
+        if (data == null) return;
+
+        CurrentBlueprintId = string.IsNullOrEmpty(data.id) ? null : data.id;
+        currentCreatedAt = string.IsNullOrEmpty(data.createdAt) ? null : data.createdAt;
+        SetBlueprintName(data.name);
     }
 
     /// <summary>
