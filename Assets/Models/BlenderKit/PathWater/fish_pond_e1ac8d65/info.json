@@ -1,33 +1,36 @@
 {
- "id": "e1ac8d65-f636-443d-87e1-73af2d85100b",
- "assetBaseId": "5762109a-dc29-4171-b699-050d7a0af9a8",
- "name": "Fish pond",
- "term": "pond",
- "license": "royalty_free",
- "faces": 28970.0,
- "size": [
-  7.696,
-  9.3315,
-  6.1251
- ],
- "files": [
-  "blend",
-  "gltf",
-  "gltf_godot",
-  "resolution_0_5K",
-  "resolution_1K",
-  "resolution_2K",
-  "resolution_4K",
-  "thumbnail"
- ],
- "author": "M X",
- "url": "https://www.blenderkit.com/asset-gallery-detail/e1ac8d65-f636-443d-87e1-73af2d85100b/",
- "thumbnail": "https://public.blenderkit.com/thumbnails/assets/e1ac8d65f636443d87e173af2d85100b/files/thumbnail_53e9ca98-9dd3-4b08-86e5-b99e97e97400.jpg.512x512_q85_crop-%2C.jpg",
- "description": "small fish pond  with reed and lotus",
- "score": 302.5,
- "procedural": false,
- "textureResolutionMax": 4096,
- "category": "PathWater",
- "displayName": "Hồ cá",
- "downloadedFile": "blend_bd11ddc4-d3d0-4e1d-8563-985cd4e39537.blend"
+  "id": "e1ac8d65-f636-443d-87e1-73af2d85100b",
+  "assetBaseId": "5762109a-dc29-4171-b699-050d7a0af9a8",
+  "name": "Fish pond",
+  "term": "pond",
+  "license": "royalty_free",
+  "faces": 28970.0,
+  "size": [
+    7.696,
+    9.3315,
+    6.1251
+  ],
+  "files": [
+    "blend",
+    "gltf",
+    "gltf_godot",
+    "resolution_0_5K",
+    "resolution_1K",
+    "resolution_2K",
+    "resolution_4K",
+    "thumbnail"
+  ],
+  "author": "M X",
+  "url": "https://www.blenderkit.com/asset-gallery-detail/e1ac8d65-f636-443d-87e1-73af2d85100b/",
+  "thumbnail": "https://public.blenderkit.com/thumbnails/assets/e1ac8d65f636443d87e173af2d85100b/files/thumbnail_53e9ca98-9dd3-4b08-86e5-b99e97e97400.jpg.512x512_q85_crop-%2C.jpg",
+  "description": "small fish pond  with reed and lotus",
+  "score": 302.5,
+  "procedural": false,
+  "textureResolutionMax": 4096,
+  "category": "PathWater",
+  "displayName": "Hồ cá",
+  "downloadedFile": "blend_bd11ddc4-d3d0-4e1d-8563-985cd4e39537.blend",
+  "loai": "ho_nuoc",
+  "frontYawOffset": 0,
+  "hasDoor": false
 }

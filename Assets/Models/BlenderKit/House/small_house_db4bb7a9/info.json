@@ -1,30 +1,38 @@
 {
- "id": "db4bb7a9-4d01-429d-a43e-9cb698aa4e52",
- "assetBaseId": "9f7d1d4b-862a-4a4b-8815-9a16aed8d222",
- "name": "Small house",
- "term": "small house",
- "license": "royalty_free",
- "faces": 5150.0,
- "size": [
-  10.6311,
-  7.9204,
-  11.008
- ],
- "files": [
-  "blend",
-  "gltf",
-  "resolution_0_5K",
-  "resolution_1K",
-  "thumbnail"
- ],
- "author": "ali alipour",
- "url": "https://www.blenderkit.com/asset-gallery-detail/db4bb7a9-4d01-429d-a43e-9cb698aa4e52/",
- "thumbnail": "https://public.blenderkit.com/thumbnails/assets/db4bb7a94d01429da43e9cb698aa4e52/files/thumbnail_8a74c077-530e-44a2-97aa-2d76d7502887.jpg.512x512_q85_crop-%2C.jpg",
- "description": "Lowpoly small house. Along with a number of internal objects",
- "score": 850.0,
- "procedural": false,
- "textureResolutionMax": 2048,
- "category": "House",
- "displayName": "Nhà nhỏ hai tầng",
- "downloadedFile": "blend_3190c526-7293-486c-aef4-df40eb3b6bce.blend"
+  "id": "db4bb7a9-4d01-429d-a43e-9cb698aa4e52",
+  "assetBaseId": "9f7d1d4b-862a-4a4b-8815-9a16aed8d222",
+  "name": "Small house",
+  "term": "small house",
+  "license": "royalty_free",
+  "faces": 5150.0,
+  "size": [
+    10.6311,
+    7.9204,
+    11.008
+  ],
+  "files": [
+    "blend",
+    "gltf",
+    "resolution_0_5K",
+    "resolution_1K",
+    "thumbnail"
+  ],
+  "author": "ali alipour",
+  "url": "https://www.blenderkit.com/asset-gallery-detail/db4bb7a9-4d01-429d-a43e-9cb698aa4e52/",
+  "thumbnail": "https://public.blenderkit.com/thumbnails/assets/db4bb7a94d01429da43e9cb698aa4e52/files/thumbnail_8a74c077-530e-44a2-97aa-2d76d7502887.jpg.512x512_q85_crop-%2C.jpg",
+  "description": "Lowpoly small house. Along with a number of internal objects",
+  "score": 850.0,
+  "procedural": false,
+  "textureResolutionMax": 2048,
+  "category": "House",
+  "displayName": "Nhà nhỏ hai tầng",
+  "downloadedFile": "blend_3190c526-7293-486c-aef4-df40eb3b6bce.blend",
+  "loai": "nha",
+  "frontYawOffset": 0,
+  "hasDoor": true,
+  "doorOffset": {
+    "x": -3.9,
+    "y": 0,
+    "z": 3.3
+  }
 }

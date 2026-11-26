@@ -227,6 +227,11 @@ public class BlueprintExport : MonoBehaviour
 
         ClearEnvironment();
 
+        if (data.land != null && data.land.hasLand && LandBoundary.Instance != null)
+        {
+            LandBoundary.Instance.Apply(data.land, false);
+        }
+
         foreach (BlueprintModelData model in data.models)
         {
             if (spawner.SpawnFromBlueprint(model) != null) loaded++;

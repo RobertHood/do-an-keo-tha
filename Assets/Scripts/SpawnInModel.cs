@@ -295,6 +295,14 @@ public class SpawnInModel : MonoBehaviour
             }
         }
 
+        // New models go on the user's plot of land: if the camera looks elsewhere, use the middle of the plot
+        LandBoundary land = LandBoundary.Instance;
+        if (land != null && !land.ContainsPoint(candidatePos))
+        {
+            Vector3 center = land.Center;
+            candidatePos = new Vector3(center.x, candidatePos.y, center.z);
+        }
+
         // Find nearest open space around candidatePos to avoid overlapping existing models
         return FindNearestOpenSpace(candidatePos);
     }

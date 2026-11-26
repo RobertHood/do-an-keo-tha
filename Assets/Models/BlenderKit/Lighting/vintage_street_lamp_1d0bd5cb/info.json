@@ -1,31 +1,34 @@
 {
- "id": "1d0bd5cb-429e-4d8f-9b32-66d98d19ccb1",
- "assetBaseId": "d585a3d2-6677-4de6-a3e4-81b89486253a",
- "name": "Vintage Street Lamp",
- "term": "street lamp",
- "license": "royalty_free",
- "faces": 2261.0,
- "size": [
-  0.2578,
-  0.2977,
-  1.7517
- ],
- "files": [
-  "blend",
-  "gltf",
-  "resolution_0_5K",
-  "resolution_1K",
-  "resolution_2K",
-  "thumbnail"
- ],
- "author": "Crazy0_0Cat ",
- "url": "https://www.blenderkit.com/asset-gallery-detail/1d0bd5cb-429e-4d8f-9b32-66d98d19ccb1/",
- "thumbnail": "https://public.blenderkit.com/thumbnails/assets/1d0bd5cb429e4d8f9b3266d98d19ccb1/files/thumbnail_d5b71edc-f7ba-4ed5-95d5-4673ae484d3c.png.512x512_q85_crop-%2C.png",
- "description": "This 3D model of a vintage street lamp features an elegant, old-fashioned design with intricate details, perfect for historical or fantasy-themed environments. The warm glow of the lamp adds a classic",
- "score": 560.0,
- "procedural": false,
- "textureResolutionMax": 2048,
- "category": "Lighting",
- "displayName": "Đèn đường cổ điển",
- "downloadedFile": "blend_5d6c98e1-7290-4e7e-b7c3-11e9606328ce.blend"
+  "id": "1d0bd5cb-429e-4d8f-9b32-66d98d19ccb1",
+  "assetBaseId": "d585a3d2-6677-4de6-a3e4-81b89486253a",
+  "name": "Vintage Street Lamp",
+  "term": "street lamp",
+  "license": "royalty_free",
+  "faces": 2261.0,
+  "size": [
+    0.2578,
+    0.2977,
+    1.7517
+  ],
+  "files": [
+    "blend",
+    "gltf",
+    "resolution_0_5K",
+    "resolution_1K",
+    "resolution_2K",
+    "thumbnail"
+  ],
+  "author": "Crazy0_0Cat ",
+  "url": "https://www.blenderkit.com/asset-gallery-detail/1d0bd5cb-429e-4d8f-9b32-66d98d19ccb1/",
+  "thumbnail": "https://public.blenderkit.com/thumbnails/assets/1d0bd5cb429e4d8f9b3266d98d19ccb1/files/thumbnail_d5b71edc-f7ba-4ed5-95d5-4673ae484d3c.png.512x512_q85_crop-%2C.png",
+  "description": "This 3D model of a vintage street lamp features an elegant, old-fashioned design with intricate details, perfect for historical or fantasy-themed environments. The warm glow of the lamp adds a classic",
+  "score": 560.0,
+  "procedural": false,
+  "textureResolutionMax": 2048,
+  "category": "Lighting",
+  "displayName": "Đèn đường cổ điển",
+  "downloadedFile": "blend_5d6c98e1-7290-4e7e-b7c3-11e9606328ce.blend",
+  "loai": "den",
+  "frontYawOffset": 0,
+  "hasDoor": false
 }

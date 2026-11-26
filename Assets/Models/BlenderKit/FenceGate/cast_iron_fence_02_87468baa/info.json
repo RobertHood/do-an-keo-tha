@@ -1,33 +1,36 @@
 {
- "id": "87468baa-bb9a-4b9a-bba4-6eea55de662f",
- "assetBaseId": "4b5528fa-ba8a-4974-9bbf-f45e2701c0b3",
- "name": "Cast Iron Fence 02",
- "term": "fence",
- "license": "cc_zero",
- "faces": 5870.0,
- "size": [
-  1.4877,
-  0.0574,
-  1.4996
- ],
- "files": [
-  "blend",
-  "gltf",
-  "gltf_godot",
-  "resolution_0_5K",
-  "resolution_1K",
-  "resolution_2K",
-  "resolution_4K",
-  "thumbnail"
- ],
- "author": "The Doctor By Design ",
- "url": "https://www.blenderkit.com/asset-gallery-detail/87468baa-bb9a-4b9a-bba4-6eea55de662f/",
- "thumbnail": "https://public.blenderkit.com/thumbnails/assets/87468baabb9a4b9abba46eea55de662f/files/thumbnail_8a0a8699-f708-4777-8d8a-42172578ecd3.jpg.512x512_q85_crop-%2C.jpg",
- "description": "",
- "score": 550.0,
- "procedural": false,
- "textureResolutionMax": 4096,
- "category": "FenceGate",
- "displayName": "Hàng rào sắt",
- "downloadedFile": "blend_cd5c6c0e-525e-46d1-a7a8-8283fc4428f1.blend"
+  "id": "87468baa-bb9a-4b9a-bba4-6eea55de662f",
+  "assetBaseId": "4b5528fa-ba8a-4974-9bbf-f45e2701c0b3",
+  "name": "Cast Iron Fence 02",
+  "term": "fence",
+  "license": "cc_zero",
+  "faces": 5870.0,
+  "size": [
+    1.4877,
+    0.0574,
+    1.4996
+  ],
+  "files": [
+    "blend",
+    "gltf",
+    "gltf_godot",
+    "resolution_0_5K",
+    "resolution_1K",
+    "resolution_2K",
+    "resolution_4K",
+    "thumbnail"
+  ],
+  "author": "The Doctor By Design ",
+  "url": "https://www.blenderkit.com/asset-gallery-detail/87468baa-bb9a-4b9a-bba4-6eea55de662f/",
+  "thumbnail": "https://public.blenderkit.com/thumbnails/assets/87468baabb9a4b9abba46eea55de662f/files/thumbnail_8a0a8699-f708-4777-8d8a-42172578ecd3.jpg.512x512_q85_crop-%2C.jpg",
+  "description": "",
+  "score": 550.0,
+  "procedural": false,
+  "textureResolutionMax": 4096,
+  "category": "FenceGate",
+  "displayName": "Hàng rào sắt",
+  "downloadedFile": "blend_cd5c6c0e-525e-46d1-a7a8-8283fc4428f1.blend",
+  "loai": "hang_rao",
+  "frontYawOffset": 0,
+  "hasDoor": false
 }

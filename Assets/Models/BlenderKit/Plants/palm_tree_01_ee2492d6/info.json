@@ -1,31 +1,34 @@
 {
- "id": "ee2492d6-c912-4e4f-989e-df575fb9d5c6",
- "assetBaseId": "f755592f-ed51-4d7a-815f-209121d18a64",
- "name": "Palm Tree 01",
- "term": "palm tree",
- "license": "royalty_free",
- "faces": 14320.0,
- "size": [
-  6.9405,
-  6.619,
-  7.1607
- ],
- "files": [
-  "blend",
-  "gltf",
-  "gltf_godot",
-  "resolution_0_5K",
-  "resolution_1K",
-  "thumbnail"
- ],
- "author": "Nobody ",
- "url": "https://www.blenderkit.com/asset-gallery-detail/ee2492d6-c912-4e4f-989e-df575fb9d5c6/",
- "thumbnail": "https://public.blenderkit.com/thumbnails/assets/ee2492d6c9124e4f989edf575fb9d5c6/files/thumbnail_5f7d645f-7477-4c2e-a3e0-cf55b8d0ea5d.jpg.512x512_q85_crop-%2C.jpg",
- "description": "palm tree low poly",
- "score": 661.8181818181819,
- "procedural": false,
- "textureResolutionMax": 1532,
- "category": "Plants",
- "displayName": "Cây cọ thấp",
- "downloadedFile": "blend_0fa7c11f-7bc1-4f6d-85fd-dcfefde7abec.blend"
+  "id": "ee2492d6-c912-4e4f-989e-df575fb9d5c6",
+  "assetBaseId": "f755592f-ed51-4d7a-815f-209121d18a64",
+  "name": "Palm Tree 01",
+  "term": "palm tree",
+  "license": "royalty_free",
+  "faces": 14320.0,
+  "size": [
+    6.9405,
+    6.619,
+    7.1607
+  ],
+  "files": [
+    "blend",
+    "gltf",
+    "gltf_godot",
+    "resolution_0_5K",
+    "resolution_1K",
+    "thumbnail"
+  ],
+  "author": "Nobody ",
+  "url": "https://www.blenderkit.com/asset-gallery-detail/ee2492d6-c912-4e4f-989e-df575fb9d5c6/",
+  "thumbnail": "https://public.blenderkit.com/thumbnails/assets/ee2492d6c9124e4f989edf575fb9d5c6/files/thumbnail_5f7d645f-7477-4c2e-a3e0-cf55b8d0ea5d.jpg.512x512_q85_crop-%2C.jpg",
+  "description": "palm tree low poly",
+  "score": 661.8181818181819,
+  "procedural": false,
+  "textureResolutionMax": 1532,
+  "category": "Plants",
+  "displayName": "Cây cọ thấp",
+  "downloadedFile": "blend_0fa7c11f-7bc1-4f6d-85fd-dcfefde7abec.blend",
+  "loai": "cay",
+  "frontYawOffset": 0,
+  "hasDoor": false
 }

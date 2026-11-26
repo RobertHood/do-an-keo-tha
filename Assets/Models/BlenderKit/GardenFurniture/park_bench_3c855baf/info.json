@@ -1,33 +1,36 @@
 {
- "id": "3c855baf-ec36-4b48-aeb5-773f66fa4e0f",
- "assetBaseId": "0e35aec5-21cf-4e03-883e-008756e7d8bf",
- "name": "Park Bench",
- "term": "bench",
- "license": "royalty_free",
- "faces": 8050.0,
- "size": [
-  1.5725,
-  0.7197,
-  0.9285
- ],
- "files": [
-  "blend",
-  "gltf",
-  "gltf_godot",
-  "resolution_0_5K",
-  "resolution_1K",
-  "resolution_2K",
-  "resolution_4K",
-  "thumbnail"
- ],
- "author": "Dal Roron",
- "url": "https://www.blenderkit.com/asset-gallery-detail/3c855baf-ec36-4b48-aeb5-773f66fa4e0f/",
- "thumbnail": "https://public.blenderkit.com/thumbnails/assets/3c855bafec364b48aeb5773f66fa4e0f/files/thumbnail_2858818b-981c-4a59-a902-a37d43502474.jpg.512x512_q85_crop-%2C.jpg",
- "description": "contemporary park bench bearing normal signs of wear and tear. Textures Channel Packed.\r\n\r\n01 Park Bench",
- "score": 780.0,
- "procedural": false,
- "textureResolutionMax": 4096,
- "category": "GardenFurniture",
- "displayName": "Ghế băng công viên",
- "downloadedFile": "blend_c1406b81-3a40-4682-bbf5-97d2701272dc.blend"
+  "id": "3c855baf-ec36-4b48-aeb5-773f66fa4e0f",
+  "assetBaseId": "0e35aec5-21cf-4e03-883e-008756e7d8bf",
+  "name": "Park Bench",
+  "term": "bench",
+  "license": "royalty_free",
+  "faces": 8050.0,
+  "size": [
+    1.5725,
+    0.7197,
+    0.9285
+  ],
+  "files": [
+    "blend",
+    "gltf",
+    "gltf_godot",
+    "resolution_0_5K",
+    "resolution_1K",
+    "resolution_2K",
+    "resolution_4K",
+    "thumbnail"
+  ],
+  "author": "Dal Roron",
+  "url": "https://www.blenderkit.com/asset-gallery-detail/3c855baf-ec36-4b48-aeb5-773f66fa4e0f/",
+  "thumbnail": "https://public.blenderkit.com/thumbnails/assets/3c855bafec364b48aeb5773f66fa4e0f/files/thumbnail_2858818b-981c-4a59-a902-a37d43502474.jpg.512x512_q85_crop-%2C.jpg",
+  "description": "contemporary park bench bearing normal signs of wear and tear. Textures Channel Packed.\r\n\r\n01 Park Bench",
+  "score": 780.0,
+  "procedural": false,
+  "textureResolutionMax": 4096,
+  "category": "GardenFurniture",
+  "displayName": "Ghế băng công viên",
+  "downloadedFile": "blend_c1406b81-3a40-4682-bbf5-97d2701272dc.blend",
+  "loai": "ghe_ban",
+  "frontYawOffset": 0,
+  "hasDoor": false
 }

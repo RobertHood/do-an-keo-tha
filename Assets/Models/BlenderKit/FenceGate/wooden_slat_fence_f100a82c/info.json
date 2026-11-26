@@ -1,31 +1,34 @@
 {
- "id": "f100a82c-4061-48d3-8e30-29043dca544d",
- "assetBaseId": "5d5e0129-1775-4f09-bca9-83a5655ea31c",
- "name": "Wooden Slat Fence",
- "term": "wooden fence",
- "license": "royalty_free",
- "faces": 810.0,
- "size": [
-  1.5083,
-  0.068,
-  1.4912
- ],
- "files": [
-  "blend",
-  "gltf",
-  "gltf_godot",
-  "resolution_0_5K",
-  "resolution_1K",
-  "thumbnail"
- ],
- "author": "Andrew Crook",
- "url": "https://www.blenderkit.com/asset-gallery-detail/f100a82c-4061-48d3-8e30-29043dca544d/",
- "thumbnail": "https://public.blenderkit.com/thumbnails/assets/f100a82c406148d38e3029043dca544d/files/thumbnail_c094e195-5e20-459b-a535-ea6068f85878.png.512x512_q85_crop-%2C.png",
- "description": "Wooden slat fencing which can be duplicated with an array modifier for desired length",
- "score": 270.0,
- "procedural": false,
- "textureResolutionMax": 1024,
- "category": "FenceGate",
- "displayName": "Hàng rào nan gỗ",
- "downloadedFile": "blend_4e985c56-faf0-4f24-93e8-f794569777b9.blend"
+  "id": "f100a82c-4061-48d3-8e30-29043dca544d",
+  "assetBaseId": "5d5e0129-1775-4f09-bca9-83a5655ea31c",
+  "name": "Wooden Slat Fence",
+  "term": "wooden fence",
+  "license": "royalty_free",
+  "faces": 810.0,
+  "size": [
+    1.5083,
+    0.068,
+    1.4912
+  ],
+  "files": [
+    "blend",
+    "gltf",
+    "gltf_godot",
+    "resolution_0_5K",
+    "resolution_1K",
+    "thumbnail"
+  ],
+  "author": "Andrew Crook",
+  "url": "https://www.blenderkit.com/asset-gallery-detail/f100a82c-4061-48d3-8e30-29043dca544d/",
+  "thumbnail": "https://public.blenderkit.com/thumbnails/assets/f100a82c406148d38e3029043dca544d/files/thumbnail_c094e195-5e20-459b-a535-ea6068f85878.png.512x512_q85_crop-%2C.png",
+  "description": "Wooden slat fencing which can be duplicated with an array modifier for desired length",
+  "score": 270.0,
+  "procedural": false,
+  "textureResolutionMax": 1024,
+  "category": "FenceGate",
+  "displayName": "Hàng rào nan gỗ",
+  "downloadedFile": "blend_4e985c56-faf0-4f24-93e8-f794569777b9.blend",
+  "loai": "hang_rao",
+  "frontYawOffset": 0,
+  "hasDoor": false
 }

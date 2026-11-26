@@ -1,33 +1,41 @@
 {
- "id": "b72f3de4-31cc-4c21-897e-36d67576766b",
- "assetBaseId": "17ca9a13-772d-440a-be73-e8273ecbe605",
- "name": "Cottage",
- "term": "cottage",
- "license": "royalty_free",
- "faces": 9687.0,
- "size": [
-  15.7282,
-  7.8568,
-  9.1243
- ],
- "files": [
-  "blend",
-  "gltf",
-  "gltf_godot",
-  "resolution_0_5K",
-  "resolution_1K",
-  "resolution_2K",
-  "resolution_4K",
-  "thumbnail"
- ],
- "author": "Jan Holinka",
- "url": "https://www.blenderkit.com/asset-gallery-detail/b72f3de4-31cc-4c21-897e-36d67576766b/",
- "thumbnail": "https://public.blenderkit.com/thumbnails/assets/b72f3de431cc4c21897e36d67576766b/files/thumbnail_400a184b-bd1e-4026-a789-2162efc9d51f.jpg.512x512_q85_crop-%2C.jpg",
- "description": "Its a low poly cottage with low poly furniture.",
- "score": 1375.0,
- "procedural": false,
- "textureResolutionMax": 6144,
- "category": "House",
- "displayName": "Nhà kiểu cottage",
- "downloadedFile": "blend_81b7b1b2-2213-427a-940a-b234f4be17a4.blend"
+  "id": "b72f3de4-31cc-4c21-897e-36d67576766b",
+  "assetBaseId": "17ca9a13-772d-440a-be73-e8273ecbe605",
+  "name": "Cottage",
+  "term": "cottage",
+  "license": "royalty_free",
+  "faces": 9687.0,
+  "size": [
+    15.7282,
+    7.8568,
+    9.1243
+  ],
+  "files": [
+    "blend",
+    "gltf",
+    "gltf_godot",
+    "resolution_0_5K",
+    "resolution_1K",
+    "resolution_2K",
+    "resolution_4K",
+    "thumbnail"
+  ],
+  "author": "Jan Holinka",
+  "url": "https://www.blenderkit.com/asset-gallery-detail/b72f3de4-31cc-4c21-897e-36d67576766b/",
+  "thumbnail": "https://public.blenderkit.com/thumbnails/assets/b72f3de431cc4c21897e36d67576766b/files/thumbnail_400a184b-bd1e-4026-a789-2162efc9d51f.jpg.512x512_q85_crop-%2C.jpg",
+  "description": "Its a low poly cottage with low poly furniture.",
+  "score": 1375.0,
+  "procedural": false,
+  "textureResolutionMax": 6144,
+  "category": "House",
+  "displayName": "Nhà kiểu cottage",
+  "downloadedFile": "blend_81b7b1b2-2213-427a-940a-b234f4be17a4.blend",
+  "loai": "nha",
+  "frontYawOffset": 180,
+  "hasDoor": true,
+  "doorOffset": {
+    "x": -1.4,
+    "y": 0,
+    "z": -3.9
+  }
 }

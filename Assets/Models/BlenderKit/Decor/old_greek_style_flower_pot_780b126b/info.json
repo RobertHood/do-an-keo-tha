@@ -1,32 +1,35 @@
 {
- "id": "780b126b-411f-409c-afab-5c9a8a169ee8",
- "assetBaseId": "9a15a367-3d7a-4472-9338-d4b592d6a988",
- "name": "Old Greek style flower pot",
- "term": "flower pot",
- "license": "royalty_free",
- "faces": 3561.0,
- "size": [
-  0.4804,
-  0.4716,
-  0.9049
- ],
- "files": [
-  "blend",
-  "gltf",
-  "gltf_godot",
-  "resolution_0_5K",
-  "resolution_1K",
-  "resolution_2K",
-  "thumbnail"
- ],
- "author": "Matvey Sheyanov",
- "url": "https://www.blenderkit.com/asset-gallery-detail/780b126b-411f-409c-afab-5c9a8a169ee8/",
- "thumbnail": "https://public.blenderkit.com/thumbnails/assets/780b126b411f409cafab5c9a8a169ee8/files/thumbnail_5d8d8301-3e87-4a78-b1bf-e9b595aa1bf3.png.512x512_q85_crop-%2C.png",
- "description": "",
- "score": 736.0,
- "procedural": null,
- "textureResolutionMax": 2048,
- "category": "Decor",
- "displayName": "Chậu hoa kiểu Hy Lạp",
- "downloadedFile": "blend_54cc4e84-2547-4dde-b0e1-622e036969ba.blend"
+  "id": "780b126b-411f-409c-afab-5c9a8a169ee8",
+  "assetBaseId": "9a15a367-3d7a-4472-9338-d4b592d6a988",
+  "name": "Old Greek style flower pot",
+  "term": "flower pot",
+  "license": "royalty_free",
+  "faces": 3561.0,
+  "size": [
+    0.4804,
+    0.4716,
+    0.9049
+  ],
+  "files": [
+    "blend",
+    "gltf",
+    "gltf_godot",
+    "resolution_0_5K",
+    "resolution_1K",
+    "resolution_2K",
+    "thumbnail"
+  ],
+  "author": "Matvey Sheyanov",
+  "url": "https://www.blenderkit.com/asset-gallery-detail/780b126b-411f-409c-afab-5c9a8a169ee8/",
+  "thumbnail": "https://public.blenderkit.com/thumbnails/assets/780b126b411f409cafab5c9a8a169ee8/files/thumbnail_5d8d8301-3e87-4a78-b1bf-e9b595aa1bf3.png.512x512_q85_crop-%2C.png",
+  "description": "",
+  "score": 736.0,
+  "procedural": null,
+  "textureResolutionMax": 2048,
+  "category": "Decor",
+  "displayName": "Chậu hoa kiểu Hy Lạp",
+  "downloadedFile": "blend_54cc4e84-2547-4dde-b0e1-622e036969ba.blend",
+  "loai": "chau_cay",
+  "frontYawOffset": 0,
+  "hasDoor": false
 }

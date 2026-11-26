@@ -1,33 +1,36 @@
 {
- "id": "1c8842e8-89d3-4409-bbb5-59c2084f6ca7",
- "assetBaseId": "cf4de778-cd40-4674-bdfb-eb8f9bb24a28",
- "name": "Sun lounger for pool",
- "term": "sun lounger",
- "license": "royalty_free",
- "faces": 12568.0,
- "size": [
-  0.7563,
-  1.8904,
-  0.6683
- ],
- "files": [
-  "blend",
-  "gltf",
-  "gltf_godot",
-  "resolution_0_5K",
-  "resolution_1K",
-  "resolution_2K",
-  "resolution_4K",
-  "thumbnail"
- ],
- "author": "jhon maycon",
- "url": "https://www.blenderkit.com/asset-gallery-detail/1c8842e8-89d3-4409-bbb5-59c2084f6ca7/",
- "thumbnail": "https://public.blenderkit.com/thumbnails/assets/1c8842e889d34409bbb559c2084f6ca7/files/thumbnail_360feb6f-1e61-4b30-9119-0d86fb9bc734.jpg.512x512_q85_crop-%2C.jpg",
- "description": "Lounger with black finish for gourmet environments and swimming pools. Model with shape keys with backrest variation.",
- "score": 475.0,
- "procedural": false,
- "textureResolutionMax": 5095,
- "category": "GardenFurniture",
- "displayName": "Ghế tắm nắng",
- "downloadedFile": "blend_60a6e8d6-00fe-4a80-9e04-13d08fa3f206.blend"
+  "id": "1c8842e8-89d3-4409-bbb5-59c2084f6ca7",
+  "assetBaseId": "cf4de778-cd40-4674-bdfb-eb8f9bb24a28",
+  "name": "Sun lounger for pool",
+  "term": "sun lounger",
+  "license": "royalty_free",
+  "faces": 12568.0,
+  "size": [
+    0.7563,
+    1.8904,
+    0.6683
+  ],
+  "files": [
+    "blend",
+    "gltf",
+    "gltf_godot",
+    "resolution_0_5K",
+    "resolution_1K",
+    "resolution_2K",
+    "resolution_4K",
+    "thumbnail"
+  ],
+  "author": "jhon maycon",
+  "url": "https://www.blenderkit.com/asset-gallery-detail/1c8842e8-89d3-4409-bbb5-59c2084f6ca7/",
+  "thumbnail": "https://public.blenderkit.com/thumbnails/assets/1c8842e889d34409bbb559c2084f6ca7/files/thumbnail_360feb6f-1e61-4b30-9119-0d86fb9bc734.jpg.512x512_q85_crop-%2C.jpg",
+  "description": "Lounger with black finish for gourmet environments and swimming pools. Model with shape keys with backrest variation.",
+  "score": 475.0,
+  "procedural": false,
+  "textureResolutionMax": 5095,
+  "category": "GardenFurniture",
+  "displayName": "Ghế tắm nắng",
+  "downloadedFile": "blend_60a6e8d6-00fe-4a80-9e04-13d08fa3f206.blend",
+  "loai": "ghe_ban",
+  "frontYawOffset": 0,
+  "hasDoor": false
 }

@@ -1,31 +1,34 @@
 {
- "id": "eafdf1a1-0e65-4256-95d2-5319514cd77e",
- "assetBaseId": "58ed8a12-f81f-4f24-ba5b-de43e1d6baf8",
- "name": "Street lamp",
- "term": "street lamp",
- "license": "royalty_free",
- "faces": 1960.0,
- "size": [
-  0.783,
-  0.783,
-  3.8136
- ],
- "files": [
-  "blend",
-  "gltf",
-  "gltf_godot",
-  "resolution_0_5K",
-  "resolution_1K",
-  "thumbnail"
- ],
- "author": "Adam Krhanek",
- "url": "https://www.blenderkit.com/asset-gallery-detail/eafdf1a1-0e65-4256-95d2-5319514cd77e/",
- "thumbnail": "https://public.blenderkit.com/thumbnails/assets/eafdf1a10e65425695d25319514cd77e/files/thumbnail_a6c949b0-3adc-4e77-85a0-3e455f18d5aa.jpg.512x512_q85_crop-%2C.jpg",
- "description": "A shining street lamp. If you want it off, switch to the second shader in the shader editor.",
- "score": 348.57142857142856,
- "procedural": false,
- "textureResolutionMax": 1024,
- "category": "Lighting",
- "displayName": "Cột đèn đường",
- "downloadedFile": "blend_6ced49a4-866d-4561-9a20-90413277ae63.blend"
+  "id": "eafdf1a1-0e65-4256-95d2-5319514cd77e",
+  "assetBaseId": "58ed8a12-f81f-4f24-ba5b-de43e1d6baf8",
+  "name": "Street lamp",
+  "term": "street lamp",
+  "license": "royalty_free",
+  "faces": 1960.0,
+  "size": [
+    0.783,
+    0.783,
+    3.8136
+  ],
+  "files": [
+    "blend",
+    "gltf",
+    "gltf_godot",
+    "resolution_0_5K",
+    "resolution_1K",
+    "thumbnail"
+  ],
+  "author": "Adam Krhanek",
+  "url": "https://www.blenderkit.com/asset-gallery-detail/eafdf1a1-0e65-4256-95d2-5319514cd77e/",
+  "thumbnail": "https://public.blenderkit.com/thumbnails/assets/eafdf1a10e65425695d25319514cd77e/files/thumbnail_a6c949b0-3adc-4e77-85a0-3e455f18d5aa.jpg.512x512_q85_crop-%2C.jpg",
+  "description": "A shining street lamp. If you want it off, switch to the second shader in the shader editor.",
+  "score": 348.57142857142856,
+  "procedural": false,
+  "textureResolutionMax": 1024,
+  "category": "Lighting",
+  "displayName": "Cột đèn đường",
+  "downloadedFile": "blend_6ced49a4-866d-4561-9a20-90413277ae63.blend",
+  "loai": "den",
+  "frontYawOffset": 0,
+  "hasDoor": false
 }

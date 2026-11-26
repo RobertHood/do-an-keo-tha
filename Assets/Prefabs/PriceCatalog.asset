@@ -21,6 +21,11 @@ MonoBehaviour:
     icon: {fileID: 21300000, guid: d6500bc1501150841ba53b2f4dd9832a, type: 3}
     listedPrice: 2000
     offers: []
+    loai: 0
+    frontYawOffset: 0
+    hasDoor: 0
+    doorOffset: {x: 0, y: 0, z: 0}
+    baseSize: {x: 3.772, y: 5.713, z: 3.77}
   - prefab: {fileID: 191266, guid: c44bd9bdc114d4a60932c0087d9d1732, type: 3}
     category: 2
     prefabId: 
@@ -29,6 +34,11 @@ MonoBehaviour:
     icon: {fileID: 21300000, guid: 15428c3ba4bfe134584ef371e23994d3, type: 3}
     listedPrice: 0
     offers: []
+    loai: 0
+    frontYawOffset: 0
+    hasDoor: 0
+    doorOffset: {x: 0, y: 0, z: 0}
+    baseSize: {x: 3.956, y: 5.314, z: 2.837}
   - prefab: {fileID: 188006, guid: c6b7fb383a3534b039692b5485b6e739, type: 3}
     category: 2
     prefabId: 
@@ -38,6 +48,11 @@ MonoBehaviour:
     icon: {fileID: 21300000, guid: 9eccf8e3cea4d2a46b4870c016055e56, type: 3}
     listedPrice: 0
     offers: []
+    loai: 0
+    frontYawOffset: 0
+    hasDoor: 0
+    doorOffset: {x: 0, y: 0, z: 0}
+    baseSize: {x: 3.241, y: 5.396, z: 3.239}
   - prefab: {fileID: 137650, guid: 826b6a0b570e8460990010fa615b5a2a, type: 3}
     category: 2
     prefabId: 
@@ -47,6 +62,11 @@ MonoBehaviour:
     icon: {fileID: 21300000, guid: 9911dcfd268afca409a340a0ac06ade6, type: 3}
     listedPrice: 0
     offers: []
+    loai: 0
+    frontYawOffset: 0
+    hasDoor: 0
+    doorOffset: {x: 0, y: 0, z: 0}
+    baseSize: {x: 2.694, y: 5.82, z: 2.963}
   - prefab: {fileID: 919132149155446097, guid: 2728d7901e4e28a438ad260138f41560, type: 3}
     category: 4
     prefabId: 
@@ -56,6 +76,11 @@ MonoBehaviour:
     icon: {fileID: 21300000, guid: 7bcff181af6ef4d499189425992db630, type: 3}
     listedPrice: 0
     offers: []
+    loai: 5
+    frontYawOffset: 0
+    hasDoor: 0
+    doorOffset: {x: 0, y: 0, z: 0}
+    baseSize: {x: 0.454, y: 0.71, z: 0.488}
   - prefab: {fileID: 919132149155446097, guid: 67d499a018cc9884881b389f4232d634, type: 3}
     category: 4
     prefabId: 
@@ -65,6 +90,11 @@ MonoBehaviour:
     icon: {fileID: 21300000, guid: 44e4f08ca4f31b240a3b3e7bb1cabba1, type: 3}
     listedPrice: 0
     offers: []
+    loai: 11
+    frontYawOffset: 0
+    hasDoor: 0
+    doorOffset: {x: 0, y: 0, z: 0}
+    baseSize: {x: 0.699, y: 1.004, z: 1.436}
   - prefab: {fileID: 919132149155446097, guid: bf44de59039fed34789d1c02cc2bff8c, type: 3}
     category: 4
     prefabId: 
@@ -74,6 +104,11 @@ MonoBehaviour:
     icon: {fileID: 21300000, guid: ad499e73e0ccfc14996e0bc2f0a2e94e, type: 3}
     listedPrice: 0
     offers: []
+    loai: 5
+    frontYawOffset: 0
+    hasDoor: 0
+    doorOffset: {x: 0, y: 0, z: 0}
+    baseSize: {x: 0.48, y: 0.905, z: 0.472}
   - prefab: {fileID: 919132149155446097, guid: 594ce093a0ad4ef49a5ba3d9afda8cd6, type: 3}
     category: 4
     prefabId: 
@@ -83,6 +118,11 @@ MonoBehaviour:
     icon: {fileID: 21300000, guid: af70fd271e9e90b4da8154c4e8a41059, type: 3}
     listedPrice: 0
     offers: []
+    loai: 11
+    frontYawOffset: 0
+    hasDoor: 0
+    doorOffset: {x: 0, y: 0, z: 0}
+    baseSize: {x: 0.593, y: 1.597, z: 0.596}
   - prefab: {fileID: 919132149155446097, guid: e7547286cda3c3c488910e883385b8d8, type: 3}
     category: 4
     prefabId: 
@@ -92,6 +132,11 @@ MonoBehaviour:
     icon: {fileID: 21300000, guid: 1ef3cd3780491ae49aa51245247a79c4, type: 3}
     listedPrice: 0
     offers: []
+    loai: 11
+    frontYawOffset: 270
+    hasDoor: 0
+    doorOffset: {x: 0, y: 0, z: 0}
+    baseSize: {x: 0.555, y: 0.215, z: 0.331}
   - prefab: {fileID: 919132149155446097, guid: fd89f212651f61f45819677d8e28181f, type: 3}
     category: 6
     prefabId: 
@@ -101,6 +146,11 @@ MonoBehaviour:
     icon: {fileID: 21300000, guid: e16b0d6f627f14743a348b3726dc6728, type: 3}
     listedPrice: 0
     offers: []
+    loai: 3
+    frontYawOffset: 0
+    hasDoor: 0
+    doorOffset: {x: 0, y: 0, z: 0}
+    baseSize: {x: 6.572, y: 1.7, z: 0.411}
   - prefab: {fileID: 919132149155446097, guid: e6e33644b5a99ef4685070c61577b8d7, type: 3}
     category: 6
     prefabId: 
@@ -110,6 +160,11 @@ MonoBehaviour:
     icon: {fileID: 21300000, guid: 89bc8ea5eb118fc49842887cf7ac7d3b, type: 3}
     listedPrice: 0
     offers: []
+    loai: 3
+    frontYawOffset: 0
+    hasDoor: 0
+    doorOffset: {x: 0, y: 0, z: 0}
+    baseSize: {x: 1.488, y: 1.5, z: 0.057}
   - prefab: {fileID: 919132149155446097, guid: f3cc86542432cb9469823706c019415c, type: 3}
     category: 6
     prefabId: 
@@ -119,6 +174,11 @@ MonoBehaviour:
     icon: {fileID: 21300000, guid: cfd232fe568b493428762069e6f32c3d, type: 3}
     listedPrice: 0
     offers: []
+    loai: 3
+    frontYawOffset: 0
+    hasDoor: 0
+    doorOffset: {x: 0, y: 0, z: 0}
+    baseSize: {x: 1.873, y: 1.586, z: 0.071}
   - prefab: {fileID: 919132149155446097, guid: 061855e23cbe4b944849711a102d6742, type: 3}
     category: 6
     prefabId: 
@@ -127,6 +187,11 @@ MonoBehaviour:
     icon: {fileID: 21300000, guid: 4c077e155f37c8c4491c9ad5e51a6378, type: 3}
     listedPrice: 0
     offers: []
+    loai: 2
+    frontYawOffset: 0
+    hasDoor: 0
+    doorOffset: {x: 0, y: 0, z: 0}
+    baseSize: {x: 2.95, y: 2.929, z: 0.097}
   - prefab: {fileID: 919132149155446097, guid: 62b2893304125de46a38f24b52ca3e95, type: 3}
     category: 6
     prefabId: 
@@ -136,6 +201,11 @@ MonoBehaviour:
     icon: {fileID: 21300000, guid: 5b23fe23e95c4c64db600adebbe0fcbe, type: 3}
     listedPrice: 0
     offers: []
+    loai: 3
+    frontYawOffset: 0
+    hasDoor: 0
+    doorOffset: {x: 0, y: 0, z: 0}
+    baseSize: {x: 1.508, y: 1.491, z: 0.068}
   - prefab: {fileID: 919132149155446097, guid: 5a1dfd424e4dc1044ba73ef2c3087a70, type: 3}
     category: 3
     prefabId: 
@@ -144,6 +214,11 @@ MonoBehaviour:
     icon: {fileID: 21300000, guid: 20562d2659297364a835bafdbaf32827, type: 3}
     listedPrice: 0
     offers: []
+    loai: 12
+    frontYawOffset: 0
+    hasDoor: 0
+    doorOffset: {x: 0, y: 0, z: 0}
+    baseSize: {x: 1.573, y: 0.929, z: 0.72}
   - prefab: {fileID: 919132149155446097, guid: 33e617274bb238f42b4504b115707f02, type: 3}
     category: 3
     prefabId: 
@@ -153,6 +228,11 @@ MonoBehaviour:
     icon: {fileID: 21300000, guid: a5d5289aeaa16d846857274acc6eb989, type: 3}
     listedPrice: 0
     offers: []
+    loai: 12
+    frontYawOffset: 0
+    hasDoor: 0
+    doorOffset: {x: 0, y: 0, z: 0}
+    baseSize: {x: 0.515, y: 1.123, z: 0.805}
   - prefab: {fileID: 919132149155446097, guid: ddc3aebf481aced458e33dc4db13953a, type: 3}
     category: 3
     prefabId: 
@@ -162,6 +242,11 @@ MonoBehaviour:
     icon: {fileID: 21300000, guid: e50d9b44d83ae784a85fea9258ecca86, type: 3}
     listedPrice: 0
     offers: []
+    loai: 12
+    frontYawOffset: 0
+    hasDoor: 0
+    doorOffset: {x: 0, y: 0, z: 0}
+    baseSize: {x: 0.756, y: 0.668, z: 1.89}
   - prefab: {fileID: 919132149155446097, guid: fc6b7db4fbaed3f4492aeccdad9b6842, type: 3}
     category: 3
     prefabId: 
@@ -171,6 +256,11 @@ MonoBehaviour:
     icon: {fileID: 21300000, guid: b80f7aca5f64fdd48bc1534010acfd85, type: 3}
     listedPrice: 0
     offers: []
+    loai: 12
+    frontYawOffset: 90
+    hasDoor: 0
+    doorOffset: {x: 0, y: 0, z: 0}
+    baseSize: {x: 0.448, y: 1.346, z: 1.755}
   - prefab: {fileID: 919132149155446097, guid: b249bf93bbd4aea448064f9dc9c0533b, type: 3}
     category: 3
     prefabId: 
@@ -180,6 +270,11 @@ MonoBehaviour:
     icon: {fileID: 21300000, guid: e566b152befb9c445a4971676e33dc9d, type: 3}
     listedPrice: 0
     offers: []
+    loai: 12
+    frontYawOffset: 0
+    hasDoor: 0
+    doorOffset: {x: 0, y: 0, z: 0}
+    baseSize: {x: 0.759, y: 1.15, z: 0.759}
   - prefab: {fileID: 919132149155446097, guid: 1c708f1ff5d90ab408e7bdd583e7f63a, type: 3}
     category: 1
     prefabId: 
@@ -188,6 +283,11 @@ MonoBehaviour:
     icon: {fileID: 21300000, guid: f21415735e0c1514291ceb8e0a78b94a, type: 3}
     listedPrice: 0
     offers: []
+    loai: 1
+    frontYawOffset: 180
+    hasDoor: 1
+    doorOffset: {x: -1.4, y: 0, z: -3.9}
+    baseSize: {x: 15.729, y: 9.125, z: 7.857}
   - prefab: {fileID: 919132149155446097, guid: 2a9c26e5ad5950f41994639b0f4f3a69, type: 3}
     category: 1
     prefabId: 
@@ -196,6 +296,11 @@ MonoBehaviour:
     icon: {fileID: 21300000, guid: 01083a2af22b67a48a00100d6cfe8f0f, type: 3}
     listedPrice: 0
     offers: []
+    loai: 1
+    frontYawOffset: 270
+    hasDoor: 1
+    doorOffset: {x: -4.4, y: 0, z: -2.3}
+    baseSize: {x: 9.617, y: 7.411, z: 19.11}
   - prefab: {fileID: 919132149155446097, guid: 46ad70189ccf2dc42a6bd2323003ecd3, type: 3}
     category: 1
     prefabId: 
@@ -204,6 +309,11 @@ MonoBehaviour:
     icon: {fileID: 21300000, guid: f8d980baa45b697429420c85647e044c, type: 3}
     listedPrice: 0
     offers: []
+    loai: 1
+    frontYawOffset: 90
+    hasDoor: 1
+    doorOffset: {x: 5.6, y: 0, z: -1.2}
+    baseSize: {x: 13.758, y: 6.298, z: 17.898}
   - prefab: {fileID: 919132149155446097, guid: 6df07ac6b24c0ad469c7e6a45a801af3, type: 3}
     category: 1
     prefabId: 
@@ -213,6 +323,11 @@ MonoBehaviour:
     icon: {fileID: 21300000, guid: 1de6e9d140f538644b3c2023fdc1b375, type: 3}
     listedPrice: 0
     offers: []
+    loai: 1
+    frontYawOffset: 180
+    hasDoor: 1
+    doorOffset: {x: -1, y: 0, z: -2.4}
+    baseSize: {x: 21.67, y: 5.401, z: 19.015}
   - prefab: {fileID: 919132149155446097, guid: 3a1f5fa80a8a15e4980b3885504d1e18, type: 3}
     category: 1
     prefabId: 
@@ -222,6 +337,11 @@ MonoBehaviour:
     icon: {fileID: 21300000, guid: 65a7b1510ef218048a399d708fa04e4f, type: 3}
     listedPrice: 0
     offers: []
+    loai: 1
+    frontYawOffset: 0
+    hasDoor: 1
+    doorOffset: {x: -3.9, y: 0, z: 3.3}
+    baseSize: {x: 10.632, y: 11.008, z: 7.921}
   - prefab: {fileID: 919132149155446097, guid: bb5707de85a249742aae58ccf913a461, type: 3}
     category: 5
     prefabId: 
@@ -231,6 +351,11 @@ MonoBehaviour:
     icon: {fileID: 21300000, guid: d735a8a31db4faf4082311f931633f28, type: 3}
     listedPrice: 0
     offers: []
+    loai: 10
+    frontYawOffset: 0
+    hasDoor: 0
+    doorOffset: {x: 0, y: 0, z: 0}
+    baseSize: {x: 0.411, y: 1.75, z: 0.876}
   - prefab: {fileID: 919132149155446097, guid: 57f497cdb70baaa4a9734f1d61019a74, type: 3}
     category: 5
     prefabId: 
@@ -240,6 +365,11 @@ MonoBehaviour:
     icon: {fileID: 21300000, guid: 9d4a3d005a95ee4438e6a9fc6368d317, type: 3}
     listedPrice: 0
     offers: []
+    loai: 10
+    frontYawOffset: 0
+    hasDoor: 0
+    doorOffset: {x: 0, y: 0, z: 0}
+    baseSize: {x: 0.29, y: 1.802, z: 0.71}
   - prefab: {fileID: 919132149155446097, guid: 9245bac2a2b04244ca3ebc008503137b, type: 3}
     category: 5
     prefabId: 
@@ -249,6 +379,11 @@ MonoBehaviour:
     icon: {fileID: 21300000, guid: 1768f6b65b7398a44a0a8c4c014f1633, type: 3}
     listedPrice: 0
     offers: []
+    loai: 10
+    frontYawOffset: 0
+    hasDoor: 0
+    doorOffset: {x: 0, y: 0, z: 0}
+    baseSize: {x: 0.957, y: 2.448, z: 0.886}
   - prefab: {fileID: 919132149155446097, guid: eecf6da7354df51499cc78b6b4b4b4ef, type: 3}
     category: 5
     prefabId: 
@@ -258,6 +393,11 @@ MonoBehaviour:
     icon: {fileID: 21300000, guid: 0d6910e4f184138479b67c0d78047d89, type: 3}
     listedPrice: 0
     offers: []
+    loai: 10
+    frontYawOffset: 0
+    hasDoor: 0
+    doorOffset: {x: 0, y: 0, z: 0}
+    baseSize: {x: 0.783, y: 3.814, z: 0.783}
   - prefab: {fileID: 919132149155446097, guid: c144b06e122da7a48b8f8a70cf4f07e3, type: 3}
     category: 5
     prefabId: 
@@ -267,6 +407,11 @@ MonoBehaviour:
     icon: {fileID: 21300000, guid: 92c019d755f9d3947b9621671c2cb739, type: 3}
     listedPrice: 0
     offers: []
+    loai: 10
+    frontYawOffset: 0
+    hasDoor: 0
+    doorOffset: {x: 0, y: 0, z: 0}
+    baseSize: {x: 0.258, y: 1.752, z: 0.298}
   - prefab: {fileID: 919132149155446097, guid: 69a6f791bf449a84f9c705fa3a8f2ed1, type: 3}
     category: 7
     prefabId: 
@@ -276,6 +421,11 @@ MonoBehaviour:
     icon: {fileID: 21300000, guid: 413c3334203fec248a15d4ab2ce4290d, type: 3}
     listedPrice: 0
     offers: []
+    loai: 9
+    frontYawOffset: 0
+    hasDoor: 0
+    doorOffset: {x: 0, y: 0, z: 0}
+    baseSize: {x: 3.642, y: 0.119, z: 7.36}
   - prefab: {fileID: 919132149155446097, guid: 4fa15a85e02aa2d41aa5694ba73c1c22, type: 3}
     category: 7
     prefabId: 
@@ -284,6 +434,11 @@ MonoBehaviour:
     icon: {fileID: 21300000, guid: e142709dc3c179e4291711b3dfb12e1a, type: 3}
     listedPrice: 0
     offers: []
+    loai: 6
+    frontYawOffset: 0
+    hasDoor: 0
+    doorOffset: {x: 0, y: 0, z: 0}
+    baseSize: {x: 7.696, y: 6.126, z: 9.332}
   - prefab: {fileID: 919132149155446097, guid: 90f924df7ef721d4ba185023cec9f67d, type: 3}
     category: 7
     prefabId: 
@@ -293,6 +448,11 @@ MonoBehaviour:
     icon: {fileID: 21300000, guid: 7978be7f0d033b449889bf2dc277fb7a, type: 3}
     listedPrice: 0
     offers: []
+    loai: 9
+    frontYawOffset: 0
+    hasDoor: 0
+    doorOffset: {x: 0, y: 0, z: 0}
+    baseSize: {x: 2.924, y: 0.179, z: 6.597}
   - prefab: {fileID: 919132149155446097, guid: d415ba1116cd66d468d3a49c987a63dd, type: 3}
     category: 7
     prefabId: 
@@ -302,6 +462,11 @@ MonoBehaviour:
     icon: {fileID: 21300000, guid: 36bab01ef01247145bd36b9051cb6c8f, type: 3}
     listedPrice: 0
     offers: []
+    loai: 7
+    frontYawOffset: 0
+    hasDoor: 0
+    doorOffset: {x: 0, y: 0, z: 0}
+    baseSize: {x: 3.275, y: 2.114, z: 3.28}
   - prefab: {fileID: 919132149155446097, guid: be371b5ffdacd3a4bacab398e6ac162e, type: 3}
     category: 7
     prefabId: 
@@ -310,6 +475,11 @@ MonoBehaviour:
     icon: {fileID: 21300000, guid: bd43e262a159a9c4c8eb11c005aff483, type: 3}
     listedPrice: 0
     offers: []
+    loai: 8
+    frontYawOffset: 0
+    hasDoor: 0
+    doorOffset: {x: 0, y: 0, z: 0}
+    baseSize: {x: 3.377, y: 1.445, z: 6.778}
   - prefab: {fileID: 919132149155446097, guid: c7855a8c97a55b040ba7b062ab360063, type: 3}
     category: 2
     prefabId: 
@@ -319,6 +489,11 @@ MonoBehaviour:
     icon: {fileID: 21300000, guid: a396eb7202549e04b903a1a906d4b774, type: 3}
     listedPrice: 0
     offers: []
+    loai: 4
+    frontYawOffset: 0
+    hasDoor: 0
+    doorOffset: {x: 0, y: 0, z: 0}
+    baseSize: {x: 0.697, y: 1.053, z: 0.682}
   - prefab: {fileID: 919132149155446097, guid: 85f7753e462d62146a89dc800bdaece3, type: 3}
     category: 2
     prefabId: 
@@ -327,6 +502,11 @@ MonoBehaviour:
     icon: {fileID: 21300000, guid: fecc4dabea124e14494a558931241a9c, type: 3}
     listedPrice: 0
     offers: []
+    loai: 4
+    frontYawOffset: 0
+    hasDoor: 0
+    doorOffset: {x: 0, y: 0, z: 0}
+    baseSize: {x: 6.941, y: 7.161, z: 6.619}
   - prefab: {fileID: 919132149155446097, guid: 1619575d5d85cd147bc091978abe9bda, type: 3}
     category: 2
     prefabId: 
@@ -336,6 +516,11 @@ MonoBehaviour:
     icon: {fileID: 21300000, guid: 98c378398cf29b342a0c47c4c5bd869f, type: 3}
     listedPrice: 0
     offers: []
+    loai: 4
+    frontYawOffset: 0
+    hasDoor: 0
+    doorOffset: {x: 0, y: 0, z: 0}
+    baseSize: {x: 7.952, y: 15.286, z: 8.113}
   - prefab: {fileID: 919132149155446097, guid: dfb37742e486b4e4dbcb7a52ac6200b2, type: 3}
     category: 2
     prefabId: 
@@ -344,6 +529,11 @@ MonoBehaviour:
     icon: {fileID: 21300000, guid: d923ddaa731ed4048a41868fd3d4734e, type: 3}
     listedPrice: 0
     offers: []
+    loai: 4
+    frontYawOffset: 0
+    hasDoor: 0
+    doorOffset: {x: 0, y: 0, z: 0}
+    baseSize: {x: 1.235, y: 0.411, z: 0.321}
   - prefab: {fileID: 919132149155446097, guid: 48bbda635c4be004fbd7da2f2c04c10c, type: 3}
     category: 2
     prefabId: 
@@ -353,3 +543,8 @@ MonoBehaviour:
     icon: {fileID: 21300000, guid: e20cd1e1df632e842885323c60e8f40f, type: 3}
     listedPrice: 0
     offers: []
+    loai: 4
+    frontYawOffset: 0
+    hasDoor: 0
+    doorOffset: {x: 0, y: 0, z: 0}
+    baseSize: {x: 9.122, y: 11.741, z: 8.517}

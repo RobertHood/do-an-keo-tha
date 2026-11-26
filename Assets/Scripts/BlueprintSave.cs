@@ -163,6 +163,9 @@ public class BlueprintSave : MonoBehaviour
             updatedAt = now
         };
 
+        LandBoundary land = LandBoundary.Instance;
+        if (land != null) data.land = land.Data;
+
         foreach (Transform child in spawner.ModelsContainer)
         {
             if (!child.TryGetComponent(out DraggableModel draggable)) continue;
@@ -182,7 +185,10 @@ public class BlueprintSave : MonoBehaviour
                 isLocked = draggable.isLocked,
                 selectedStore = draggable.selectedStore,
                 useCustomPrice = draggable.useCustomPrice,
-                customPrice = draggable.customPrice
+                customPrice = draggable.customPrice,
+                loai = FengShuiTypes.Id(draggable.Loai),
+                huong = Mathf.Round(draggable.Huong * 10f) / 10f,
+                trongDat = land == null || land.Contains(draggable)
             });
         }
 

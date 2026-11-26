@@ -1,32 +1,40 @@
 {
- "id": "ecee8f3a-0ae6-4239-9aa5-fa2ef4d9027a",
- "assetBaseId": "d2b700e2-4ee8-428f-ad09-90a241947555",
- "name": "Modern One-Story House",
- "term": "modern house",
- "license": "royalty_free",
- "faces": 41991.0,
- "size": [
-  21.6694,
-  19.0144,
-  5.4
- ],
- "files": [
-  "blend",
-  "gltf",
-  "gltf_godot",
-  "resolution_0_5K",
-  "resolution_1K",
-  "resolution_2K",
-  "thumbnail"
- ],
- "author": "Abbos Mirzayev",
- "url": "https://www.blenderkit.com/asset-gallery-detail/ecee8f3a-0ae6-4239-9aa5-fa2ef4d9027a/",
- "thumbnail": "https://public.blenderkit.com/thumbnails/assets/ecee8f3a0ae642399aa5fa2ef4d9027a/files/thumbnail_c8d05dce-5ebb-4432-969f-c1ecde647af5.png.512x512_q85_crop-%2C.png",
- "description": "This 3D architectural model depicts a modern house with a sleek and minimalist design. Let’s explore its features:\r\n\r\nExterior Design:\r\nThe house showcases a harmonious blend of materials. Dark grey w",
- "score": 1000.0,
- "procedural": false,
- "textureResolutionMax": 2048,
- "category": "House",
- "displayName": "Nhà hiện đại một tầng",
- "downloadedFile": "blend_e9c150cb-5e2a-44f4-aa0d-81b2fb8b0f2c.blend"
+  "id": "ecee8f3a-0ae6-4239-9aa5-fa2ef4d9027a",
+  "assetBaseId": "d2b700e2-4ee8-428f-ad09-90a241947555",
+  "name": "Modern One-Story House",
+  "term": "modern house",
+  "license": "royalty_free",
+  "faces": 41991.0,
+  "size": [
+    21.6694,
+    19.0144,
+    5.4
+  ],
+  "files": [
+    "blend",
+    "gltf",
+    "gltf_godot",
+    "resolution_0_5K",
+    "resolution_1K",
+    "resolution_2K",
+    "thumbnail"
+  ],
+  "author": "Abbos Mirzayev",
+  "url": "https://www.blenderkit.com/asset-gallery-detail/ecee8f3a-0ae6-4239-9aa5-fa2ef4d9027a/",
+  "thumbnail": "https://public.blenderkit.com/thumbnails/assets/ecee8f3a0ae642399aa5fa2ef4d9027a/files/thumbnail_c8d05dce-5ebb-4432-969f-c1ecde647af5.png.512x512_q85_crop-%2C.png",
+  "description": "This 3D architectural model depicts a modern house with a sleek and minimalist design. Let’s explore its features:\r\n\r\nExterior Design:\r\nThe house showcases a harmonious blend of materials. Dark grey w",
+  "score": 1000.0,
+  "procedural": false,
+  "textureResolutionMax": 2048,
+  "category": "House",
+  "displayName": "Nhà hiện đại một tầng",
+  "downloadedFile": "blend_e9c150cb-5e2a-44f4-aa0d-81b2fb8b0f2c.blend",
+  "loai": "nha",
+  "frontYawOffset": 180,
+  "hasDoor": true,
+  "doorOffset": {
+    "x": -1.0,
+    "y": 0,
+    "z": -2.4
+  }
 }

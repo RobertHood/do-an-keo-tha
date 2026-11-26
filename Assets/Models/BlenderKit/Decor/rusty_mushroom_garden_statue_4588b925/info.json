@@ -1,32 +1,35 @@
 {
- "id": "4588b925-bacf-4004-aa67-c912de7d8197",
- "assetBaseId": "4f9bb8fd-60c1-4ce2-873b-6e071c1a38d2",
- "name": "Rusty mushroom garden statue",
- "term": "garden statue",
- "license": "royalty_free",
- "faces": 10461.0,
- "size": [
-  0.5932,
-  0.5962,
-  1.5969
- ],
- "files": [
-  "blend",
-  "gltf",
-  "gltf_godot",
-  "resolution_0_5K",
-  "resolution_1K",
-  "resolution_2K",
-  "thumbnail"
- ],
- "author": "Rous Kristall",
- "url": "https://www.blenderkit.com/asset-gallery-detail/4588b925-bacf-4004-aa67-c912de7d8197/",
- "thumbnail": "https://public.blenderkit.com/thumbnails/assets/4588b925bacf4004aa67c912de7d8197/files/thumbnail_ef09d0c4-0856-446a-9ade-6245193b5e36.png.512x512_q85_crop-%2C.png",
- "description": "Old and rusty statue of mushrooms for your garden or park.",
- "score": 320.0,
- "procedural": false,
- "textureResolutionMax": 2048,
- "category": "Decor",
- "displayName": "Tượng nấm sân vườn",
- "downloadedFile": "blend_64f79434-0193-4a75-8f7b-f24ad1bc284b.blend"
+  "id": "4588b925-bacf-4004-aa67-c912de7d8197",
+  "assetBaseId": "4f9bb8fd-60c1-4ce2-873b-6e071c1a38d2",
+  "name": "Rusty mushroom garden statue",
+  "term": "garden statue",
+  "license": "royalty_free",
+  "faces": 10461.0,
+  "size": [
+    0.5932,
+    0.5962,
+    1.5969
+  ],
+  "files": [
+    "blend",
+    "gltf",
+    "gltf_godot",
+    "resolution_0_5K",
+    "resolution_1K",
+    "resolution_2K",
+    "thumbnail"
+  ],
+  "author": "Rous Kristall",
+  "url": "https://www.blenderkit.com/asset-gallery-detail/4588b925-bacf-4004-aa67-c912de7d8197/",
+  "thumbnail": "https://public.blenderkit.com/thumbnails/assets/4588b925bacf4004aa67c912de7d8197/files/thumbnail_ef09d0c4-0856-446a-9ade-6245193b5e36.png.512x512_q85_crop-%2C.png",
+  "description": "Old and rusty statue of mushrooms for your garden or park.",
+  "score": 320.0,
+  "procedural": false,
+  "textureResolutionMax": 2048,
+  "category": "Decor",
+  "displayName": "Tượng nấm sân vườn",
+  "downloadedFile": "blend_64f79434-0193-4a75-8f7b-f24ad1bc284b.blend",
+  "loai": "tuong",
+  "frontYawOffset": 0,
+  "hasDoor": false
 }

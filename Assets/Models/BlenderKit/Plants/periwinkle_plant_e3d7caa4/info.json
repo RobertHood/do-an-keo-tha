@@ -1,33 +1,36 @@
 {
- "id": "e3d7caa4-5687-4368-9fb1-b85e751888d4",
- "assetBaseId": "292bfffb-bb37-4fc1-b4e2-f66df6a90681",
- "name": "Periwinkle Plant",
- "term": "bush",
- "license": "cc_zero",
- "faces": 17283.0,
- "size": [
-  1.2353671789169312,
-  0.32074545323848724,
-  0.4107383787850267
- ],
- "files": [
-  "blend",
-  "gltf",
-  "gltf_godot",
-  "resolution_0_5K",
-  "resolution_1K",
-  "resolution_2K",
-  "resolution_4K",
-  "thumbnail"
- ],
- "author": "Poly Haven ",
- "url": "https://www.blenderkit.com/asset-gallery-detail/e3d7caa4-5687-4368-9fb1-b85e751888d4/",
- "thumbnail": "https://public.blenderkit.com/thumbnails/assets/e3d7caa4568743689fb1b85e751888d4/files/thumbnail_4a5bc4e4-7983-43ed-9242-2b1cab0b8796.png.512x512_q85_crop-%2C.png",
- "description": "Free 4K periwinkle plant model with small pink flowers, realistic leaves and branch variations, perfect for gardens, meadows, groundcover and botanical scenes.\n\nby Amal Kumar",
- "score": 1800.0,
- "procedural": null,
- "textureResolutionMax": 4096,
- "category": "Plants",
- "displayName": "Bụi dừa cạn",
- "downloadedFile": "blend_ceae677b-1566-4440-a1e6-d4f7f74f3047.blend"
+  "id": "e3d7caa4-5687-4368-9fb1-b85e751888d4",
+  "assetBaseId": "292bfffb-bb37-4fc1-b4e2-f66df6a90681",
+  "name": "Periwinkle Plant",
+  "term": "bush",
+  "license": "cc_zero",
+  "faces": 17283.0,
+  "size": [
+    1.2353671789169312,
+    0.32074545323848724,
+    0.4107383787850267
+  ],
+  "files": [
+    "blend",
+    "gltf",
+    "gltf_godot",
+    "resolution_0_5K",
+    "resolution_1K",
+    "resolution_2K",
+    "resolution_4K",
+    "thumbnail"
+  ],
+  "author": "Poly Haven ",
+  "url": "https://www.blenderkit.com/asset-gallery-detail/e3d7caa4-5687-4368-9fb1-b85e751888d4/",
+  "thumbnail": "https://public.blenderkit.com/thumbnails/assets/e3d7caa4568743689fb1b85e751888d4/files/thumbnail_4a5bc4e4-7983-43ed-9242-2b1cab0b8796.png.512x512_q85_crop-%2C.png",
+  "description": "Free 4K periwinkle plant model with small pink flowers, realistic leaves and branch variations, perfect for gardens, meadows, groundcover and botanical scenes.\n\nby Amal Kumar",
+  "score": 1800.0,
+  "procedural": null,
+  "textureResolutionMax": 4096,
+  "category": "Plants",
+  "displayName": "Bụi dừa cạn",
+  "downloadedFile": "blend_ceae677b-1566-4440-a1e6-d4f7f74f3047.blend",
+  "loai": "cay",
+  "frontYawOffset": 0,
+  "hasDoor": false
 }

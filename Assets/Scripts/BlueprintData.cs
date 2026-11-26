@@ -12,7 +12,7 @@ public class BlueprintData
 {
     public const string FormatId = "Blueprint";
     public const string FileExtension = "blueprint"; // without the dot
-    public const int CurrentVersion = 1;
+    public const int CurrentVersion = 2; // 2: plot of land, model type and direction
 
     public string format = FormatId;
     public int version = CurrentVersion;
@@ -21,6 +21,9 @@ public class BlueprintData
     public string name = "Untitled";
     public string createdAt;         // ISO 8601, UTC
     public string updatedAt;         // ISO 8601, UTC
+
+    // The plot of land (LandBoundary). hasLand is false in blueprints saved before version 2.
+    public LandData land = new LandData { hasLand = false };
 
     public List<BlueprintModelData> models = new List<BlueprintModelData>();
 
@@ -72,4 +75,9 @@ public class BlueprintModelData
     public string selectedStore;
     public bool useCustomPrice;
     public double customPrice;
+
+    // Phong thủy facts, worked out when saving (ignored when loading):
+    public string loai;      // Model type ID, e.g. "nha", "cong", "cay" (FengShuiTypes.Id)
+    public float huong;      // Compass bearing of the model's front: 0 = Bắc, 90 = Đông, 180 = Nam, 270 = Tây (+Z is North)
+    public bool trongDat;    // Whole footprint inside the plot of land
 }

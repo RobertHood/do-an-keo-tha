@@ -219,6 +219,9 @@ public class Camera : MonoBehaviour
 
     private void HandleMovement()
     {
+        // Typing a number into a UI field (e.g. the land panel) must not fly the camera around
+        if (UIBuild.IsTyping()) return;
+
         bool moveForward = false;
         bool moveBackward = false;
         bool moveLeft = false;
@@ -333,6 +336,14 @@ public class Camera : MonoBehaviour
             transform.position = targetPosition;
             transform.rotation = targetRotation;
         }
+    }
+
+    /// <summary>
+    /// Turns the camera smoothly to face a compass bearing (0 = North, +Z), keeping its pitch.
+    /// </summary>
+    public void SetYaw(float yaw)
+    {
+        targetYaw += Mathf.DeltaAngle(targetYaw, yaw);
     }
 
     private void ReleaseCursor()

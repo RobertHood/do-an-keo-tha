@@ -12,7 +12,8 @@ using UnityEngine.SceneManagement;
 /// Keeps the model library (price catalog) ready for the item catalog:
 /// - renders a thumbnail for every model that has none (Assets/UI/Thumbnails),
 /// - makes sure every catalog model is in SpawnInModel's prefab list and removes missing (deleted) prefabs,
-/// - warns about models without a category (they don't show in any tab).
+/// - warns about models without a category (they don't show in any tab),
+/// - measures each model's real size at scale 1 (PriceCatalogEntry.baseSize, for the phong thủy rules).
 /// Editor: Tools > Suburbsim > Refresh Catalog  (also run by Apply UI Theme)
 /// </summary>
 public static class SuburbsimCatalogTool
@@ -75,7 +76,60 @@ public static class SuburbsimCatalogTool
             report.AppendLine($"- Rendered {rendered} thumbnail(s) into {ThumbnailsDir}.");
         }
 
+        int measured = 0;
+        foreach (PriceCatalogEntry entry in entries.Where(e => e.prefab != null))
+        {
+            Vector3 size = MeasurePrefab(entry.prefab);
+            if ((size - entry.baseSize).sqrMagnitude < 0.0001f) continue;
+            entry.baseSize = size;
+            measured++;
+        }
+        if (measured > 0)
+        {
+            EditorUtility.SetDirty(catalog);
+            AssetDatabase.SaveAssets();
+            report.AppendLine($"- Measured the real size of {measured} model(s).");
+        }
+
         SyncSpawnerList(catalog, report);
+    }
+
+    /// <summary>
+    /// Size in metres of the prefab's meshes at scale 1, along the prefab's own axes.
+    /// </summary>
+    public static Vector3 MeasurePrefab(GameObject prefab)
+    {
+        Transform root = prefab.transform;
+        Matrix4x4 toRoot = root.worldToLocalMatrix;
+        bool any = false;
+        Bounds bounds = new Bounds();
+
+        foreach (MeshFilter filter in prefab.GetComponentsInChildren<MeshFilter>(true))
+        {
+            if (filter.sharedMesh == null) continue;
+            Encapsulate(ref bounds, ref any, filter.sharedMesh.bounds, toRoot * filter.transform.localToWorldMatrix);
+        }
+        foreach (SkinnedMeshRenderer skinned in prefab.GetComponentsInChildren<SkinnedMeshRenderer>(true))
+        {
+            Encapsulate(ref bounds, ref any, skinned.localBounds, toRoot * skinned.transform.localToWorldMatrix);
+        }
+
+        Vector3 size = any ? bounds.size : Vector3.zero;
+        return new Vector3(Mathf.Round(size.x * 1000f) / 1000f, Mathf.Round(size.y * 1000f) / 1000f, Mathf.Round(size.z * 1000f) / 1000f);
+    }
+
+    private static void Encapsulate(ref Bounds bounds, ref bool any, Bounds local, Matrix4x4 matrix)
+    {
+        for (int c = 0; c < 8; c++)
+        {
+            Vector3 corner = new Vector3(
+                (c & 1) == 0 ? local.min.x : local.max.x,
+                (c & 2) == 0 ? local.min.y : local.max.y,
+                (c & 4) == 0 ? local.min.z : local.max.z);
+            Vector3 p = matrix.MultiplyPoint3x4(corner);
+            if (!any) { bounds = new Bounds(p, Vector3.zero); any = true; }
+            else bounds.Encapsulate(p);
+        }
     }
 
     private static void SyncSpawnerList(PriceCatalog catalog, StringBuilder report)

@@ -422,6 +422,13 @@ public static class NotificationTexts
     public const string Imported = "Đã mở bản thiết kế \"{0}\".";
     public const string ImportInvalid = "Tệp đã chọn không phải bản thiết kế hợp lệ.";
     public const string ImportNotFound = "Không tìm thấy tệp bản thiết kế nào trong Downloads hoặc Documents/Blueprints.";
+
+    public const string LandOutside = "Bạn đang đặt \"{0}\" ra ngoài phần đất được phân bổ. Hãy kéo mô hình vào bên trong ranh giới thửa đất.";
+    public const string LandOutsideMany = "Có {0} mô hình đang nằm ngoài phần đất được phân bổ. Hãy kéo chúng vào bên trong ranh giới thửa đất.";
+    public const string LandChangedOutside = "Thửa đất đã thay đổi: {0} mô hình đang nằm ngoài ranh giới mới.";
+    public const string LandAdjusted = "Một số kích thước đã được điều chỉnh: {0}.";
+    public const string LandInvalidNumber = "Vui lòng nhập một số hợp lệ (ví dụ: 12 hoặc 12,5).";
+    public const string CompassNorth = "Đã xoay camera về hướng Bắc.";
 }
 
 /// <summary>
@@ -450,8 +457,14 @@ public static class NotificationTips
     public const string ImportKey = "import";
     public const string Import = "Chọn một tệp .blueprint đã xuất trước đó để mở lại bản thiết kế. Bản thiết kế hiện tại sẽ được thay thế.";
 
+    public const string LandKey = "land";
+    public const string Land = "Chọn hình dạng thửa đất và nhập kích thước gần đúng (mét). Cạnh màu cam là mặt tiền (giáp đường): chọn hướng mặt tiền để kiểm tra phong thủy. Mô hình đặt ra ngoài ranh giới sẽ nhấp nháy đỏ.";
+
+    public const string DirectionKey = "direction";
+    public const string Direction = "Mũi tên trên mặt đất chỉ hướng mặt trước của mô hình (với nhà là hướng cửa chính). Dùng \"Đổi chiều\" để xoay mô hình; la bàn ở góc phải cho biết hướng Bắc.";
+
     public const string ChooseHouseKey = "choose-house";
     public const string ChooseHouse = "Hãy bắt đầu bằng việc chọn một mẫu nhà trong mục \"Nhà ở\", sau đó thêm cây xanh, hàng rào và các vật trang trí xung quanh.";
 
-    public static readonly string[] AllKeys = { ResizeKey, RotateKey, DeleteKey, LockKey, SaveKey, ExportKey, ImportKey, ChooseHouseKey };
+    public static readonly string[] AllKeys = { ResizeKey, RotateKey, DeleteKey, LockKey, SaveKey, ExportKey, ImportKey, ChooseHouseKey, LandKey, DirectionKey };
 }

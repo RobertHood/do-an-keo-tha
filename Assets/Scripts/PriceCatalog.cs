@@ -110,7 +110,26 @@ public class PriceCatalogEntry
     [Tooltip("Market prices from different stores. Shown cheapest first; the cheapest is used by default.")]
     public List<PriceOffer> offers = new List<PriceOffer>();
 
+    [Header("Phong thủy")]
+    [Tooltip("What the model is for the phong thủy rules. Auto = guessed from the catalog tab and prefab name.")]
+    public FengShuiType loai = FengShuiType.Auto;
+
+    [Tooltip("Where the model's front faces, in degrees clockwise (seen from above) from the model's own +Z axis: " +
+             "0 = +Z, 90 = +X, 180 = -Z, 270 = -X. For a house, the front is the side with the main door.")]
+    public float frontYawOffset;
+
+    [Tooltip("Houses: the model has a main door at Door Offset.")]
+    public bool hasDoor;
+
+    [Tooltip("Houses: position of the main door in the model's own space (metres at scale 1, on the ground).")]
+    public Vector3 doorOffset;
+
+    [Tooltip("Real size in metres at scale 1 (width X, height Y, depth Z). Filled by Tools > Suburbsim > Refresh Catalog.")]
+    public Vector3 baseSize;
+
     public string Id => prefab != null ? prefab.name : prefabId;
+
+    public FengShuiType ResolvedType => FengShuiTypes.Resolve(loai, category, Id);
 }
 
 [Serializable]

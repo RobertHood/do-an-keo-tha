@@ -6,7 +6,7 @@ using UnityEngine.UI;
 /// <summary>
 /// Styles a toolbar button like the web app's ghost buttons and shows what state its tool is in:
 /// - hover / pressed backgrounds,
-/// - green "active" look while its mode is on (resize, rotate, measure),
+/// - green "active" look while its mode is on (resize, rotate, measure) or its panel is open (land),
 /// - amber look on the lock button while the selected model is locked,
 /// - red hover for destructive buttons (delete),
 /// - dimmed when the tool needs a selected model and none is selected (it can still be clicked and
@@ -17,7 +17,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Button))]
 public class ToolbarButtonState : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler
 {
-    public enum Tool { None, Resize, Rotate, Measure, Lock, Delete }
+    public enum Tool { None, Resize, Rotate, Measure, Lock, Delete, Land }
 
     [SerializeField] private Tool tool = Tool.None;
 
@@ -116,6 +116,7 @@ public class ToolbarButtonState : MonoBehaviour, IPointerEnterHandler, IPointerE
             case Tool.Resize: return ModelResize.Instance != null && ModelResize.Instance.IsResizeModeActive;
             case Tool.Rotate: return ModelRotate.Instance != null && ModelRotate.Instance.IsRotateModeActive;
             case Tool.Measure: return ModelMeasureDistance.Instance != null && ModelMeasureDistance.Instance.IsMeasureModeActive;
+            case Tool.Land: return UILandBoundary.Instance != null && UILandBoundary.Instance.IsOpen;
             default: return false;
         }
     }

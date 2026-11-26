@@ -1,33 +1,36 @@
 {
- "id": "b26fd36b-77f6-4a36-8623-898bba20b857",
- "assetBaseId": "2eea7408-a7b7-4028-8a17-2550295dc755",
- "name": "Garden ram bronze statue",
- "term": "garden statue",
- "license": "royalty_free",
- "faces": 6082.0,
- "size": [
-  0.6987,
-  1.436,
-  1.0036
- ],
- "files": [
-  "blend",
-  "gltf",
-  "gltf_godot",
-  "resolution_0_5K",
-  "resolution_1K",
-  "resolution_2K",
-  "resolution_4K",
-  "thumbnail"
- ],
- "author": "Eleanie ",
- "url": "https://www.blenderkit.com/asset-gallery-detail/b26fd36b-77f6-4a36-8623-898bba20b857/",
- "thumbnail": "https://public.blenderkit.com/thumbnails/assets/b26fd36b77f64a368623898bba20b857/files/thumbnail_5dc5f029-bb99-4757-a413-6a21944a7df9.jpg.512x512_q85_crop-%2C.jpg",
- "description": "Photorealistic model of Rabbit stone statue. Can be used as game asset or render prop in your scene.",
- "score": 2000.0,
- "procedural": false,
- "textureResolutionMax": 4096,
- "category": "Decor",
- "displayName": "Tượng cừu đồng",
- "downloadedFile": "blend_d81a568b-1103-4be4-aa02-9f431126788f.blend"
+  "id": "b26fd36b-77f6-4a36-8623-898bba20b857",
+  "assetBaseId": "2eea7408-a7b7-4028-8a17-2550295dc755",
+  "name": "Garden ram bronze statue",
+  "term": "garden statue",
+  "license": "royalty_free",
+  "faces": 6082.0,
+  "size": [
+    0.6987,
+    1.436,
+    1.0036
+  ],
+  "files": [
+    "blend",
+    "gltf",
+    "gltf_godot",
+    "resolution_0_5K",
+    "resolution_1K",
+    "resolution_2K",
+    "resolution_4K",
+    "thumbnail"
+  ],
+  "author": "Eleanie ",
+  "url": "https://www.blenderkit.com/asset-gallery-detail/b26fd36b-77f6-4a36-8623-898bba20b857/",
+  "thumbnail": "https://public.blenderkit.com/thumbnails/assets/b26fd36b77f64a368623898bba20b857/files/thumbnail_5dc5f029-bb99-4757-a413-6a21944a7df9.jpg.512x512_q85_crop-%2C.jpg",
+  "description": "Photorealistic model of Rabbit stone statue. Can be used as game asset or render prop in your scene.",
+  "score": 2000.0,
+  "procedural": false,
+  "textureResolutionMax": 4096,
+  "category": "Decor",
+  "displayName": "Tượng cừu đồng",
+  "downloadedFile": "blend_d81a568b-1103-4be4-aa02-9f431126788f.blend",
+  "loai": "tuong",
+  "frontYawOffset": 0,
+  "hasDoor": false
 }

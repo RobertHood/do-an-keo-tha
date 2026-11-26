@@ -1,32 +1,35 @@
 {
- "id": "2f656baa-fe76-4ff1-9eb0-a8a43ae83ae0",
- "assetBaseId": "60053fb0-0abe-4dc3-9c85-9d89f7495b39",
- "name": "Fluffy pampass grass",
- "term": "potted plant",
- "license": "royalty_free",
- "faces": 32941.0,
- "size": [
-  0.6972,
-  0.6823,
-  1.0528
- ],
- "files": [
-  "blend",
-  "gltf",
-  "resolution_0_5K",
-  "resolution_1K",
-  "resolution_2K",
-  "resolution_4K",
-  "thumbnail"
- ],
- "author": "Tomasz Czerniak",
- "url": "https://www.blenderkit.com/asset-gallery-detail/2f656baa-fe76-4ff1-9eb0-a8a43ae83ae0/",
- "thumbnail": "https://public.blenderkit.com/thumbnails/assets/2f656baafe764ff19eb0a8a43ae83ae0/files/thumbnail_1b1d11ca-e496-4695-9ba8-c893ea790b41.png.512x512_q85_crop-%2C.png",
- "description": "This is a highly detailed render of ornamental grass, featuring slender green leaves and fluffy, light-beige flower plumes. The plant is housed in a ribbed, cylindrical pot, with soft lighting and a g",
- "score": 606.6666666666667,
- "procedural": false,
- "textureResolutionMax": null,
- "category": "Plants",
- "displayName": "Cỏ lau cảnh",
- "downloadedFile": "blend_6d39165f-8e90-459f-9b0c-a5097f0be8a4.blend"
+  "id": "2f656baa-fe76-4ff1-9eb0-a8a43ae83ae0",
+  "assetBaseId": "60053fb0-0abe-4dc3-9c85-9d89f7495b39",
+  "name": "Fluffy pampass grass",
+  "term": "potted plant",
+  "license": "royalty_free",
+  "faces": 32941.0,
+  "size": [
+    0.6972,
+    0.6823,
+    1.0528
+  ],
+  "files": [
+    "blend",
+    "gltf",
+    "resolution_0_5K",
+    "resolution_1K",
+    "resolution_2K",
+    "resolution_4K",
+    "thumbnail"
+  ],
+  "author": "Tomasz Czerniak",
+  "url": "https://www.blenderkit.com/asset-gallery-detail/2f656baa-fe76-4ff1-9eb0-a8a43ae83ae0/",
+  "thumbnail": "https://public.blenderkit.com/thumbnails/assets/2f656baafe764ff19eb0a8a43ae83ae0/files/thumbnail_1b1d11ca-e496-4695-9ba8-c893ea790b41.png.512x512_q85_crop-%2C.png",
+  "description": "This is a highly detailed render of ornamental grass, featuring slender green leaves and fluffy, light-beige flower plumes. The plant is housed in a ribbed, cylindrical pot, with soft lighting and a g",
+  "score": 606.6666666666667,
+  "procedural": false,
+  "textureResolutionMax": null,
+  "category": "Plants",
+  "displayName": "Cỏ lau cảnh",
+  "downloadedFile": "blend_6d39165f-8e90-459f-9b0c-a5097f0be8a4.blend",
+  "loai": "cay",
+  "frontYawOffset": 0,
+  "hasDoor": false
 }

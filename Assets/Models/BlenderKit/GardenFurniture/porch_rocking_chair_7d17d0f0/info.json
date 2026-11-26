@@ -1,32 +1,35 @@
 {
- "id": "7d17d0f0-fc28-4c74-a290-e557d5871c34",
- "assetBaseId": "fe7a6ee0-5371-42a9-9c36-d13a68b3f59f",
- "name": "Porch Rocking Chair",
- "term": "patio",
- "license": "royalty_free",
- "faces": 4645.0,
- "size": [
-  0.5154,
-  0.8046,
-  1.1232
- ],
- "files": [
-  "blend",
-  "gltf",
-  "gltf_godot",
-  "resolution_0_5K",
-  "resolution_1K",
-  "resolution_2K",
-  "thumbnail"
- ],
- "author": "Pushover ",
- "url": "https://www.blenderkit.com/asset-gallery-detail/7d17d0f0-fc28-4c74-a290-e557d5871c34/",
- "thumbnail": "https://public.blenderkit.com/thumbnails/assets/7d17d0f0fc284c74a290e557d5871c34/files/thumbnail_b6aaa04a-71fa-4502-9e0b-84514fe3a370.png.512x512_q85_crop-%2C.png",
- "description": "",
- "score": 926.9999999999999,
- "procedural": false,
- "textureResolutionMax": 2048,
- "category": "GardenFurniture",
- "displayName": "Ghế bập bênh hiên nhà",
- "downloadedFile": "blend_ed27b14b-95c7-4736-ace2-2fd1547afa16.blend"
+  "id": "7d17d0f0-fc28-4c74-a290-e557d5871c34",
+  "assetBaseId": "fe7a6ee0-5371-42a9-9c36-d13a68b3f59f",
+  "name": "Porch Rocking Chair",
+  "term": "patio",
+  "license": "royalty_free",
+  "faces": 4645.0,
+  "size": [
+    0.5154,
+    0.8046,
+    1.1232
+  ],
+  "files": [
+    "blend",
+    "gltf",
+    "gltf_godot",
+    "resolution_0_5K",
+    "resolution_1K",
+    "resolution_2K",
+    "thumbnail"
+  ],
+  "author": "Pushover ",
+  "url": "https://www.blenderkit.com/asset-gallery-detail/7d17d0f0-fc28-4c74-a290-e557d5871c34/",
+  "thumbnail": "https://public.blenderkit.com/thumbnails/assets/7d17d0f0fc284c74a290e557d5871c34/files/thumbnail_b6aaa04a-71fa-4502-9e0b-84514fe3a370.png.512x512_q85_crop-%2C.png",
+  "description": "",
+  "score": 926.9999999999999,
+  "procedural": false,
+  "textureResolutionMax": 2048,
+  "category": "GardenFurniture",
+  "displayName": "Ghế bập bênh hiên nhà",
+  "downloadedFile": "blend_ed27b14b-95c7-4736-ace2-2fd1547afa16.blend",
+  "loai": "ghe_ban",
+  "frontYawOffset": 0,
+  "hasDoor": false
 }

@@ -32,6 +32,12 @@ public static class SuburbsimModelImporter
         public string category;
         public string displayName;
         public string description;
+
+        // Phong thủy (optional): type ID ("nha", "cong"...), front direction and, for houses, the main door
+        public string loai;
+        public float frontYawOffset;
+        public bool hasDoor;
+        public Vector3 doorOffset;
     }
 #pragma warning restore 0649
 
@@ -115,6 +121,7 @@ public static class SuburbsimModelImporter
             }
 
             entry.category = category;
+            ApplyFengShui(entry, info);
             if (string.IsNullOrEmpty(entry.displayName)) entry.displayName = string.IsNullOrEmpty(info.displayName) ? info.name : info.displayName;
             if (string.IsNullOrEmpty(entry.description)) entry.description = $"{info.name} · BlenderKit, {FormatLicense(info.license)}" +
                                                                              (string.IsNullOrEmpty(info.author) ? "" : $", tác giả {info.author}");
@@ -128,6 +135,29 @@ public static class SuburbsimModelImporter
         report.AppendLine($"- Credits written to {ModelsRoot}/CREDITS.md.");
 
         SuburbsimCatalogTool.Refresh(report, false);
+    }
+
+    /// <summary>
+    /// Copies the phong thủy data from info.json. Values already set in the Price Catalog are kept,
+    /// so edits made in the Inspector survive re-importing.
+    /// </summary>
+    private static void ApplyFengShui(PriceCatalogEntry entry, ModelInfo info)
+    {
+        if (entry.loai == FengShuiType.Auto && !string.IsNullOrEmpty(info.loai))
+        {
+            foreach (FengShuiType type in Enum.GetValues(typeof(FengShuiType)))
+            {
+                if (type != FengShuiType.Auto && FengShuiTypes.Id(type) == info.loai) entry.loai = type;
+            }
+        }
+
+        bool frontUnset = Mathf.Approximately(entry.frontYawOffset, 0f) && !entry.hasDoor;
+        if (frontUnset)
+        {
+            entry.frontYawOffset = info.frontYawOffset;
+            entry.hasDoor = info.hasDoor;
+            entry.doorOffset = info.doorOffset;
+        }
     }
 
     private static void ConfigureModel(string path)

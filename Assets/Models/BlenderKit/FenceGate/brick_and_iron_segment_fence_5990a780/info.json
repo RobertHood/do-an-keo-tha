@@ -1,31 +1,34 @@
 {
- "id": "5990a780-31c4-41b7-bc17-9a3ad5063a6f",
- "assetBaseId": "1a7fe7aa-7106-41f7-9c33-c7f3fa5801f6",
- "name": "Brick and Iron Segment Fence",
- "term": "fence",
- "license": "royalty_free",
- "faces": 8027.0,
- "size": [
-  6.5721,
-  0.411,
-  1.7
- ],
- "files": [
-  "blend",
-  "gltf",
-  "resolution_0_5K",
-  "resolution_1K",
-  "resolution_2K",
-  "thumbnail"
- ],
- "author": "Dal Roron",
- "url": "https://www.blenderkit.com/asset-gallery-detail/5990a780-31c4-41b7-bc17-9a3ad5063a6f/",
- "thumbnail": "https://public.blenderkit.com/thumbnails/assets/5990a78031c441b7bc179a3ad5063a6f/files/thumbnail_f539b442-1320-4b34-af84-b08fa4823118.png.512x512_q85_crop-%2C.png",
- "description": "Brick pilar, concrete bottom and iron fence segment. Control lenght with array on \"Fence Array\" object. The fence bears normal signs of wear and tear. Low poly. Textures channel packed. Fence 01",
- "score": 326.66666666666674,
- "procedural": false,
- "textureResolutionMax": 4096,
- "category": "FenceGate",
- "displayName": "Hàng rào gạch và sắt",
- "downloadedFile": "blend_19635ff0-8333-47a1-b1d7-b9ade572d4bc.blend"
+  "id": "5990a780-31c4-41b7-bc17-9a3ad5063a6f",
+  "assetBaseId": "1a7fe7aa-7106-41f7-9c33-c7f3fa5801f6",
+  "name": "Brick and Iron Segment Fence",
+  "term": "fence",
+  "license": "royalty_free",
+  "faces": 8027.0,
+  "size": [
+    6.5721,
+    0.411,
+    1.7
+  ],
+  "files": [
+    "blend",
+    "gltf",
+    "resolution_0_5K",
+    "resolution_1K",
+    "resolution_2K",
+    "thumbnail"
+  ],
+  "author": "Dal Roron",
+  "url": "https://www.blenderkit.com/asset-gallery-detail/5990a780-31c4-41b7-bc17-9a3ad5063a6f/",
+  "thumbnail": "https://public.blenderkit.com/thumbnails/assets/5990a78031c441b7bc179a3ad5063a6f/files/thumbnail_f539b442-1320-4b34-af84-b08fa4823118.png.512x512_q85_crop-%2C.png",
+  "description": "Brick pilar, concrete bottom and iron fence segment. Control lenght with array on \"Fence Array\" object. The fence bears normal signs of wear and tear. Low poly. Textures channel packed. Fence 01",
+  "score": 326.66666666666674,
+  "procedural": false,
+  "textureResolutionMax": 4096,
+  "category": "FenceGate",
+  "displayName": "Hàng rào gạch và sắt",
+  "downloadedFile": "blend_19635ff0-8333-47a1-b1d7-b9ade572d4bc.blend",
+  "loai": "hang_rao",
+  "frontYawOffset": 0,
+  "hasDoor": false
 }
