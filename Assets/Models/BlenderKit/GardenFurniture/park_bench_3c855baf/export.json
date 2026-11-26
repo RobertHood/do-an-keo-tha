@@ -1,0 +1,15 @@
+{
+ "name": "park_bench_3c855baf",
+ "trianglesBefore": 15614,
+ "triangles": 15614,
+ "size": [
+  1.572,
+  0.929,
+  0.72
+ ],
+ "materials": [
+  "Park Bench"
+ ],
+ "textures": 2,
+ "colorTextures": 1
+}

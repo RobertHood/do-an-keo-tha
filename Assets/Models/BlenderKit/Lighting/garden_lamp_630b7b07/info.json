@@ -1,0 +1,32 @@
+{
+ "id": "630b7b07-0f5d-4882-b196-9a159b18796c",
+ "assetBaseId": "7dcfdb54-5958-469c-823d-730f6ec43904",
+ "name": "Garden Lamp",
+ "term": "garden lamp",
+ "license": "royalty_free",
+ "faces": 4847.0,
+ "size": [
+  0.4113,
+  0.876,
+  1.75
+ ],
+ "files": [
+  "blend",
+  "gltf",
+  "gltf_godot",
+  "resolution_0_5K",
+  "resolution_1K",
+  "resolution_2K",
+  "thumbnail"
+ ],
+ "author": "Dal Roron",
+ "url": "https://www.blenderkit.com/asset-gallery-detail/630b7b07-0f5d-4882-b196-9a159b18796c/",
+ "thumbnail": "https://public.blenderkit.com/thumbnails/assets/630b7b070f5d4882b1969a159b18796c/files/thumbnail_d8190d9d-b579-4c04-8e42-60a50a57f6a9.jpg.512x512_q85_crop-%2C.jpg",
+ "description": "A low-profile lamp that can be placed to illuminate flowers in the garden or the path leading to the house. Midpoly. Textures channel packed",
+ "score": 1425.0,
+ "procedural": false,
+ "textureResolutionMax": 4096,
+ "category": "Lighting",
+ "displayName": "Đèn sân vườn",
+ "downloadedFile": "blend_fbb42c73-7fd3-4bd5-aec6-a73b37d1f0a1.blend"
+}

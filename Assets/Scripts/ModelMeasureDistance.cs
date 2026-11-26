@@ -50,9 +50,15 @@ public class ModelMeasureDistance : MonoBehaviour
     [Tooltip("When measuring along the ground, draws a thin post at each end from the line up to the model's center.")]
     [SerializeField] private bool showCenterPosts = true;
 
-    [SerializeField] private Color labelBackground = new Color(0.07f, 0.07f, 0.07f, 0.85f);
+    [SerializeField] private Color labelBackground = new Color(0.063f, 0.004f, 0.004f, 0.92f);
     [SerializeField] private Color labelTextColor = Color.white;
-    [SerializeField] private float labelFontSize = 26f;
+    [SerializeField] private float labelFontSize = 22f;
+
+    [Tooltip("Optional label shape (e.g. a pill sprite, drawn Sliced). Plain rectangle if empty.")]
+    [SerializeField] private Sprite labelSprite;
+
+    [Tooltip("Optional label font. TextMeshPro's default font if empty.")]
+    [SerializeField] private TMP_FontAsset labelFont;
 
     [Tooltip("How far above the line's middle the label sits, in screen pixels.")]
     [SerializeField] private float labelOffsetPixels = 28f;
@@ -438,12 +444,28 @@ public class ModelMeasureDistance : MonoBehaviour
         GameObject badge = new GameObject(objectName, typeof(RectTransform));
         badge.transform.SetParent(parent, false);
 
-        Image background = badge.AddComponent<Image>();
+        // Background on a child that layout ignores: an Image on the badge itself would report its sprite size as
+        // preferred size, and the Content Size Fitter would blow the badge up to the whole pill sprite
+        GameObject backgroundObj = new GameObject("Background", typeof(RectTransform));
+        backgroundObj.transform.SetParent(badge.transform, false);
+        RectTransform backgroundRect = (RectTransform)backgroundObj.transform;
+        backgroundRect.anchorMin = Vector2.zero;
+        backgroundRect.anchorMax = Vector2.one;
+        backgroundRect.offsetMin = Vector2.zero;
+        backgroundRect.offsetMax = Vector2.zero;
+        backgroundObj.AddComponent<LayoutElement>().ignoreLayout = true;
+
+        Image background = backgroundObj.AddComponent<Image>();
         background.color = labelBackground;
         background.raycastTarget = false;
+        if (labelSprite != null)
+        {
+            background.sprite = labelSprite;
+            background.type = Image.Type.Sliced;
+        }
 
         HorizontalLayoutGroup layout = badge.AddComponent<HorizontalLayoutGroup>();
-        layout.padding = new RectOffset(14, 14, 6, 6);
+        layout.padding = new RectOffset(18, 18, 8, 8);
         layout.childControlWidth = true;
         layout.childControlHeight = true;
         layout.childForceExpandWidth = false;
@@ -456,6 +478,7 @@ public class ModelMeasureDistance : MonoBehaviour
         GameObject textObj = new GameObject("Text", typeof(RectTransform));
         textObj.transform.SetParent(badge.transform, false);
         text = textObj.AddComponent<TextMeshProUGUI>();
+        if (labelFont != null) text.font = labelFont;
         text.fontSize = fontSize;
         text.fontStyle = FontStyles.Bold;
         text.color = labelTextColor;

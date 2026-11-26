@@ -1,0 +1,16 @@
+{
+ "name": "garden_lamp_630b7b07",
+ "trianglesBefore": 8336,
+ "triangles": 8336,
+ "size": [
+  0.411,
+  1.75,
+  0.876
+ ],
+ "materials": [
+  "Lamp",
+  "Glass"
+ ],
+ "textures": 2,
+ "colorTextures": 1
+}

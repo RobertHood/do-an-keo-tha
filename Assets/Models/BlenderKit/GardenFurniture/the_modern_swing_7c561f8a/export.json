@@ -1,0 +1,18 @@
+{
+ "name": "the_modern_swing_7c561f8a",
+ "trianglesBefore": 38144,
+ "triangles": 20000,
+ "size": [
+  0.448,
+  1.346,
+  1.755
+ ],
+ "materials": [
+  "plastic",
+  "White rope",
+  "Used Metal",
+  "Worn Metal Paint Procedural"
+ ],
+ "textures": 4,
+ "colorTextures": 2
+}

@@ -1,0 +1,32 @@
+{
+ "id": "7c561f8a-80ad-4f5a-98b3-ed67a4d4273a",
+ "assetBaseId": "dc04003d-ecc5-40e5-9055-aae2a4bb6395",
+ "name": "The modern swing",
+ "term": "swing",
+ "license": "royalty_free",
+ "faces": 18950.0,
+ "size": [
+  0.4477,
+  1.7545,
+  1.3464
+ ],
+ "files": [
+  "blend",
+  "gltf",
+  "gltf_godot",
+  "resolution_0_5K",
+  "resolution_1K",
+  "resolution_2K",
+  "thumbnail"
+ ],
+ "author": "Branislav Kubečka",
+ "url": "https://www.blenderkit.com/asset-gallery-detail/7c561f8a-80ad-4f5a-98b3-ed67a4d4273a/",
+ "thumbnail": "https://public.blenderkit.com/thumbnails/assets/7c561f8a80ad4f5a98b3ed67a4d4273a/files/thumbnail_1454d613-5484-4333-b9e6-a06afdd43d5b.jpg.512x512_q85_crop-%2C.jpg",
+ "description": "The modern swing of  the playground.",
+ "score": 600.0,
+ "procedural": false,
+ "textureResolutionMax": 2048,
+ "category": "GardenFurniture",
+ "displayName": "Xích đu hiện đại",
+ "downloadedFile": "blend_41717ab6-f2e7-4d88-81d5-6150c83a8015.blend"
+}

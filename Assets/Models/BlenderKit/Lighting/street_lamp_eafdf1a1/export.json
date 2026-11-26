@@ -1,0 +1,18 @@
+{
+ "name": "street_lamp_eafdf1a1",
+ "trianglesBefore": 3880,
+ "triangles": 3880,
+ "size": [
+  0.783,
+  3.814,
+  0.783
+ ],
+ "materials": [
+  "WH_metal",
+  "WH_light01",
+  "WH_wood",
+  "WH_metal2"
+ ],
+ "textures": 2,
+ "colorTextures": 2
+}

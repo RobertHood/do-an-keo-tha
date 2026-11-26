@@ -1,0 +1,15 @@
+{
+ "name": "cast_iron_fence_02_87468baa",
+ "trianglesBefore": 112348,
+ "triangles": 14999,
+ "size": [
+  1.488,
+  1.499,
+  0.057
+ ],
+ "materials": [
+  "Cast Iron Fence 02"
+ ],
+ "textures": 2,
+ "colorTextures": 1
+}

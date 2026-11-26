@@ -1,0 +1,15 @@
+{
+ "name": "gravel_pathway_01_022c0418",
+ "trianglesBefore": 19918,
+ "triangles": 19918,
+ "size": [
+  2.924,
+  0.179,
+  6.596
+ ],
+ "materials": [
+  "Gravel Path_BAKED.005"
+ ],
+ "textures": 2,
+ "colorTextures": 1
+}

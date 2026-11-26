@@ -1,0 +1,28 @@
+{
+ "name": "modern_one_story_house_ecee8f3a",
+ "trianglesBefore": 86374,
+ "triangles": 80000,
+ "size": [
+  21.669,
+  5.4,
+  19.014
+ ],
+ "materials": [
+  "mq_WD040_DECIDUOUS-Beech.004",
+  "synthetic_wood",
+  "Plastic",
+  "Fake Glass Frenel",
+  "mq_CC210_ARCH-Ridged.001",
+  "mq_WS009_PLASTER-Worn",
+  "Sand-Finish",
+  "DarkMetal",
+  "m.Lines",
+  "Grass",
+  "plastic2.001",
+  "light.001",
+  "wooden_planks",
+  "Brickwall"
+ ],
+ "textures": 17,
+ "colorTextures": 9
+}

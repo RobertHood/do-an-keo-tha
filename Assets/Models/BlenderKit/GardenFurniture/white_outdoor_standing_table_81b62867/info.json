@@ -1,0 +1,33 @@
+{
+ "id": "81b62867-ad6e-4bf4-bbde-2757738a127e",
+ "assetBaseId": "7849e317-a440-40c0-a477-3734e3630f35",
+ "name": "White outdoor Standing Table",
+ "term": "outdoor table",
+ "license": "cc_zero",
+ "faces": 2892.0,
+ "size": [
+  0.7592,
+  0.7592,
+  1.15
+ ],
+ "files": [
+  "blend",
+  "gltf",
+  "gltf_godot",
+  "resolution_0_5K",
+  "resolution_1K",
+  "resolution_2K",
+  "resolution_4K",
+  "thumbnail"
+ ],
+ "author": "Roland Schuller",
+ "url": "https://www.blenderkit.com/asset-gallery-detail/81b62867-ad6e-4bf4-bbde-2757738a127e/",
+ "thumbnail": "https://public.blenderkit.com/thumbnails/assets/81b62867ad6e4bf4bbde2757738a127e/files/thumbnail_beee1228-b58d-4e11-9fa0-c10e7b0a08ef.jpg.512x512_q85_crop-%2C.jpg",
+ "description": "115cm Height 75cm Diameter for Outdoor use",
+ "score": 160.0,
+ "procedural": false,
+ "textureResolutionMax": 4096,
+ "category": "GardenFurniture",
+ "displayName": "Bàn đứng ngoài trời",
+ "downloadedFile": "blend_2129b487-7fbb-4575-8d03-390e4fa08446.blend"
+}

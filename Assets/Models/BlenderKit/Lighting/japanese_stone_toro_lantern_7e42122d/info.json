@@ -1,0 +1,34 @@
+{
+ "id": "7e42122d-4be7-4e63-92ed-f38564c85686",
+ "assetBaseId": "cf53e82c-8783-4a5a-b2bb-483a45dd1894",
+ "name": "Japanese Stone Toro Lantern",
+ "term": "lantern",
+ "license": "royalty_free",
+ "faces": 1238.0,
+ "size": [
+  0.9572,
+  0.8861,
+  2.4478
+ ],
+ "files": [
+  "blend",
+  "gltf",
+  "gltf_godot",
+  "resolution_0_5K",
+  "resolution_1K",
+  "resolution_2K",
+  "resolution_4K",
+  "thumbnail",
+  "prxc"
+ ],
+ "author": "naman sharma",
+ "url": "https://www.blenderkit.com/asset-gallery-detail/7e42122d-4be7-4e63-92ed-f38564c85686/",
+ "thumbnail": "https://public.blenderkit.com/thumbnails/assets/7e42122d4be74e6392edf38564c85686/files/thumbnail_a0716cfb-4c60-4dcd-9265-2ad15f30c5c1.jpg.512x512_q85_crop-%2C.jpg",
+ "description": "Highly detailed Japanese Stone Lantern (Toro) with hand-sculpted weathering, moss, and aged stone surface. PBR textures included. Perfect for Japanese garden, shrine, and feudal Japan environments.",
+ "score": 900.0,
+ "procedural": false,
+ "textureResolutionMax": 4096,
+ "category": "Lighting",
+ "displayName": "Đèn đá kiểu Nhật",
+ "downloadedFile": "blend_c1216466-1526-4084-87ed-444821018a82.blend"
+}

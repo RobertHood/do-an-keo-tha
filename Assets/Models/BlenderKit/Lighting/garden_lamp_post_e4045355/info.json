@@ -1,0 +1,32 @@
+{
+ "id": "e4045355-cdf1-4478-a721-54dad9d114d7",
+ "assetBaseId": "dd4cdc3d-48ec-4209-869d-d2d18fce2e21",
+ "name": "Garden lamp post",
+ "term": "garden lamp",
+ "license": "royalty_free",
+ "faces": 6162.0,
+ "size": [
+  0.2896,
+  0.7101,
+  1.8021
+ ],
+ "files": [
+  "blend",
+  "gltf",
+  "gltf_godot",
+  "resolution_0_5K",
+  "resolution_1K",
+  "resolution_2K",
+  "thumbnail"
+ ],
+ "author": "Flareworks Studio",
+ "url": "https://www.blenderkit.com/asset-gallery-detail/e4045355-cdf1-4478-a721-54dad9d114d7/",
+ "thumbnail": "https://public.blenderkit.com/thumbnails/assets/e4045355cdf14478a72154dad9d114d7/files/thumbnail_0c1c1d1f-ee8b-4e79-b5b6-47ad4c9efa27.png.512x512_q85_crop-%2C.png",
+ "description": "Lamp post with 2 light bulbs and adjustable color temperature",
+ "score": 442.8571428571429,
+ "procedural": false,
+ "textureResolutionMax": 2048,
+ "category": "Lighting",
+ "displayName": "Cột đèn sân vườn",
+ "downloadedFile": "blend_33c32096-00b0-4aed-ace3-66e2a4b3feda.blend"
+}

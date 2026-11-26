@@ -1,0 +1,15 @@
+{
+ "name": "rusty_mushroom_garden_statue_4588b925",
+ "trianglesBefore": 21640,
+ "triangles": 15000,
+ "size": [
+  0.593,
+  1.597,
+  0.596
+ ],
+ "materials": [
+  "rusty mushroom"
+ ],
+ "textures": 2,
+ "colorTextures": 1
+}

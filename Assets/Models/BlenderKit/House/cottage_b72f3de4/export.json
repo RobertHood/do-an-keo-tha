@@ -1,0 +1,30 @@
+{
+ "name": "cottage_b72f3de4",
+ "trianglesBefore": 19452,
+ "triangles": 19452,
+ "size": [
+  15.728,
+  9.124,
+  7.857
+ ],
+ "materials": [
+  "white lesk",
+  "white mat",
+  "black mat",
+  "brown",
+  "nerez",
+  "glass.001",
+  "glass trans",
+  "ramy",
+  "glass",
+  "wood.004",
+  "Concrete_scafold",
+  "sindel",
+  "wood.003",
+  "wood.002",
+  "stone wall 3",
+  "pozink"
+ ],
+ "textures": 8,
+ "colorTextures": 6
+}

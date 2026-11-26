@@ -1,0 +1,18 @@
+{
+ "name": "fluffy_pampass_grass_2f656baa",
+ "trianglesBefore": 256684,
+ "triangles": 39999,
+ "size": [
+  0.697,
+  1.053,
+  0.682
+ ],
+ "materials": [
+  "Rocky Ground 04 Material",
+  "POT",
+  "GRASS BLADE INTERIOR.YOUNG",
+  "GRASS BLADE INTERIOR.OLD"
+ ],
+ "textures": 2,
+ "colorTextures": 1
+}

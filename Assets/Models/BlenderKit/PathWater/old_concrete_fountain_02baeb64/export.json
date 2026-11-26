@@ -1,0 +1,15 @@
+{
+ "name": "old_concrete_fountain_02baeb64",
+ "trianglesBefore": 3178,
+ "triangles": 3178,
+ "size": [
+  3.275,
+  2.114,
+  3.28
+ ],
+ "materials": [
+  "Material"
+ ],
+ "textures": 2,
+ "colorTextures": 1
+}

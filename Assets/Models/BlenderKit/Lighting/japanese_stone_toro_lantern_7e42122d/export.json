@@ -1,0 +1,15 @@
+{
+ "name": "japanese_stone_toro_lantern_7e42122d",
+ "trianglesBefore": 2436,
+ "triangles": 2436,
+ "size": [
+  0.957,
+  2.448,
+  0.886
+ ],
+ "materials": [
+  "standardSurface4"
+ ],
+ "textures": 2,
+ "colorTextures": 1
+}

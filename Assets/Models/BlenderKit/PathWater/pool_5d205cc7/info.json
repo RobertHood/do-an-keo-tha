@@ -1,0 +1,29 @@
+{
+ "id": "5d205cc7-247a-4dd7-88c2-79f45b3480ca",
+ "assetBaseId": "477631a1-da5f-470a-8bd5-7ebbebd5ad70",
+ "name": "Pool",
+ "term": "pool",
+ "license": "royalty_free",
+ "faces": 6939.0,
+ "size": [
+  3.3766,
+  6.7775,
+  1.4452
+ ],
+ "files": [
+  "blend",
+  "gltf",
+  "gltf_godot",
+  "thumbnail"
+ ],
+ "author": "Russo 3D",
+ "url": "https://www.blenderkit.com/asset-gallery-detail/5d205cc7-247a-4dd7-88c2-79f45b3480ca/",
+ "thumbnail": "https://public.blenderkit.com/thumbnails/assets/5d205cc7247a4dd788c279f45b3480ca/files/thumbnail_e4712d6f-d80b-4403-b78d-9fe716dcd67e.png.512x512_q85_crop-%2C.png",
+ "description": "Ideal for decorating outdoor areas",
+ "score": 290.0,
+ "procedural": false,
+ "textureResolutionMax": 224,
+ "category": "PathWater",
+ "displayName": "Bể bơi",
+ "downloadedFile": "blend_be1e433a-9bb3-44ab-923f-74ef0cf736e6.blend"
+}

@@ -1,0 +1,15 @@
+{
+ "name": "vintage_street_lamp_1d0bd5cb",
+ "trianglesBefore": 4622,
+ "triangles": 4622,
+ "size": [
+  0.258,
+  1.752,
+  0.298
+ ],
+ "materials": [
+  "old lamp post"
+ ],
+ "textures": 2,
+ "colorTextures": 1
+}

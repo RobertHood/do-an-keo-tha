@@ -1,0 +1,17 @@
+{
+ "name": "white_outdoor_standing_table_81b62867",
+ "trianglesBefore": 173920,
+ "triangles": 20000,
+ "size": [
+  0.759,
+  1.15,
+  0.759
+ ],
+ "materials": [
+  "Gray white plastic",
+  "Metal",
+  "Matal solid paint white"
+ ],
+ "textures": 4,
+ "colorTextures": 2
+}

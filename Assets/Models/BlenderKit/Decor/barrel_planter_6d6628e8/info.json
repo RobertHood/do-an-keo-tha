@@ -1,0 +1,32 @@
+{
+ "id": "6d6628e8-8ad0-4573-860b-f3c13a7d01c8",
+ "assetBaseId": "ee6ca942-1243-4155-ad89-85afe15111e5",
+ "name": "Barrel Planter",
+ "term": "planter",
+ "license": "royalty_free",
+ "faces": 3553.0,
+ "size": [
+  0.4538,
+  0.4883,
+  0.7096
+ ],
+ "files": [
+  "blend",
+  "gltf",
+  "gltf_godot",
+  "resolution_0_5K",
+  "resolution_1K",
+  "resolution_2K",
+  "thumbnail"
+ ],
+ "author": "Levi Magony",
+ "url": "https://www.blenderkit.com/asset-gallery-detail/6d6628e8-8ad0-4573-860b-f3c13a7d01c8/",
+ "thumbnail": "https://public.blenderkit.com/thumbnails/assets/6d6628e88ad04573860bf3c13a7d01c8/files/thumbnail_5efd6e2f-0517-4f21-bb2c-b9abd8aa858c.jpg.512x512_q85_crop-%2C.jpg",
+ "description": "Put it in the background to fill out the space",
+ "score": 480.0,
+ "procedural": false,
+ "textureResolutionMax": 2048,
+ "category": "Decor",
+ "displayName": "Chậu cây thùng gỗ",
+ "downloadedFile": "blend_13039168-6fad-4bd2-89ec-e80d433fb2d5.blend"
+}

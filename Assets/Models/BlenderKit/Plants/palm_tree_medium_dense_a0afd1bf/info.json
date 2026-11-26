@@ -1,0 +1,32 @@
+{
+ "id": "a0afd1bf-1b58-4123-b197-b5f90d239097",
+ "assetBaseId": "f9c65ca8-8ad7-4b2b-80c1-b3634862da1d",
+ "name": "Palm Tree Medium Dense",
+ "term": "palm tree",
+ "license": "cc_zero",
+ "faces": 15851.0,
+ "size": [
+  7.9512,
+  8.1125,
+  15.2858
+ ],
+ "files": [
+  "blend",
+  "gltf",
+  "gltf_godot",
+  "resolution_0_5K",
+  "resolution_1K",
+  "resolution_2K",
+  "thumbnail"
+ ],
+ "author": "Amanpreet Bajwa",
+ "url": "https://www.blenderkit.com/asset-gallery-detail/a0afd1bf-1b58-4123-b197-b5f90d239097/",
+ "thumbnail": "https://public.blenderkit.com/thumbnails/assets/a0afd1bf1b584123b197b5f90d239097/files/thumbnail_3610bf40-b2b2-4748-bf1a-1130dadca6a3.jpg.512x512_q85_crop-%2C.jpg",
+ "description": "Palm Tree Medium Dense for any type of Scenes and Environments like Beach, Urban, Architecture, Garden, Park. High quality, PBR, Optimized and ready for use in your scenes.",
+ "score": 1150.0,
+ "procedural": false,
+ "textureResolutionMax": 2048,
+ "category": "Plants",
+ "displayName": "Cây cọ dày lá",
+ "downloadedFile": "blend_987e7d62-f0d3-4920-b188-e7c451f6b171.blend"
+}

@@ -1,0 +1,32 @@
+{
+ "id": "9277d3ad-2f67-4980-a00e-145071419d9a",
+ "assetBaseId": "a0cd79e6-520c-46bd-951f-262b73600639",
+ "name": "Modern house",
+ "term": "villa",
+ "license": "royalty_free",
+ "faces": 6328.0,
+ "size": [
+  12.3715,
+  17.8971,
+  6.2972
+ ],
+ "files": [
+  "blend",
+  "gltf",
+  "gltf_godot",
+  "resolution_0_5K",
+  "resolution_1K",
+  "resolution_2K",
+  "thumbnail"
+ ],
+ "author": "Mesk911 ",
+ "url": "https://www.blenderkit.com/asset-gallery-detail/9277d3ad-2f67-4980-a00e-145071419d9a/",
+ "thumbnail": "https://public.blenderkit.com/thumbnails/assets/9277d3ad2f674980a00e145071419d9a/files/thumbnail_c769eb40-fc73-449b-a6a6-76c35785841e.jpg.512x512_q85_crop-%2C.jpg",
+ "description": "Modern private house with big windows",
+ "score": 420.0,
+ "procedural": false,
+ "textureResolutionMax": 2048,
+ "category": "House",
+ "displayName": "Nhà hiện đại mái bằng",
+ "downloadedFile": "blend_32720afb-c373-4f2e-a206-a331a475d447.blend"
+}

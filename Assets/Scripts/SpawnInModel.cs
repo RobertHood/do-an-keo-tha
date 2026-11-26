@@ -142,7 +142,7 @@ public class SpawnInModel : MonoBehaviour
 
         if (FindPrefab(prefab.name) == null)
         {
-            Debug.LogWarning($"[SpawnInModel] '{prefab.name}' is not in the Model Prefabs list, so it can't be rebuilt when loading a blueprint. Add it to the list.");
+            Debug.LogWarning($"[SpawnInModel] '{prefab.name}' is not in the Model Prefabs list or the price catalog, so it can't be rebuilt when loading a blueprint. Add it to the catalog.");
         }
 
         Debug.Log($"[SpawnInModel] Successfully spawned '{prefab.name}' at: {instance.transform.position}");
@@ -195,7 +195,14 @@ public class SpawnInModel : MonoBehaviour
     public GameObject FindPrefab(string prefabName)
     {
         if (string.IsNullOrEmpty(prefabName)) return null;
-        return modelPrefabs.Find(p => p != null && p.name.Equals(prefabName, System.StringComparison.OrdinalIgnoreCase));
+
+        GameObject found = modelPrefabs.Find(p => p != null && p.name.Equals(prefabName, System.StringComparison.OrdinalIgnoreCase));
+        if (found != null) return found;
+
+        // The model library (price catalog) lists every model in the item catalog
+        PriceCatalog catalog = ModelEstPrice.Instance != null ? ModelEstPrice.Instance.Catalog : null;
+        PriceCatalogEntry entry = catalog != null ? catalog.FindEntry(prefabName) : null;
+        return entry != null ? entry.prefab : null;
     }
 
     /// <summary>

@@ -1,0 +1,34 @@
+{
+ "id": "022c0418-2833-4610-864b-b62720262c03",
+ "assetBaseId": "cafafa4e-7efd-416e-bc6d-5151759c56d4",
+ "name": "Gravel Pathway 01",
+ "term": "path",
+ "license": "cc_zero",
+ "faces": 10004.0,
+ "size": [
+  2.924,
+  6.5963,
+  0.1788
+ ],
+ "files": [
+  "blend",
+  "gltf",
+  "gltf_godot",
+  "resolution_0_5K",
+  "resolution_1K",
+  "resolution_2K",
+  "resolution_4K",
+  "resolution_8K",
+  "thumbnail"
+ ],
+ "author": "Joshua Whitney",
+ "url": "https://www.blenderkit.com/asset-gallery-detail/022c0418-2833-4610-864b-b62720262c03/",
+ "thumbnail": "https://public.blenderkit.com/thumbnails/assets/022c041828334610864bb62720262c03/files/thumbnail_71913789-7e85-4426-872b-d7340d976c09.jpg.512x512_q85_crop-%2C.jpg",
+ "description": "Photoscanned gravel pathway area. Remeshed - the color, roughness, specular, and normal maps are baked on. Enjoy!",
+ "score": 1862.0,
+ "procedural": false,
+ "textureResolutionMax": 8192,
+ "category": "PathWater",
+ "displayName": "Lối đi sỏi",
+ "downloadedFile": "blend_4d56b00a-5657-4c45-8f23-9443a0bfd4f9.blend"
+}

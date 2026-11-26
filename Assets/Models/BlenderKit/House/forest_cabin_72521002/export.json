@@ -1,0 +1,34 @@
+{
+ "name": "forest_cabin_72521002",
+ "trianglesBefore": 116848,
+ "triangles": 80000,
+ "size": [
+  9.617,
+  7.41,
+  19.11
+ ],
+ "materials": [
+  "Window_Large",
+  "Window_Small",
+  "Terras",
+  "Table",
+  "Structure",
+  "Stairs Support",
+  "Stairs",
+  "Rope",
+  "Roof",
+  "Chimini",
+  "Flower2",
+  "Flower4",
+  "Branch",
+  "Flower3",
+  "Flower1",
+  "House",
+  "Glass",
+  "Pot",
+  "Door",
+  "Chair"
+ ],
+ "textures": 38,
+ "colorTextures": 19
+}

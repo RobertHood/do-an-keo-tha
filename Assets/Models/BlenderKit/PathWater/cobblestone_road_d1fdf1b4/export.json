@@ -1,0 +1,15 @@
+{
+ "name": "cobblestone_road_d1fdf1b4",
+ "trianglesBefore": 336,
+ "triangles": 336,
+ "size": [
+  3.641,
+  0.119,
+  7.359
+ ],
+ "materials": [
+  "Material.002"
+ ],
+ "textures": 2,
+ "colorTextures": 1
+}

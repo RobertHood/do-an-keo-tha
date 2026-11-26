@@ -14,9 +14,342 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PriceCatalog
   entries:
   - prefab: {fileID: 192044, guid: 19682540d8a014522a319b1cf788aee2, type: 3}
+    category: 2
     prefabId: 001
-    displayName: Fir Tree 1
+    displayName: "C\xE2y th\xF4ng"
     description: Its a fir tree
-    icon: {fileID: 0}
+    icon: {fileID: 21300000, guid: d6500bc1501150841ba53b2f4dd9832a, type: 3}
     listedPrice: 2000
+    offers: []
+  - prefab: {fileID: 191266, guid: c44bd9bdc114d4a60932c0087d9d1732, type: 3}
+    category: 2
+    prefabId: 
+    displayName: "C\xE2y s\u1ED3i"
+    description: "C\xE2y b\xF3ng m\xE1t t\xE1n r\u1ED9ng."
+    icon: {fileID: 21300000, guid: 15428c3ba4bfe134584ef371e23994d3, type: 3}
+    listedPrice: 0
+    offers: []
+  - prefab: {fileID: 188006, guid: c6b7fb383a3534b039692b5485b6e739, type: 3}
+    category: 2
+    prefabId: 
+    displayName: "C\xE2y c\u1ECD"
+    description: "C\xE2y nhi\u1EC7t \u0111\u1EDBi, h\u1EE3p s\xE2n v\u01B0\u1EDDn
+      v\xE0 l\u1ED1i \u0111i."
+    icon: {fileID: 21300000, guid: 9eccf8e3cea4d2a46b4870c016055e56, type: 3}
+    listedPrice: 0
+    offers: []
+  - prefab: {fileID: 137650, guid: 826b6a0b570e8460990010fa615b5a2a, type: 3}
+    category: 2
+    prefabId: 
+    displayName: "C\xE2y b\u1EA1ch d\u01B0\u01A1ng"
+    description: "C\xE2y d\xE1ng cao, th\xEDch h\u1EE3p tr\u1ED3ng h\xE0ng r\xE0o
+      xanh."
+    icon: {fileID: 21300000, guid: 9911dcfd268afca409a340a0ac06ade6, type: 3}
+    listedPrice: 0
+    offers: []
+  - prefab: {fileID: 919132149155446097, guid: 2728d7901e4e28a438ad260138f41560, type: 3}
+    category: 4
+    prefabId: 
+    displayName: "Ch\u1EADu c\xE2y th\xF9ng g\u1ED7"
+    description: "Barrel Planter \xB7 BlenderKit, Royalty-Free, t\xE1c gi\u1EA3 Levi
+      Magony"
+    icon: {fileID: 21300000, guid: 7bcff181af6ef4d499189425992db630, type: 3}
+    listedPrice: 0
+    offers: []
+  - prefab: {fileID: 919132149155446097, guid: 67d499a018cc9884881b389f4232d634, type: 3}
+    category: 4
+    prefabId: 
+    displayName: "T\u01B0\u1EE3ng c\u1EEBu \u0111\u1ED3ng"
+    description: "Garden ram bronze statue \xB7 BlenderKit, Royalty-Free, t\xE1c
+      gi\u1EA3 Eleanie "
+    icon: {fileID: 21300000, guid: 44e4f08ca4f31b240a3b3e7bb1cabba1, type: 3}
+    listedPrice: 0
+    offers: []
+  - prefab: {fileID: 919132149155446097, guid: bf44de59039fed34789d1c02cc2bff8c, type: 3}
+    category: 4
+    prefabId: 
+    displayName: "Ch\u1EADu hoa ki\u1EC3u Hy L\u1EA1p"
+    description: "Old Greek style flower pot \xB7 BlenderKit, Royalty-Free, t\xE1c
+      gi\u1EA3 Matvey Sheyanov"
+    icon: {fileID: 21300000, guid: ad499e73e0ccfc14996e0bc2f0a2e94e, type: 3}
+    listedPrice: 0
+    offers: []
+  - prefab: {fileID: 919132149155446097, guid: 594ce093a0ad4ef49a5ba3d9afda8cd6, type: 3}
+    category: 4
+    prefabId: 
+    displayName: "T\u01B0\u1EE3ng n\u1EA5m s\xE2n v\u01B0\u1EDDn"
+    description: "Rusty mushroom garden statue \xB7 BlenderKit, Royalty-Free, t\xE1c
+      gi\u1EA3 Rous Kristall"
+    icon: {fileID: 21300000, guid: af70fd271e9e90b4da8154c4e8a41059, type: 3}
+    listedPrice: 0
+    offers: []
+  - prefab: {fileID: 919132149155446097, guid: e7547286cda3c3c488910e883385b8d8, type: 3}
+    category: 4
+    prefabId: 
+    displayName: "T\u01B0\u1EE3ng r\xF9a s\xE2n v\u01B0\u1EDDn"
+    description: "Turtle Garden Statue \xB7 BlenderKit, Royalty-Free, t\xE1c gi\u1EA3
+      Vavrinec Foltan"
+    icon: {fileID: 21300000, guid: 1ef3cd3780491ae49aa51245247a79c4, type: 3}
+    listedPrice: 0
+    offers: []
+  - prefab: {fileID: 919132149155446097, guid: fd89f212651f61f45819677d8e28181f, type: 3}
+    category: 6
+    prefabId: 
+    displayName: "H\xE0ng r\xE0o g\u1EA1ch v\xE0 s\u1EAFt"
+    description: "Brick and Iron Segment Fence \xB7 BlenderKit, Royalty-Free, t\xE1c
+      gi\u1EA3 Dal Roron"
+    icon: {fileID: 21300000, guid: e16b0d6f627f14743a348b3726dc6728, type: 3}
+    listedPrice: 0
+    offers: []
+  - prefab: {fileID: 919132149155446097, guid: e6e33644b5a99ef4685070c61577b8d7, type: 3}
+    category: 6
+    prefabId: 
+    displayName: "H\xE0ng r\xE0o s\u1EAFt"
+    description: "Cast Iron Fence 02 \xB7 BlenderKit, CC0, t\xE1c gi\u1EA3 The Doctor
+      By Design "
+    icon: {fileID: 21300000, guid: 89bc8ea5eb118fc49842887cf7ac7d3b, type: 3}
+    listedPrice: 0
+    offers: []
+  - prefab: {fileID: 919132149155446097, guid: f3cc86542432cb9469823706c019415c, type: 3}
+    category: 6
+    prefabId: 
+    displayName: "H\xE0ng r\xE0o g\u1ED7"
+    description: "Fence wood \xB7 BlenderKit, Royalty-Free, t\xE1c gi\u1EA3 Amirkhan
+      Manapov"
+    icon: {fileID: 21300000, guid: cfd232fe568b493428762069e6f32c3d, type: 3}
+    listedPrice: 0
+    offers: []
+  - prefab: {fileID: 919132149155446097, guid: 061855e23cbe4b944849711a102d6742, type: 3}
+    category: 6
+    prefabId: 
+    displayName: "C\u1ED5ng s\u1EAFt l\u1EDBn"
+    description: "Large Iron Gate \xB7 BlenderKit, CC0, t\xE1c gi\u1EA3 Poly Haven "
+    icon: {fileID: 21300000, guid: 4c077e155f37c8c4491c9ad5e51a6378, type: 3}
+    listedPrice: 0
+    offers: []
+  - prefab: {fileID: 919132149155446097, guid: 62b2893304125de46a38f24b52ca3e95, type: 3}
+    category: 6
+    prefabId: 
+    displayName: "H\xE0ng r\xE0o nan g\u1ED7"
+    description: "Wooden Slat Fence \xB7 BlenderKit, Royalty-Free, t\xE1c gi\u1EA3
+      Andrew Crook"
+    icon: {fileID: 21300000, guid: 5b23fe23e95c4c64db600adebbe0fcbe, type: 3}
+    listedPrice: 0
+    offers: []
+  - prefab: {fileID: 919132149155446097, guid: 5a1dfd424e4dc1044ba73ef2c3087a70, type: 3}
+    category: 3
+    prefabId: 
+    displayName: "Gh\u1EBF b\u0103ng c\xF4ng vi\xEAn"
+    description: "Park Bench \xB7 BlenderKit, Royalty-Free, t\xE1c gi\u1EA3 Dal Roron"
+    icon: {fileID: 21300000, guid: 20562d2659297364a835bafdbaf32827, type: 3}
+    listedPrice: 0
+    offers: []
+  - prefab: {fileID: 919132149155446097, guid: 33e617274bb238f42b4504b115707f02, type: 3}
+    category: 3
+    prefabId: 
+    displayName: "Gh\u1EBF b\u1EADp b\xEAnh hi\xEAn nh\xE0"
+    description: "Porch Rocking Chair \xB7 BlenderKit, Royalty-Free, t\xE1c gi\u1EA3
+      Pushover "
+    icon: {fileID: 21300000, guid: a5d5289aeaa16d846857274acc6eb989, type: 3}
+    listedPrice: 0
+    offers: []
+  - prefab: {fileID: 919132149155446097, guid: ddc3aebf481aced458e33dc4db13953a, type: 3}
+    category: 3
+    prefabId: 
+    displayName: "Gh\u1EBF t\u1EAFm n\u1EAFng"
+    description: "Sun lounger for pool \xB7 BlenderKit, Royalty-Free, t\xE1c gi\u1EA3
+      jhon maycon"
+    icon: {fileID: 21300000, guid: e50d9b44d83ae784a85fea9258ecca86, type: 3}
+    listedPrice: 0
+    offers: []
+  - prefab: {fileID: 919132149155446097, guid: fc6b7db4fbaed3f4492aeccdad9b6842, type: 3}
+    category: 3
+    prefabId: 
+    displayName: "X\xEDch \u0111u hi\u1EC7n \u0111\u1EA1i"
+    description: "The modern swing \xB7 BlenderKit, Royalty-Free, t\xE1c gi\u1EA3
+      Branislav Kube\u010Dka"
+    icon: {fileID: 21300000, guid: b80f7aca5f64fdd48bc1534010acfd85, type: 3}
+    listedPrice: 0
+    offers: []
+  - prefab: {fileID: 919132149155446097, guid: b249bf93bbd4aea448064f9dc9c0533b, type: 3}
+    category: 3
+    prefabId: 
+    displayName: "B\xE0n \u0111\u1EE9ng ngo\xE0i tr\u1EDDi"
+    description: "White outdoor Standing Table \xB7 BlenderKit, CC0, t\xE1c gi\u1EA3
+      Roland Schuller"
+    icon: {fileID: 21300000, guid: e566b152befb9c445a4971676e33dc9d, type: 3}
+    listedPrice: 0
+    offers: []
+  - prefab: {fileID: 919132149155446097, guid: 1c708f1ff5d90ab408e7bdd583e7f63a, type: 3}
+    category: 1
+    prefabId: 
+    displayName: "Nh\xE0 ki\u1EC3u cottage"
+    description: "Cottage \xB7 BlenderKit, Royalty-Free, t\xE1c gi\u1EA3 Jan Holinka"
+    icon: {fileID: 21300000, guid: f21415735e0c1514291ceb8e0a78b94a, type: 3}
+    listedPrice: 0
+    offers: []
+  - prefab: {fileID: 919132149155446097, guid: 2a9c26e5ad5950f41994639b0f4f3a69, type: 3}
+    category: 1
+    prefabId: 
+    displayName: "Nh\xE0 g\u1ED7 trong r\u1EEBng"
+    description: "Forest Cabin \xB7 BlenderKit, CC0, t\xE1c gi\u1EA3 3dquads blender"
+    icon: {fileID: 21300000, guid: 01083a2af22b67a48a00100d6cfe8f0f, type: 3}
+    listedPrice: 0
+    offers: []
+  - prefab: {fileID: 919132149155446097, guid: 46ad70189ccf2dc42a6bd2323003ecd3, type: 3}
+    category: 1
+    prefabId: 
+    displayName: "Nh\xE0 hi\u1EC7n \u0111\u1EA1i m\xE1i b\u1EB1ng"
+    description: "Modern house \xB7 BlenderKit, Royalty-Free, t\xE1c gi\u1EA3 Mesk911 "
+    icon: {fileID: 21300000, guid: f8d980baa45b697429420c85647e044c, type: 3}
+    listedPrice: 0
+    offers: []
+  - prefab: {fileID: 919132149155446097, guid: 6df07ac6b24c0ad469c7e6a45a801af3, type: 3}
+    category: 1
+    prefabId: 
+    displayName: "Nh\xE0 hi\u1EC7n \u0111\u1EA1i m\u1ED9t t\u1EA7ng"
+    description: "Modern One-Story House \xB7 BlenderKit, Royalty-Free, t\xE1c gi\u1EA3
+      Abbos Mirzayev"
+    icon: {fileID: 21300000, guid: 1de6e9d140f538644b3c2023fdc1b375, type: 3}
+    listedPrice: 0
+    offers: []
+  - prefab: {fileID: 919132149155446097, guid: 3a1f5fa80a8a15e4980b3885504d1e18, type: 3}
+    category: 1
+    prefabId: 
+    displayName: "Nh\xE0 nh\u1ECF hai t\u1EA7ng"
+    description: "Small house \xB7 BlenderKit, Royalty-Free, t\xE1c gi\u1EA3 ali
+      alipour"
+    icon: {fileID: 21300000, guid: 65a7b1510ef218048a399d708fa04e4f, type: 3}
+    listedPrice: 0
+    offers: []
+  - prefab: {fileID: 919132149155446097, guid: bb5707de85a249742aae58ccf913a461, type: 3}
+    category: 5
+    prefabId: 
+    displayName: "\u0110\xE8n s\xE2n v\u01B0\u1EDDn"
+    description: "Garden Lamp \xB7 BlenderKit, Royalty-Free, t\xE1c gi\u1EA3 Dal
+      Roron"
+    icon: {fileID: 21300000, guid: d735a8a31db4faf4082311f931633f28, type: 3}
+    listedPrice: 0
+    offers: []
+  - prefab: {fileID: 919132149155446097, guid: 57f497cdb70baaa4a9734f1d61019a74, type: 3}
+    category: 5
+    prefabId: 
+    displayName: "C\u1ED9t \u0111\xE8n s\xE2n v\u01B0\u1EDDn"
+    description: "Garden lamp post \xB7 BlenderKit, Royalty-Free, t\xE1c gi\u1EA3
+      Flareworks Studio"
+    icon: {fileID: 21300000, guid: 9d4a3d005a95ee4438e6a9fc6368d317, type: 3}
+    listedPrice: 0
+    offers: []
+  - prefab: {fileID: 919132149155446097, guid: 9245bac2a2b04244ca3ebc008503137b, type: 3}
+    category: 5
+    prefabId: 
+    displayName: "\u0110\xE8n \u0111\xE1 ki\u1EC3u Nh\u1EADt"
+    description: "Japanese Stone Toro Lantern \xB7 BlenderKit, Royalty-Free, t\xE1c
+      gi\u1EA3 naman sharma"
+    icon: {fileID: 21300000, guid: 1768f6b65b7398a44a0a8c4c014f1633, type: 3}
+    listedPrice: 0
+    offers: []
+  - prefab: {fileID: 919132149155446097, guid: eecf6da7354df51499cc78b6b4b4b4ef, type: 3}
+    category: 5
+    prefabId: 
+    displayName: "C\u1ED9t \u0111\xE8n \u0111\u01B0\u1EDDng"
+    description: "Street lamp \xB7 BlenderKit, Royalty-Free, t\xE1c gi\u1EA3 Adam
+      Krhanek"
+    icon: {fileID: 21300000, guid: 0d6910e4f184138479b67c0d78047d89, type: 3}
+    listedPrice: 0
+    offers: []
+  - prefab: {fileID: 919132149155446097, guid: c144b06e122da7a48b8f8a70cf4f07e3, type: 3}
+    category: 5
+    prefabId: 
+    displayName: "\u0110\xE8n \u0111\u01B0\u1EDDng c\u1ED5 \u0111i\u1EC3n"
+    description: "Vintage Street Lamp \xB7 BlenderKit, Royalty-Free, t\xE1c gi\u1EA3
+      Crazy0_0Cat "
+    icon: {fileID: 21300000, guid: 92c019d755f9d3947b9621671c2cb739, type: 3}
+    listedPrice: 0
+    offers: []
+  - prefab: {fileID: 919132149155446097, guid: 69a6f791bf449a84f9c705fa3a8f2ed1, type: 3}
+    category: 7
+    prefabId: 
+    displayName: "\u0110\u01B0\u1EDDng l\xE1t \u0111\xE1 cu\u1ED9i"
+    description: "Cobblestone road \xB7 BlenderKit, Royalty-Free, t\xE1c gi\u1EA3
+      Pawe\u0142 Wa\u0142asiewicz"
+    icon: {fileID: 21300000, guid: 413c3334203fec248a15d4ab2ce4290d, type: 3}
+    listedPrice: 0
+    offers: []
+  - prefab: {fileID: 919132149155446097, guid: 4fa15a85e02aa2d41aa5694ba73c1c22, type: 3}
+    category: 7
+    prefabId: 
+    displayName: "H\u1ED3 c\xE1"
+    description: "Fish pond \xB7 BlenderKit, Royalty-Free, t\xE1c gi\u1EA3 M X"
+    icon: {fileID: 21300000, guid: e142709dc3c179e4291711b3dfb12e1a, type: 3}
+    listedPrice: 0
+    offers: []
+  - prefab: {fileID: 919132149155446097, guid: 90f924df7ef721d4ba185023cec9f67d, type: 3}
+    category: 7
+    prefabId: 
+    displayName: "L\u1ED1i \u0111i s\u1ECFi"
+    description: "Gravel Pathway 01 \xB7 BlenderKit, CC0, t\xE1c gi\u1EA3 Joshua
+      Whitney"
+    icon: {fileID: 21300000, guid: 7978be7f0d033b449889bf2dc277fb7a, type: 3}
+    listedPrice: 0
+    offers: []
+  - prefab: {fileID: 919132149155446097, guid: d415ba1116cd66d468d3a49c987a63dd, type: 3}
+    category: 7
+    prefabId: 
+    displayName: "\u0110\xE0i phun n\u01B0\u1EDBc b\xEA t\xF4ng"
+    description: "Old concrete fountain \xB7 BlenderKit, Royalty-Free, t\xE1c gi\u1EA3
+      mDav \u0434\u0430\u0432\u044B\u0434\u043E\u0432\u0430"
+    icon: {fileID: 21300000, guid: 36bab01ef01247145bd36b9051cb6c8f, type: 3}
+    listedPrice: 0
+    offers: []
+  - prefab: {fileID: 919132149155446097, guid: be371b5ffdacd3a4bacab398e6ac162e, type: 3}
+    category: 7
+    prefabId: 
+    displayName: "B\u1EC3 b\u01A1i"
+    description: "Pool \xB7 BlenderKit, Royalty-Free, t\xE1c gi\u1EA3 Russo 3D"
+    icon: {fileID: 21300000, guid: bd43e262a159a9c4c8eb11c005aff483, type: 3}
+    listedPrice: 0
+    offers: []
+  - prefab: {fileID: 919132149155446097, guid: c7855a8c97a55b040ba7b062ab360063, type: 3}
+    category: 2
+    prefabId: 
+    displayName: "C\u1ECF lau c\u1EA3nh"
+    description: "Fluffy pampass grass \xB7 BlenderKit, Royalty-Free, t\xE1c gi\u1EA3
+      Tomasz Czerniak"
+    icon: {fileID: 21300000, guid: a396eb7202549e04b903a1a906d4b774, type: 3}
+    listedPrice: 0
+    offers: []
+  - prefab: {fileID: 919132149155446097, guid: 85f7753e462d62146a89dc800bdaece3, type: 3}
+    category: 2
+    prefabId: 
+    displayName: "C\xE2y c\u1ECD th\u1EA5p"
+    description: "Palm Tree 01 \xB7 BlenderKit, Royalty-Free, t\xE1c gi\u1EA3 Nobody "
+    icon: {fileID: 21300000, guid: fecc4dabea124e14494a558931241a9c, type: 3}
+    listedPrice: 0
+    offers: []
+  - prefab: {fileID: 919132149155446097, guid: 1619575d5d85cd147bc091978abe9bda, type: 3}
+    category: 2
+    prefabId: 
+    displayName: "C\xE2y c\u1ECD d\xE0y l\xE1"
+    description: "Palm Tree Medium Dense \xB7 BlenderKit, CC0, t\xE1c gi\u1EA3 Amanpreet
+      Bajwa"
+    icon: {fileID: 21300000, guid: 98c378398cf29b342a0c47c4c5bd869f, type: 3}
+    listedPrice: 0
+    offers: []
+  - prefab: {fileID: 919132149155446097, guid: dfb37742e486b4e4dbcb7a52ac6200b2, type: 3}
+    category: 2
+    prefabId: 
+    displayName: "B\u1EE5i d\u1EEBa c\u1EA1n"
+    description: "Periwinkle Plant \xB7 BlenderKit, CC0, t\xE1c gi\u1EA3 Poly Haven "
+    icon: {fileID: 21300000, guid: d923ddaa731ed4048a41868fd3d4734e, type: 3}
+    listedPrice: 0
+    offers: []
+  - prefab: {fileID: 919132149155446097, guid: 48bbda635c4be004fbd7da2f2c04c10c, type: 3}
+    category: 2
+    prefabId: 
+    displayName: "C\xE2y d\u01B0\u01A1ng x\u1EC9 l\u1EDBn"
+    description: "Tree Fern Large \xB7 BlenderKit, Royalty-Free, t\xE1c gi\u1EA3
+      Amanpreet Bajwa"
+    icon: {fileID: 21300000, guid: e20cd1e1df632e842885323c60e8f40f, type: 3}
+    listedPrice: 0
     offers: []

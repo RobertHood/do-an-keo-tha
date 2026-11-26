@@ -1,0 +1,15 @@
+{
+ "name": "periwinkle_plant_e3d7caa4",
+ "trianglesBefore": 34350,
+ "triangles": 34350,
+ "size": [
+  1.235,
+  0.411,
+  0.321
+ ],
+ "materials": [
+  "periwinkle_plant"
+ ],
+ "textures": 2,
+ "colorTextures": 1
+}

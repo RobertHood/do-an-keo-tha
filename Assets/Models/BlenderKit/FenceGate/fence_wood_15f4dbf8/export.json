@@ -1,0 +1,16 @@
+{
+ "name": "fence_wood_15f4dbf8",
+ "trianglesBefore": 2722,
+ "triangles": 2722,
+ "size": [
+  1.872,
+  1.586,
+  0.071
+ ],
+ "materials": [
+  "Material_01",
+  "Oak raw fine wood texture"
+ ],
+ "textures": 4,
+ "colorTextures": 2
+}

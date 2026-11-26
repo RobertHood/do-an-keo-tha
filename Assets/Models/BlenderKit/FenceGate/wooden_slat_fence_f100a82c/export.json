@@ -1,0 +1,15 @@
+{
+ "name": "wooden_slat_fence_f100a82c",
+ "trianglesBefore": 1620,
+ "triangles": 1620,
+ "size": [
+  1.508,
+  1.491,
+  0.068
+ ],
+ "materials": [
+  "Wood Fence"
+ ],
+ "textures": 2,
+ "colorTextures": 1
+}

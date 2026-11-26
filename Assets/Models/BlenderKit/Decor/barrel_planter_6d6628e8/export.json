@@ -1,0 +1,15 @@
+{
+ "name": "barrel_planter_6d6628e8",
+ "trianglesBefore": 7105,
+ "triangles": 7105,
+ "size": [
+  0.454,
+  0.71,
+  0.488
+ ],
+ "materials": [
+  "barrel planter"
+ ],
+ "textures": 2,
+ "colorTextures": 1
+}

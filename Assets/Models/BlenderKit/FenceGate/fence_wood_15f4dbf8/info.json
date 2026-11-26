@@ -1,0 +1,33 @@
+{
+ "id": "15f4dbf8-8d31-415d-bedb-6ed5cf5ddf77",
+ "assetBaseId": "aee06e3e-fff0-46b7-80f5-978b23aa8c60",
+ "name": "Fence wood",
+ "term": "fence",
+ "license": "royalty_free",
+ "faces": 1422.0,
+ "size": [
+  1.8724,
+  0.0706,
+  1.5859
+ ],
+ "files": [
+  "blend",
+  "gltf",
+  "gltf_godot",
+  "resolution_0_5K",
+  "resolution_1K",
+  "resolution_2K",
+  "resolution_4K",
+  "thumbnail"
+ ],
+ "author": "Amirkhan Manapov",
+ "url": "https://www.blenderkit.com/asset-gallery-detail/15f4dbf8-8d31-415d-bedb-6ed5cf5ddf77/",
+ "thumbnail": "https://public.blenderkit.com/thumbnails/assets/15f4dbf88d31415dbedb6ed5cf5ddf77/files/thumbnail_bbc6c2da-57b9-4006-a2c1-6b0280e369bc.jpg.512x512_q85_crop-%2C.jpg",
+ "description": "Elegant light wooden fence",
+ "score": 382.5,
+ "procedural": false,
+ "textureResolutionMax": 3840,
+ "category": "FenceGate",
+ "displayName": "Hàng rào gỗ",
+ "downloadedFile": "blend_0e53625e-b32a-40fd-bb04-fdf9288cf2af.blend"
+}

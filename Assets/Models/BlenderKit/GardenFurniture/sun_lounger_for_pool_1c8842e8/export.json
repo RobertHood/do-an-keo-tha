@@ -1,0 +1,18 @@
+{
+ "name": "sun_lounger_for_pool_1c8842e8",
+ "trianglesBefore": 25052,
+ "triangles": 20000,
+ "size": [
+  0.756,
+  0.668,
+  1.89
+ ],
+ "materials": [
+  "Sun lounger black canvas fabric ",
+  "Sun lounger  black metal",
+  "Sun lounger  wood",
+  "Sun lounger  black plastic"
+ ],
+ "textures": 2,
+ "colorTextures": 2
+}

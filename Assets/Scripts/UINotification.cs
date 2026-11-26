@@ -29,6 +29,9 @@ public class UINotification : MonoBehaviour
     [Tooltip("The notification's icon. Its sprite switches between the info and error sprites.")]
     [SerializeField] private Image iconImage;
 
+    [Tooltip("Optional. A shape behind the icon, tinted per kind (light blue for info, light red for errors).")]
+    [SerializeField] private Image iconBackground;
+
     [SerializeField] private TMP_Text messageText;
 
     [Tooltip("Optional. Shows the info / error title.")]
@@ -43,6 +46,9 @@ public class UINotification : MonoBehaviour
 
     [Tooltip("Error messages (danger).")]
     [SerializeField] private Sprite errorSprite;
+
+    [SerializeField] private Color infoIconBackground = new Color(0.92f, 0.96f, 1f, 1f);
+    [SerializeField] private Color errorIconBackground = new Color(1f, 0.95f, 0.95f, 1f);
 
     [Header("Titles (only used if Title Text is assigned)")]
     [SerializeField] private string infoTitle = "Hướng dẫn";
@@ -68,8 +74,14 @@ public class UINotification : MonoBehaviour
     [Tooltip("Height of the created bar, in UI units.")]
     [SerializeField] private float timerBarHeight = 4f;
 
-    [Tooltip("Gap between the box and the created bar. 0 = flush with the bottom edge.")]
+    [Tooltip("Gap between the box and the created bar. 0 = flush with the bottom edge, negative = inside the box.")]
     [SerializeField] private float timerBarGap = 0f;
+
+    [Tooltip("Space left and right of the created bar.")]
+    [SerializeField] private float timerBarInset = 0f;
+
+    [Tooltip("Optional sprite for the created bar (e.g. a pill shape, drawn Sliced).")]
+    [SerializeField] private Sprite timerBarSprite;
 
     [SerializeField] private bool tintTimerBarByKind = true;
     [Tooltip("Default matches the blue info-outline sprite.")]
@@ -250,6 +262,11 @@ public class UINotification : MonoBehaviour
         if (messageText != null) messageText.text = message;
         if (titleText != null) titleText.text = kind == Kind.Error ? errorTitle : infoTitle;
 
+        if (iconBackground != null)
+        {
+            iconBackground.color = kind == Kind.Error ? errorIconBackground : infoIconBackground;
+        }
+
         if (timerBar != null && tintTimerBarByKind)
         {
             timerBar.color = kind == Kind.Error ? errorTimerColor : infoTimerColor;
@@ -303,12 +320,19 @@ public class UINotification : MonoBehaviour
         rect.anchorMin = new Vector2(0f, 0f);
         rect.anchorMax = new Vector2(1f, 0f);
         rect.pivot = new Vector2(0f, 1f);
-        rect.anchoredPosition = new Vector2(0f, -timerBarGap);
-        rect.sizeDelta = new Vector2(0f, timerBarHeight);
+        rect.offsetMin = new Vector2(timerBarInset, 0f);
+        rect.offsetMax = new Vector2(-timerBarInset, 0f);
+        rect.anchoredPosition = new Vector2(timerBarInset, -timerBarGap);
+        rect.sizeDelta = new Vector2(-2f * timerBarInset, timerBarHeight);
 
         Image bar = barObj.AddComponent<Image>();
         bar.color = infoTimerColor;
         bar.raycastTarget = false;
+        if (timerBarSprite != null)
+        {
+            bar.sprite = timerBarSprite;
+            bar.type = Image.Type.Sliced;
+        }
         return bar;
     }
 
@@ -340,7 +364,8 @@ public class UINotification : MonoBehaviour
     {
         foreach (Image image in box.GetComponentsInChildren<Image>(true))
         {
-            if (image.gameObject != box && image != timerBar &&
+            // Names starting with "_" are decoration added by the UI theme tool (card, shadow, outline)
+            if (image.gameObject != box && image != timerBar && image != iconBackground && !image.name.StartsWith("_") &&
                 (closeButton == null || !image.transform.IsChildOf(closeButton.transform)))
             {
                 return image;
@@ -425,5 +450,8 @@ public static class NotificationTips
     public const string ImportKey = "import";
     public const string Import = "Chọn một tệp .blueprint đã xuất trước đó để mở lại bản thiết kế. Bản thiết kế hiện tại sẽ được thay thế.";
 
-    public static readonly string[] AllKeys = { ResizeKey, RotateKey, DeleteKey, LockKey, SaveKey, ExportKey, ImportKey };
+    public const string ChooseHouseKey = "choose-house";
+    public const string ChooseHouse = "Hãy bắt đầu bằng việc chọn một mẫu nhà trong mục \"Nhà ở\", sau đó thêm cây xanh, hàng rào và các vật trang trí xung quanh.";
+
+    public static readonly string[] AllKeys = { ResizeKey, RotateKey, DeleteKey, LockKey, SaveKey, ExportKey, ImportKey, ChooseHouseKey };
 }

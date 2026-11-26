@@ -1,0 +1,24 @@
+{
+ "name": "modern_house_9277d3ad",
+ "trianglesBefore": 230907,
+ "triangles": 80000,
+ "size": [
+  13.757,
+  6.297,
+  17.897
+ ],
+ "materials": [
+  "Glass (windows)",
+  "Plastic_bumpy",
+  "wood_plank (dark)",
+  "Concrete_with_cracks",
+  "wood_plank (light)",
+  "wood_plank (outdoor)",
+  "glossy black",
+  "roof_tiles",
+  "wood_parquete",
+  "metal (aluminium)"
+ ],
+ "textures": 8,
+ "colorTextures": 5
+}

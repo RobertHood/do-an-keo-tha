@@ -1,0 +1,16 @@
+{
+ "name": "tree_fern_large_fe1198b6",
+ "trianglesBefore": 48755,
+ "triangles": 40000,
+ "size": [
+  9.122,
+  11.74,
+  8.517
+ ],
+ "materials": [
+  "TreeFern_Bark",
+  "TreeFern_Leave"
+ ],
+ "textures": 4,
+ "colorTextures": 2
+}

@@ -1,0 +1,33 @@
+{
+ "id": "c2158299-e938-4baa-b06e-ae21f18de704",
+ "assetBaseId": "11796469-5324-461e-b14f-4a64d0553edf",
+ "name": "Large Iron Gate",
+ "term": "gate",
+ "license": "cc_zero",
+ "faces": 19142.0,
+ "size": [
+  2.95009183883667,
+  0.09733648598194122,
+  2.9286537868902087
+ ],
+ "files": [
+  "blend",
+  "gltf",
+  "gltf_godot",
+  "resolution_0_5K",
+  "resolution_1K",
+  "resolution_2K",
+  "resolution_4K",
+  "thumbnail"
+ ],
+ "author": "Poly Haven ",
+ "url": "https://www.blenderkit.com/asset-gallery-detail/c2158299-e938-4baa-b06e-ae21f18de704/",
+ "thumbnail": "https://public.blenderkit.com/thumbnails/assets/c2158299e9384baab06eae21f18de704/files/thumbnail_bb1ca897-1106-4ed5-8d07-99041c677748.png.512x512_q85_crop-%2C.png",
+ "description": "Free 8K model - large cast-iron double gate with arched tops, ring motifs, spear finials and weathered rust; ornate, sturdy entrance panels.\n\nby Josh Dean",
+ "score": 650.0,
+ "procedural": null,
+ "textureResolutionMax": 8192,
+ "category": "FenceGate",
+ "displayName": "Cổng sắt lớn",
+ "downloadedFile": "blend_18671c26-9471-40de-81d1-179a7d695f7b.blend"
+}

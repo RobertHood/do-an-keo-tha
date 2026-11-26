@@ -1,0 +1,15 @@
+{
+ "name": "brick_and_iron_segment_fence_5990a780",
+ "trianglesBefore": 15490,
+ "triangles": 15000,
+ "size": [
+  6.572,
+  1.7,
+  0.411
+ ],
+ "materials": [
+  "Fence"
+ ],
+ "textures": 2,
+ "colorTextures": 1
+}

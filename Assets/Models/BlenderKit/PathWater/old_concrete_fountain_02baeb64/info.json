@@ -1,0 +1,34 @@
+{
+ "id": "02baeb64-9813-43a8-b7d9-8bf8d0c5a31e",
+ "assetBaseId": "8c47c7c1-0f47-4493-aa8a-ec9a390bf8b4",
+ "name": "Old concrete fountain",
+ "term": "fountain",
+ "license": "royalty_free",
+ "faces": 1585.0,
+ "size": [
+  3.2753,
+  3.2801,
+  2.1138
+ ],
+ "files": [
+  "blend",
+  "gltf",
+  "gltf_godot",
+  "resolution_0_5K",
+  "resolution_1K",
+  "resolution_2K",
+  "resolution_4K",
+  "thumbnail",
+  "prxc"
+ ],
+ "author": "mDav давыдова",
+ "url": "https://www.blenderkit.com/asset-gallery-detail/02baeb64-9813-43a8-b7d9-8bf8d0c5a31e/",
+ "thumbnail": "https://public.blenderkit.com/thumbnails/assets/02baeb64981343a8b7d98bf8d0c5a31e/files/thumbnail_bbc13cb9-be19-40de-8ab6-c91b9469409e.png.512x512_q85_crop-%2C.png",
+ "description": "A garden concrete fountain with mold stains, cracks, and dirt.",
+ "score": 400.0,
+ "procedural": false,
+ "textureResolutionMax": 4096,
+ "category": "PathWater",
+ "displayName": "Đài phun nước bê tông",
+ "downloadedFile": "blend_c179e4f9-2d19-41f9-9682-09d83900c1de.blend"
+}

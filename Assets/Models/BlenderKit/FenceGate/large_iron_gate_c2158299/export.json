@@ -1,0 +1,15 @@
+{
+ "name": "large_iron_gate_c2158299",
+ "trianglesBefore": 38140,
+ "triangles": 14999,
+ "size": [
+  2.95,
+  2.929,
+  0.097
+ ],
+ "materials": [
+  "large_iron_gate"
+ ],
+ "textures": 2,
+ "colorTextures": 1
+}

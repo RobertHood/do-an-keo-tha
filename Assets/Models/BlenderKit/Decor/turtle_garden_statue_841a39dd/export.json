@@ -1,0 +1,15 @@
+{
+ "name": "turtle_garden_statue_841a39dd",
+ "trianglesBefore": 16356,
+ "triangles": 15000,
+ "size": [
+  0.555,
+  0.215,
+  0.331
+ ],
+ "materials": [
+  "Turtle_garden"
+ ],
+ "textures": 2,
+ "colorTextures": 1
+}

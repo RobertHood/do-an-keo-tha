@@ -1,0 +1,20 @@
+{
+ "name": "fish_pond_e1ac8d65",
+ "trianglesBefore": 51316,
+ "triangles": 25000,
+ "size": [
+  7.696,
+  6.125,
+  9.331
+ ],
+ "materials": [
+  "lotus",
+  "fish_pond_soil",
+  "water",
+  "reed",
+  "rock",
+  "lotus_leaf"
+ ],
+ "textures": 5,
+ "colorTextures": 5
+}

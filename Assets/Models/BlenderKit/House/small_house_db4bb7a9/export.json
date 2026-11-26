@@ -1,0 +1,25 @@
+{
+ "name": "small_house_db4bb7a9",
+ "trianglesBefore": 8760,
+ "triangles": 8760,
+ "size": [
+  10.631,
+  11.008,
+  7.92
+ ],
+ "materials": [
+  "stone2",
+  "brown wood 3",
+  "white wall",
+  "Material.022",
+  "brick2",
+  "galss",
+  "white wood2",
+  "brown wood 2",
+  "black wood and metal",
+  "white wood 3",
+  "black wood"
+ ],
+ "textures": 20,
+ "colorTextures": 11
+}

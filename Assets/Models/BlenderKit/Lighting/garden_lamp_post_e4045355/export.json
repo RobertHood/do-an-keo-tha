@@ -1,0 +1,17 @@
+{
+ "name": "garden_lamp_post_e4045355",
+ "trianglesBefore": 557568,
+ "triangles": 15000,
+ "size": [
+  0.29,
+  1.802,
+  0.71
+ ],
+ "materials": [
+  "Frosty Glass",
+  "Grunge_vdepdiac",
+  "Black Metal Paint"
+ ],
+ "textures": 0,
+ "colorTextures": 0
+}

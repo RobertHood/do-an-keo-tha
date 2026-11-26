@@ -1,0 +1,31 @@
+{
+ "id": "72521002-7689-43fe-a95c-ef5cc9fbbbb7",
+ "assetBaseId": "a1b23c3e-5e04-4ee5-8dc5-ce4016d0e90a",
+ "name": "Forest Cabin",
+ "term": "cabin",
+ "license": "cc_zero",
+ "faces": 29407.0,
+ "size": [
+  9.6167,
+  19.1096,
+  7.4103
+ ],
+ "files": [
+  "blend",
+  "gltf",
+  "resolution_0_5K",
+  "resolution_1K",
+  "resolution_2K",
+  "thumbnail"
+ ],
+ "author": "3dquads blender",
+ "url": "https://www.blenderkit.com/asset-gallery-detail/72521002-7689-43fe-a95c-ef5cc9fbbbb7/",
+ "thumbnail": "https://public.blenderkit.com/thumbnails/assets/72521002768943fea95cef5cc9fbbbb7/files/thumbnail_8e34da8d-0616-4bed-837f-281c30032d04.png.512x512_q85_crop-%2C.png",
+ "description": "Forrest Cabin House with wooden roof and structure. It has a terrace with chairs and ganging plants",
+ "score": 800.0,
+ "procedural": false,
+ "textureResolutionMax": 2048,
+ "category": "House",
+ "displayName": "Nhà gỗ trong rừng",
+ "downloadedFile": "blend_0cd2146c-d324-4b3c-85bf-4ecc3e6a6be3.blend"
+}

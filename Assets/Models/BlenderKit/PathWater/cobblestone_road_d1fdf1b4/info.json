@@ -1,0 +1,34 @@
+{
+ "id": "d1fdf1b4-8443-4b62-a585-cb97c0fefb9a",
+ "assetBaseId": "c71aae1e-fa64-4454-85e0-4f76b49b9a7b",
+ "name": "Cobblestone road",
+ "term": "pavement",
+ "license": "royalty_free",
+ "faces": 168.0,
+ "size": [
+  3.6415,
+  7.3594,
+  0.1188
+ ],
+ "files": [
+  "blend",
+  "gltf",
+  "gltf_godot",
+  "resolution_0_5K",
+  "resolution_1K",
+  "resolution_2K",
+  "resolution_4K",
+  "resolution_8K",
+  "thumbnail"
+ ],
+ "author": "Paweł Wałasiewicz",
+ "url": "https://www.blenderkit.com/asset-gallery-detail/d1fdf1b4-8443-4b62-a585-cb97c0fefb9a/",
+ "thumbnail": "https://public.blenderkit.com/thumbnails/assets/d1fdf1b484434b62a585cb97c0fefb9a/files/thumbnail_d780cb19-5e20-48a2-981e-06d00f25f374.jpg.512x512_q85_crop-%2C.jpg",
+ "description": "Realistic, photoscanned cobblestone road segment of about 7 meters. This way texture is more interesting and less repetitive than with seamless cobblestone texture.   \r\n\r\nNormal and diffuse maps are b",
+ "score": 600.0,
+ "procedural": false,
+ "textureResolutionMax": 8192,
+ "category": "PathWater",
+ "displayName": "Đường lát đá cuội",
+ "downloadedFile": "blend_0768e76a-5dc1-48a6-9352-05afa4e46c9b.blend"
+}

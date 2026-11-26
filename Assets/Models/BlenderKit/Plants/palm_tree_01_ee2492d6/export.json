@@ -1,0 +1,16 @@
+{
+ "name": "palm_tree_01_ee2492d6",
+ "trianglesBefore": 14320,
+ "triangles": 14320,
+ "size": [
+  6.94,
+  7.161,
+  6.619
+ ],
+ "materials": [
+  "palm02",
+  "pngwing.com"
+ ],
+ "textures": 2,
+ "colorTextures": 2
+}

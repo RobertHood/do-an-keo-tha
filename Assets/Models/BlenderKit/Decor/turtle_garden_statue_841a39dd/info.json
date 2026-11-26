@@ -1,0 +1,33 @@
+{
+ "id": "841a39dd-f688-41ae-832d-02cd25ff7f5d",
+ "assetBaseId": "c6e685a7-bd97-47f2-80ae-888ec663280e",
+ "name": "Turtle Garden Statue",
+ "term": "garden statue",
+ "license": "royalty_free",
+ "faces": 8178.0,
+ "size": [
+  0.5546,
+  0.3311,
+  0.2149
+ ],
+ "files": [
+  "blend",
+  "gltf",
+  "gltf_godot",
+  "resolution_0_5K",
+  "resolution_1K",
+  "resolution_2K",
+  "resolution_4K",
+  "thumbnail"
+ ],
+ "author": "Vavrinec Foltan",
+ "url": "https://www.blenderkit.com/asset-gallery-detail/841a39dd-f688-41ae-832d-02cd25ff7f5d/",
+ "thumbnail": "https://public.blenderkit.com/thumbnails/assets/841a39ddf68841ae832d02cd25ff7f5d/files/thumbnail_488bdb3f-253f-4c06-877a-7fd8c47a23bf.jpg.512x512_q85_crop-%2C.jpg",
+ "description": "This object was created from over 138 photos using photogrammetry. This is a lowpoly object with a baked normal map! First created in Metascan, Trnio Plus and finally with RealityCapture RC. The objec",
+ "score": 386.66666666666663,
+ "procedural": false,
+ "textureResolutionMax": 4096,
+ "category": "Decor",
+ "displayName": "Tượng rùa sân vườn",
+ "downloadedFile": "blend_c83c04cf-9fcf-4654-a3ed-8284ac611263.blend"
+}

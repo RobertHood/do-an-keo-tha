@@ -1,0 +1,32 @@
+{
+ "id": "fe1198b6-5cd4-4a69-a7a6-64b549f0d350",
+ "assetBaseId": "25d6a477-7a01-46b1-b5dd-d162fe2ab2fc",
+ "name": "Tree Fern Large",
+ "term": "tree",
+ "license": "royalty_free",
+ "faces": 48755.0,
+ "size": [
+  9.1217,
+  8.5167,
+  11.7403
+ ],
+ "files": [
+  "blend",
+  "gltf",
+  "gltf_godot",
+  "resolution_0_5K",
+  "resolution_1K",
+  "resolution_2K",
+  "thumbnail"
+ ],
+ "author": "Amanpreet Bajwa",
+ "url": "https://www.blenderkit.com/asset-gallery-detail/fe1198b6-5cd4-4a69-a7a6-64b549f0d350/",
+ "thumbnail": "https://public.blenderkit.com/thumbnails/assets/fe1198b65cd44a69a7a664b549f0d350/files/thumbnail_fcc48af3-e384-473d-b7db-2f56e986c99a.jpg.512x512_q85_crop-%2C.jpg",
+ "description": "Tree Fern Large for any type of Scenes and Environments like Urban, Architecture, Natural, Garden, Park. High quality, PBR, Optimized and ready for use in your scenes.",
+ "score": 2500.0,
+ "procedural": false,
+ "textureResolutionMax": 2048,
+ "category": "Plants",
+ "displayName": "Cây dương xỉ lớn",
+ "downloadedFile": "blend_61011503-4286-4d22-be00-9865d723a8e6.blend"
+}

@@ -1,0 +1,16 @@
+{
+ "name": "porch_rocking_chair_7d17d0f0",
+ "trianglesBefore": 9288,
+ "triangles": 9288,
+ "size": [
+  0.515,
+  1.123,
+  0.805
+ ],
+ "materials": [
+  "Wood Painted Seat",
+  "Wood Painted"
+ ],
+ "textures": 2,
+ "colorTextures": 2
+}
