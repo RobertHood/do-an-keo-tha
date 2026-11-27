@@ -76,3 +76,6 @@ crashlytics-build.properties
 
 # Raw BlenderKit downloads (.blend sources, ~2 GB); the converted FBX files live in Assets/Models/BlenderKit
 /ModelSources/
+
+# Model library export scratch files
+/Tools/ModelLibrary/work/

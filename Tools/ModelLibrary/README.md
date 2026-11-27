@@ -28,6 +28,23 @@ read back with the same bounds (see `work/results.json`). `render_glb.py` render
 "E:/Blender/blender.exe" -b --factory-startup --python render_glb.py -- <absolute out dir> a.glb b.glb
 ```
 
+## House building materials
+
+A house can list the building materials it is made of (glass, floor tiles, roof...). Unity then prices it as the
+sum of quantity x unit price per material, each with its own store / custom unit price, instead of one listed price.
+Quantities are at scale 1 and grow with the model's scale by unit (m² with scale², m³ with scale³, m with scale,
+pieces stay the same).
+
+1. Measure the render materials of the houses as a starting point:
+
+   ```sh
+   "E:/Blender/blender.exe" -b --factory-startup --python measure_materials.py -- work/measured.json "E:/unity project/My project/ModelLibrary/models/House/"*.glb
+   ```
+
+2. Write `materials.json` next to this script from those numbers (see the format in `write_catalog.py`). Map each
+   render material to a real material, use one face of a pane / half of a two-sided wall, and drop decorations.
+3. Run `write_catalog.py` again and upload `catalog.json`. A model database can hold the same list per house.
+
 ## Adding a model later
 
 Import it into Unity as before (Tools > Suburbsim > Import Models, then Refresh Catalog for its thumbnail and

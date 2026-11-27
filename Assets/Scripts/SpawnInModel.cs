@@ -301,6 +301,7 @@ public class SpawnInModel : MonoBehaviour
         draggable.selectedStore = data.selectedStore;
         draggable.useCustomPrice = data.useCustomPrice;
         draggable.customPrice = data.customPrice;
+        draggable.materialChoices = MaterialChoices.Copy(data.materialChoices);
 
         return instance;
     }

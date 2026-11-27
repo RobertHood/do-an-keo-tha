@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>2.5.1. Thiết kế các bảng trong CSDL</title>
+<style>
+  body { font-family: "Times New Roman", Times, serif; font-size: 13pt; line-height: 1.5; max-width: 820px; margin: 32px auto; padding: 0 16px; color: #000; background: #fff; }
+  h3 { font-size: 14pt; margin: 18px 0 6px; }
+  h4 { font-size: 13pt; margin: 18px 0 6px; }
+  ul { margin: 4px 0 8px; }
+  p.caption { text-align: center; font-style: italic; color: #44546A; margin: 10px 0 4px; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 14px; }
+  th, td { border: 1px solid #000; padding: 3px 6px; vertical-align: top; text-align: left; font-size: 12pt; }
+  th { font-weight: normal; }
+  td.k { line-height: 1.4; }
+</style>
+</head>
+<body>
+
+<h3>2.5.1. Thiết kế các bảng trong CSDL</h3>
+<p>Mục này mô tả chi tiết các bảng dữ liệu trong cơ sở dữ liệu PostgreSQL của Backend Core và ý nghĩa của từng trường dữ liệu. Sau quá trình chuẩn hóa từ biểu đồ lớp thực thể, cơ sở dữ liệu gồm 10 bảng: users, feng_shui_profiles, design_templates, projects, materials, assets, asset_materials, project_assets, feng_shui_audits và feng_shui_chat_histories. Khóa chính của tất cả các bảng sử dụng kiểu UUID được sinh tự động bằng hàm gen_random_uuid(), các cột tiền tệ dùng kiểu DECIMAL, còn các dữ liệu có cấu trúc linh hoạt (bản vẽ 3D từ Unity WebGL, danh sách hướng, kết quả chấm phong thủy) được lưu dưới dạng JSONB. Dữ liệu tri thức phục vụ truy hồi của trợ lý AI (bảng rag_chunks) được lưu ở một cơ sở dữ liệu riêng của AI Service nên không trình bày trong mục này.</p>
+
+<!-- ===================== 1. users ===================== -->
+<h4>2.5.1.1. Bảng users</h4>
+<ul>
+  <li>Ý nghĩa: lưu thông tin tài khoản của người dùng hệ thống, bao gồm chủ nhà, kiến trúc sư, nhà thầu và quản trị viên.</li>
+  <li>Tên đầy đủ: users</li>
+  <li>Các trường dữ liệu có trong bảng:</li>
+</ul>
+<p class="caption">Bảng 2.2. Các thuộc tính bảng users</p>
+<table>
+  <tr><th>Tên</th><th>Kiểu dữ liệu</th><th>Điều kiện ràng buộc</th><th>Ý nghĩa</th></tr>
+  <tr><td>id</td><td>UUID</td><td>NOT NULL,<br>DEFAULT gen_random_uuid()</td><td>Mã số định danh của tài khoản</td></tr>
+  <tr><td>email</td><td>VARCHAR(255)</td><td>NOT NULL, UNIQUE</td><td>Email đăng nhập. Mỗi email chỉ được đăng ký một tài khoản</td></tr>
+  <tr><td>password</td><td>VARCHAR(255)</td><td>NOT NULL</td><td>Mật khẩu đăng nhập đã được băm (hash), không lưu dạng rõ</td></tr>
+  <tr><td>full_name</td><td>VARCHAR(150)</td><td>NOT NULL</td><td>Họ tên người dùng</td></tr>
+  <tr><td>phone_number</td><td>VARCHAR(20)</td><td>NULL</td><td>Số điện thoại liên hệ</td></tr>
+  <tr><td>avatar_url</td><td>VARCHAR(500)</td><td>NULL</td><td>Đường dẫn ảnh đại diện của người dùng</td></tr>
+  <tr><td>role</td><td>Role (ENUM)</td><td>NOT NULL</td><td>Vai trò của tài khoản: HOMEOWNER (chủ nhà), ARCHITECT (kiến trúc sư), CONTRACTOR (nhà thầu), ADMIN (quản trị viên)</td></tr>
+  <tr><td>is_active</td><td>BOOLEAN</td><td>NOT NULL,<br>DEFAULT FALSE</td><td>Trạng thái kích hoạt của tài khoản. Bằng FALSE khi chưa xác thực email, TRUE khi đã kích hoạt</td></tr>
+  <tr><td>otp_code</td><td>VARCHAR(6)</td><td>NULL</td><td>Mã OTP 6 chữ số dùng để xác thực email hoặc khôi phục mật khẩu</td></tr>
+  <tr><td>otp_expires_at</td><td>TIMESTAMP</td><td>NULL</td><td>Thời điểm hết hạn của mã OTP</td></tr>
+  <tr><td>hashed_refresh_token</td><td>VARCHAR(255)</td><td>NULL</td><td>Refresh token đã băm, dùng để cấp lại access token (JWT). Bằng NULL khi người dùng đã đăng xuất</td></tr>
+  <tr><td>created_at</td><td>TIMESTAMP</td><td>NOT NULL,<br>DEFAULT now()</td><td>Thời gian khởi tạo</td></tr>
+  <tr><td>updated_at</td><td>TIMESTAMP</td><td>NOT NULL</td><td>Thời gian cập nhật lần cuối, tự động cập nhật khi bản ghi thay đổi</td></tr>
+  <tr><td colspan="4" class="k">PRIMARY KEY(id),<br>UNIQUE(email),<br>INDEX(email)</td></tr>
+</table>
+
+<!-- ===================== 2. feng_shui_profiles ===================== -->
+<h4>2.5.1.2. Bảng feng_shui_profiles</h4>
+<ul>
+  <li>Ý nghĩa: lưu hồ sơ mệnh cung Bát Trạch của người dùng, được AI Service tính từ ngày sinh và giới tính. Mỗi tài khoản có tối đa một hồ sơ (tài khoản quản trị viên có thể không có).</li>
+  <li>Tên đầy đủ: feng_shui_profiles</li>
+  <li>Các trường dữ liệu có trong bảng:</li>
+</ul>
+<p class="caption">Bảng 2.3. Các thuộc tính bảng feng_shui_profiles</p>
+<table>
+  <tr><th>Tên</th><th>Kiểu dữ liệu</th><th>Điều kiện ràng buộc</th><th>Ý nghĩa</th></tr>
+  <tr><td>id</td><td>UUID</td><td>NOT NULL,<br>DEFAULT gen_random_uuid()</td><td>Mã số định danh của hồ sơ phong thủy</td></tr>
+  <tr><td>user_id</td><td>UUID</td><td>NOT NULL, UNIQUE</td><td>Mã số của tài khoản sở hữu hồ sơ</td></tr>
+  <tr><td>birth_date</td><td>DATE</td><td>NOT NULL</td><td>Ngày sinh dương lịch của gia chủ (định dạng YYYY-MM-DD)</td></tr>
+  <tr><td>gender</td><td>VARCHAR(10)</td><td>NOT NULL</td><td>Giới tính của gia chủ: nam hoặc nu</td></tr>
+  <tr><td>lunar_year</td><td>INTEGER</td><td>NOT NULL</td><td>Năm âm lịch được quy đổi từ ngày sinh dương lịch</td></tr>
+  <tr><td>can_chi</td><td>VARCHAR(30)</td><td>NOT NULL</td><td>Can chi của năm âm lịch, ví dụ Canh Ngọ</td></tr>
+  <tr><td>destiny_palace</td><td>VARCHAR(50)</td><td>NOT NULL</td><td>Mệnh cung của gia chủ: Khảm, Khôn, Chấn, Tốn, Càn, Đoài, Cấn hoặc Ly</td></tr>
+  <tr><td>fate_group</td><td>VARCHAR(20)</td><td>NOT NULL</td><td>Nhóm mệnh: dong (Đông tứ mệnh) hoặc tay (Tây tứ mệnh)</td></tr>
+  <tr><td>directions_json</td><td>JSONB</td><td>NOT NULL</td><td>Danh sách 8 hướng gợi ý (huongGoiY), mỗi hướng gồm phương, cung, phương vị và điểm đánh giá</td></tr>
+  <tr><td>created_at</td><td>TIMESTAMP</td><td>NOT NULL,<br>DEFAULT now()</td><td>Thời gian khởi tạo</td></tr>
+  <tr><td>updated_at</td><td>TIMESTAMP</td><td>NOT NULL</td><td>Thời gian cập nhật lần cuối, tự động cập nhật khi bản ghi thay đổi</td></tr>
+  <tr><td colspan="4" class="k">PRIMARY KEY(id),<br>UNIQUE(user_id),<br>FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE</td></tr>
+</table>
+
+<!-- ===================== 3. design_templates ===================== -->
+<h4>2.5.1.3. Bảng design_templates</h4>
+<ul>
+  <li>Ý nghĩa: lưu các bản thiết kế mẫu do quản trị viên tạo, để chủ nhà lựa chọn làm điểm xuất phát khi khởi tạo dự án.</li>
+  <li>Tên đầy đủ: design_templates</li>
+  <li>Các trường dữ liệu có trong bảng:</li>
+</ul>
+<p class="caption">Bảng 2.4. Các thuộc tính bảng design_templates</p>
+<table>
+  <tr><th>Tên</th><th>Kiểu dữ liệu</th><th>Điều kiện ràng buộc</th><th>Ý nghĩa</th></tr>
+  <tr><td>id</td><td>UUID</td><td>NOT NULL,<br>DEFAULT gen_random_uuid()</td><td>Mã số định danh của bản thiết kế mẫu</td></tr>
+  <tr><td>name</td><td>VARCHAR(200)</td><td>NOT NULL</td><td>Tên bản thiết kế mẫu</td></tr>
+  <tr><td>style</td><td>VARCHAR(100)</td><td>NOT NULL</td><td>Phong cách kiến trúc của bản thiết kế</td></tr>
+  <tr><td>suggested_plot_area</td><td>DOUBLE PRECISION</td><td>NOT NULL</td><td>Diện tích lô đất đề xuất phù hợp với mẫu (m²)</td></tr>
+  <tr><td>preview_image_url</td><td>VARCHAR(500)</td><td>NOT NULL</td><td>Đường dẫn ảnh phối cảnh đại diện lưu trên Cloudflare R2</td></tr>
+  <tr><td>scene_config_json</td><td>JSONB</td><td>NOT NULL</td><td>Cấu hình bản vẽ 3D mẫu theo cấu trúc BlueprintData của Unity WebGL</td></tr>
+  <tr><td>is_published</td><td>BOOLEAN</td><td>NOT NULL,<br>DEFAULT TRUE</td><td>Trạng thái công khai. TRUE thì chủ nhà nhìn thấy và chọn được mẫu, FALSE thì mẫu bị ẩn</td></tr>
+  <tr><td>created_at</td><td>TIMESTAMP</td><td>NOT NULL,<br>DEFAULT now()</td><td>Thời gian khởi tạo</td></tr>
+  <tr><td>updated_at</td><td>TIMESTAMP</td><td>NOT NULL</td><td>Thời gian cập nhật lần cuối, tự động cập nhật khi bản ghi thay đổi</td></tr>
+  <tr><td colspan="4" class="k">PRIMARY KEY(id)</td></tr>
+</table>
+
+<!-- ===================== 4. projects ===================== -->
+<h4>2.5.1.4. Bảng projects</h4>
+<ul>
+  <li>Ý nghĩa: lưu các dự án thiết kế nhà của chủ nhà, bao gồm thông tin khảo sát lô đất và toàn bộ bản vẽ 3D được lưu từ Unity WebGL. Một dự án được khởi tạo từ lô đất trống hoặc từ một bản thiết kế mẫu.</li>
+  <li>Tên đầy đủ: projects</li>
+  <li>Các trường dữ liệu có trong bảng:</li>
+</ul>
+<p class="caption">Bảng 2.5. Các thuộc tính bảng projects</p>
+<table>
+  <tr><th>Tên</th><th>Kiểu dữ liệu</th><th>Điều kiện ràng buộc</th><th>Ý nghĩa</th></tr>
+  <tr><td>id</td><td>UUID</td><td>NOT NULL,<br>DEFAULT gen_random_uuid()</td><td>Mã số định danh của dự án</td></tr>
+  <tr><td>user_id</td><td>UUID</td><td>NOT NULL</td><td>Mã số của chủ nhà sở hữu dự án</td></tr>
+  <tr><td>template_id</td><td>UUID</td><td>NULL</td><td>Mã số của bản thiết kế mẫu được áp dụng. Bằng NULL khi dự án khởi tạo từ lô đất trống</td></tr>
+  <tr><td>name</td><td>VARCHAR(200)</td><td>NOT NULL</td><td>Tên dự án</td></tr>
+  <tr><td>location</td><td>VARCHAR(255)</td><td>NOT NULL</td><td>Địa điểm của lô đất</td></tr>
+  <tr><td>description</td><td>TEXT</td><td>NULL</td><td>Mô tả dự án</td></tr>
+  <tr><td>thumbnail_url</td><td>VARCHAR(500)</td><td>NULL</td><td>Đường dẫn ảnh đại diện của dự án</td></tr>
+  <tr><td>target_budget</td><td>DECIMAL(14,2)</td><td>NULL</td><td>Ngân sách mục tiêu của chủ nhà (VNĐ)</td></tr>
+  <tr><td>init_type</td><td>VARCHAR(30)</td><td>NOT NULL</td><td>Cách khởi tạo dự án: EMPTY_PLOT (từ lô đất trống) hoặc FROM_TEMPLATE (từ bản thiết kế mẫu)</td></tr>
+  <tr><td>plot_area</td><td>DOUBLE PRECISION</td><td>NULL</td><td>Diện tích lô đất từ khảo sát ban đầu (m²)</td></tr>
+  <tr><td>frontage</td><td>DOUBLE PRECISION</td><td>NULL</td><td>Chiều rộng mặt tiền của lô đất (m)</td></tr>
+  <tr><td>orientation_degree</td><td>DOUBLE PRECISION</td><td>NULL</td><td>Góc hướng Bắc của bản vẽ so với la bàn (0°–360°)</td></tr>
+  <tr><td>style_preference</td><td>VARCHAR(50)</td><td>NULL</td><td>Phong cách kiến trúc mà chủ nhà mong muốn</td></tr>
+  <tr><td>plot_polygon</td><td>JSONB</td><td>NULL</td><td>Tọa độ các đỉnh đa giác ranh giới lô đất, phục vụ AI Service và GIS</td></tr>
+  <tr><td>scene_json</td><td>JSONB</td><td>NULL</td><td>Dữ liệu bản vẽ BlueprintData từ Unity WebGL (lô đất và cấu hình khung cảnh). Danh sách mô hình 3D đặt trong cảnh được lưu riêng ở bảng project_assets</td></tr>
+  <tr><td>created_at</td><td>TIMESTAMP</td><td>NOT NULL,<br>DEFAULT now()</td><td>Thời gian khởi tạo</td></tr>
+  <tr><td>updated_at</td><td>TIMESTAMP</td><td>NOT NULL</td><td>Thời gian cập nhật lần cuối, tự động cập nhật khi bản ghi thay đổi</td></tr>
+  <tr><td>deleted_at</td><td>TIMESTAMP</td><td>NULL</td><td>Thời điểm xóa mềm dự án. Bằng NULL khi dự án chưa bị xóa</td></tr>
+  <tr><td colspan="4" class="k">PRIMARY KEY(id),<br>FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,<br>FOREIGN KEY (template_id) REFERENCES design_templates(id) ON DELETE SET NULL,<br>INDEX(user_id), INDEX(template_id)</td></tr>
+</table>
+
+<!-- ===================== 5. materials ===================== -->
+<h4>2.5.1.5. Bảng materials</h4>
+<ul>
+  <li>Ý nghĩa: lưu danh mục vật liệu xây dựng và khung đơn giá tham khảo (tối thiểu, tối đa) do quản trị viên quản lý, phục vụ việc lựa chọn vật liệu và dự toán chi phí.</li>
+  <li>Tên đầy đủ: materials</li>
+  <li>Các trường dữ liệu có trong bảng:</li>
+</ul>
+<p class="caption">Bảng 2.6. Các thuộc tính bảng materials</p>
+<table>
+  <tr><th>Tên</th><th>Kiểu dữ liệu</th><th>Điều kiện ràng buộc</th><th>Ý nghĩa</th></tr>
+  <tr><td>id</td><td>UUID</td><td>NOT NULL,<br>DEFAULT gen_random_uuid()</td><td>Mã số định danh của vật liệu</td></tr>
+  <tr><td>name</td><td>VARCHAR(200)</td><td>NOT NULL</td><td>Tên vật liệu</td></tr>
+  <tr><td>category</td><td>VARCHAR(100)</td><td>NOT NULL</td><td>Loại vật liệu, ví dụ gỗ lát sàn, ngói lợp</td></tr>
+  <tr><td>applied_zone</td><td>VARCHAR(150)</td><td>NOT NULL</td><td>Hạng mục công trình áp dụng vật liệu</td></tr>
+  <tr><td>unit</td><td>VARCHAR(20)</td><td>NOT NULL</td><td>Đơn vị tính, ví dụ m²</td></tr>
+  <tr><td>min_unit_price</td><td>DECIMAL(12,2)</td><td>NOT NULL</td><td>Đơn giá thấp nhất trên một đơn vị tính (VNĐ)</td></tr>
+  <tr><td>max_unit_price</td><td>DECIMAL(12,2)</td><td>NOT NULL</td><td>Đơn giá cao nhất trên một đơn vị tính (VNĐ)</td></tr>
+  <tr><td>texture_url</td><td>VARCHAR(500)</td><td>NOT NULL</td><td>Đường dẫn ảnh bề mặt (texture) của vật liệu lưu trên Cloudflare R2</td></tr>
+  <tr><td>created_at</td><td>TIMESTAMP</td><td>NOT NULL,<br>DEFAULT now()</td><td>Thời gian khởi tạo</td></tr>
+  <tr><td>updated_at</td><td>TIMESTAMP</td><td>NOT NULL</td><td>Thời gian cập nhật lần cuối, tự động cập nhật khi bản ghi thay đổi</td></tr>
+  <tr><td colspan="4" class="k">PRIMARY KEY(id),<br>INDEX(category)</td></tr>
+</table>
+
+<!-- ===================== 6. assets ===================== -->
+<h4>2.5.1.6. Bảng assets</h4>
+<ul>
+  <li>Ý nghĩa: lưu thư viện mô hình 3D (nhà, cổng, cây, nội thất…) mà chủ nhà có thể đặt vào bản vẽ. Tệp mô hình (GLB) và ảnh thu nhỏ được lưu trên Cloudflare R2, bảng chỉ lưu đường dẫn và các thông số phục vụ đặt mô hình, chấm phong thủy và dự toán.</li>
+  <li>Tên đầy đủ: assets</li>
+  <li>Các trường dữ liệu có trong bảng:</li>
+</ul>
+<p class="caption">Bảng 2.7. Các thuộc tính bảng assets</p>
+<table>
+  <tr><th>Tên</th><th>Kiểu dữ liệu</th><th>Điều kiện ràng buộc</th><th>Ý nghĩa</th></tr>
+  <tr><td>id</td><td>UUID</td><td>NOT NULL,<br>DEFAULT gen_random_uuid()</td><td>Mã số định danh của mô hình 3D</td></tr>
+  <tr><td>code</td><td>VARCHAR(100)</td><td>NOT NULL, UNIQUE</td><td>Mã mô hình dùng trong Unity WebGL (prefabId), ví dụ Fir_Tree</td></tr>
+  <tr><td>name</td><td>VARCHAR(200)</td><td>NOT NULL</td><td>Tên hiển thị của mô hình, ví dụ Cây thông</td></tr>
+  <tr><td>category</td><td>VARCHAR(100)</td><td>NOT NULL</td><td>Nhóm mô hình trong thư viện, ví dụ Houses, Plants</td></tr>
+  <tr><td>description</td><td>TEXT</td><td>NULL</td><td>Mô tả mô hình</td></tr>
+  <tr><td>loai</td><td>VARCHAR(20)</td><td>NOT NULL</td><td>Loại đối tượng phong thủy của mô hình, ví dụ nha (nhà), cong (cổng), cay (cây)</td></tr>
+  <tr><td>listed_price</td><td>DECIMAL(14,2)</td><td>NOT NULL,<br>DEFAULT 0</td><td>Giá niêm yết tham khảo của mô hình (VNĐ)</td></tr>
+  <tr><td>base_width</td><td>DOUBLE PRECISION</td><td>NOT NULL</td><td>Chiều rộng gốc của mô hình theo trục X (m)</td></tr>
+  <tr><td>base_height</td><td>DOUBLE PRECISION</td><td>NOT NULL</td><td>Chiều cao gốc của mô hình theo trục Y (m)</td></tr>
+  <tr><td>base_depth</td><td>DOUBLE PRECISION</td><td>NOT NULL</td><td>Chiều sâu gốc của mô hình theo trục Z (m)</td></tr>
+  <tr><td>front_yaw_offset</td><td>DOUBLE PRECISION</td><td>NOT NULL,<br>DEFAULT 0</td><td>Góc lệch (độ) giữa mặt trước của mô hình và trục +Z, dùng để xác định hướng mô hình</td></tr>
+  <tr><td>has_door</td><td>BOOLEAN</td><td>NOT NULL,<br>DEFAULT FALSE</td><td>Mô hình có cửa chính hay không (dùng để xác định hướng cửa khi chấm phong thủy)</td></tr>
+  <tr><td>door_offset</td><td>JSONB</td><td>NULL</td><td>Tọa độ {x, y, z} của cửa chính so với tâm mô hình. Bằng NULL khi mô hình không có cửa</td></tr>
+  <tr><td>model_url</td><td>VARCHAR(500)</td><td>NOT NULL</td><td>Đường dẫn tệp mô hình GLB lưu trên Cloudflare R2</td></tr>
+  <tr><td>thumbnail_url</td><td>VARCHAR(500)</td><td>NOT NULL</td><td>Đường dẫn ảnh thu nhỏ của mô hình lưu trên Cloudflare R2</td></tr>
+  <tr><td>file_size</td><td>INTEGER</td><td>NOT NULL</td><td>Dung lượng tệp mô hình (byte)</td></tr>
+  <tr><td>author</td><td>VARCHAR(150)</td><td>NULL</td><td>Tác giả của mô hình</td></tr>
+  <tr><td>license</td><td>VARCHAR(150)</td><td>NULL</td><td>Giấy phép sử dụng mô hình</td></tr>
+  <tr><td>is_published</td><td>BOOLEAN</td><td>NOT NULL,<br>DEFAULT TRUE</td><td>Trạng thái hiển thị trong thư viện. FALSE thì mô hình bị ẩn khỏi danh mục</td></tr>
+  <tr><td>created_at</td><td>TIMESTAMP</td><td>NOT NULL,<br>DEFAULT now()</td><td>Thời gian khởi tạo</td></tr>
+  <tr><td>updated_at</td><td>TIMESTAMP</td><td>NOT NULL</td><td>Thời gian cập nhật lần cuối, tự động cập nhật khi bản ghi thay đổi</td></tr>
+  <tr><td colspan="4" class="k">PRIMARY KEY(id),<br>UNIQUE(code),<br>INDEX(category)</td></tr>
+</table>
+
+<!-- ===================== 7. asset_materials ===================== -->
+<h4>2.5.1.7. Bảng asset_materials</h4>
+<ul>
+  <li>Ý nghĩa: lưu thành phần vật liệu cấu tạo nên từng mô hình 3D và khối lượng tương ứng, dùng để dự toán chi phí vật liệu khi mô hình được đặt vào dự án. Đây là bảng trung gian thể hiện quan hệ nhiều – nhiều giữa assets và materials: một mô hình được cấu tạo từ nhiều vật liệu, một vật liệu có thể dùng cho nhiều mô hình.</li>
+  <li>Tên đầy đủ: asset_materials</li>
+  <li>Các trường dữ liệu có trong bảng:</li>
+</ul>
+<p class="caption">Bảng 2.8. Các thuộc tính bảng asset_materials</p>
+<table>
+  <tr><th>Tên</th><th>Kiểu dữ liệu</th><th>Điều kiện ràng buộc</th><th>Ý nghĩa</th></tr>
+  <tr><td>id</td><td>UUID</td><td>NOT NULL,<br>DEFAULT gen_random_uuid()</td><td>Mã số định danh của thành phần vật liệu</td></tr>
+  <tr><td>asset_id</td><td>UUID</td><td>NOT NULL</td><td>Mã số của mô hình 3D</td></tr>
+  <tr><td>material_id</td><td>UUID</td><td>NOT NULL</td><td>Mã số của vật liệu cấu tạo nên mô hình</td></tr>
+  <tr><td>quantity</td><td>DOUBLE PRECISION</td><td>NOT NULL</td><td>Khối lượng vật liệu cần cho một mô hình, tính theo đơn vị của vật liệu (m², m³…)</td></tr>
+  <tr><td>created_at</td><td>TIMESTAMP</td><td>NOT NULL,<br>DEFAULT now()</td><td>Thời gian khởi tạo</td></tr>
+  <tr><td>updated_at</td><td>TIMESTAMP</td><td>NOT NULL</td><td>Thời gian cập nhật lần cuối, tự động cập nhật khi bản ghi thay đổi</td></tr>
+  <tr><td colspan="4" class="k">PRIMARY KEY(id),<br>UNIQUE(asset_id, material_id),<br>FOREIGN KEY (asset_id) REFERENCES assets(id) ON DELETE CASCADE,<br>FOREIGN KEY (material_id) REFERENCES materials(id) ON DELETE RESTRICT,<br>INDEX(material_id)</td></tr>
+</table>
+
+<!-- ===================== 8. project_assets ===================== -->
+<h4>2.5.1.8. Bảng project_assets</h4>
+<ul>
+  <li>Ý nghĩa: lưu các mô hình 3D được chủ nhà đặt vào bản vẽ của dự án, gồm vị trí, góc xoay, tỉ lệ và lựa chọn giá của từng mô hình. Đây là bảng trung gian thể hiện quan hệ nhiều – nhiều giữa projects và assets: một dự án có nhiều mô hình, một mô hình có thể được đặt trong nhiều dự án (và nhiều lần trong cùng một dự án).</li>
+  <li>Tên đầy đủ: project_assets</li>
+  <li>Các trường dữ liệu có trong bảng:</li>
+</ul>
+<p class="caption">Bảng 2.9. Các thuộc tính bảng project_assets</p>
+<table>
+  <tr><th>Tên</th><th>Kiểu dữ liệu</th><th>Điều kiện ràng buộc</th><th>Ý nghĩa</th></tr>
+  <tr><td>id</td><td>UUID</td><td>NOT NULL,<br>DEFAULT gen_random_uuid()</td><td>Mã số định danh của mô hình đã đặt trong dự án</td></tr>
+  <tr><td>project_id</td><td>UUID</td><td>NOT NULL</td><td>Mã số của dự án chứa mô hình</td></tr>
+  <tr><td>asset_id</td><td>UUID</td><td>NOT NULL</td><td>Mã số của mô hình 3D trong thư viện</td></tr>
+  <tr><td>position</td><td>JSONB</td><td>NOT NULL</td><td>Tọa độ {x, y, z} của mô hình trong khung cảnh (m)</td></tr>
+  <tr><td>rotation</td><td>JSONB</td><td>NOT NULL</td><td>Góc xoay của mô hình dạng quaternion {x, y, z, w}</td></tr>
+  <tr><td>scale</td><td>JSONB</td><td>NOT NULL</td><td>Tỉ lệ phóng to/thu nhỏ {x, y, z} của mô hình</td></tr>
+  <tr><td>is_locked</td><td>BOOLEAN</td><td>NOT NULL,<br>DEFAULT FALSE</td><td>Mô hình bị khóa, không cho kéo thả hay chỉnh sửa</td></tr>
+  <tr><td>facing_degree</td><td>DOUBLE PRECISION</td><td>NULL</td><td>Hướng la bàn của mặt trước mô hình (0° là Bắc, 90° là Đông, 180° là Nam, 270° là Tây)</td></tr>
+  <tr><td>inside_plot</td><td>BOOLEAN</td><td>NOT NULL,<br>DEFAULT FALSE</td><td>Toàn bộ mô hình có nằm trong ranh giới lô đất hay không</td></tr>
+  <tr><td>selected_store</td><td>VARCHAR(150)</td><td>NULL</td><td>Tên cửa hàng mà chủ nhà chọn để lấy giá mô hình</td></tr>
+  <tr><td>use_custom_price</td><td>BOOLEAN</td><td>NOT NULL,<br>DEFAULT FALSE</td><td>Chủ nhà tự nhập giá thay vì dùng giá niêm yết hoặc giá cửa hàng</td></tr>
+  <tr><td>custom_price</td><td>DECIMAL(14,2)</td><td>NULL</td><td>Giá do chủ nhà tự nhập (VNĐ). Chỉ có giá trị khi use_custom_price bằng TRUE</td></tr>
+  <tr><td>material_choices_json</td><td>JSONB</td><td>NULL</td><td>Lựa chọn giá cho từng vật liệu của mô hình nhà (mã vật liệu, cửa hàng, giá tự nhập)</td></tr>
+  <tr><td>created_at</td><td>TIMESTAMP</td><td>NOT NULL,<br>DEFAULT now()</td><td>Thời gian đặt mô hình vào dự án</td></tr>
+  <tr><td>updated_at</td><td>TIMESTAMP</td><td>NOT NULL</td><td>Thời gian cập nhật lần cuối, tự động cập nhật khi bản ghi thay đổi</td></tr>
+  <tr><td colspan="4" class="k">PRIMARY KEY(id),<br>FOREIGN KEY (project_id) REFERENCES projects(id) ON DELETE CASCADE,<br>FOREIGN KEY (asset_id) REFERENCES assets(id) ON DELETE RESTRICT,<br>INDEX(project_id), INDEX(asset_id)</td></tr>
+</table>
+
+<!-- ===================== 9. feng_shui_audits ===================== -->
+<h4>2.5.1.9. Bảng feng_shui_audits</h4>
+<ul>
+  <li>Ý nghĩa: lưu lịch sử các lần chấm điểm phong thủy cho bố cục của dự án. Mỗi lần chấm lưu lại bản chụp bố cục gửi sang AI Service và kết quả trả về từ bộ luật (rule engine).</li>
+  <li>Tên đầy đủ: feng_shui_audits</li>
+  <li>Các trường dữ liệu có trong bảng:</li>
+</ul>
+<p class="caption">Bảng 2.10. Các thuộc tính bảng feng_shui_audits</p>
+<table>
+  <tr><th>Tên</th><th>Kiểu dữ liệu</th><th>Điều kiện ràng buộc</th><th>Ý nghĩa</th></tr>
+  <tr><td>id</td><td>UUID</td><td>NOT NULL,<br>DEFAULT gen_random_uuid()</td><td>Mã số định danh của lần chấm phong thủy</td></tr>
+  <tr><td>project_id</td><td>UUID</td><td>NOT NULL</td><td>Mã số của dự án được chấm</td></tr>
+  <tr><td>hash_bo_cuc</td><td>VARCHAR(32)</td><td>NOT NULL</td><td>Mã băm FNV-1a (8 ký tự) của bố cục đã chấm, dùng để đối chiếu với bố cục hiện tại khi chủ nhà hỏi trợ lý AI</td></tr>
+  <tr><td>score</td><td>INTEGER</td><td>NOT NULL</td><td>Điểm phong thủy tổng hợp của bố cục</td></tr>
+  <tr><td>result_json</td><td>JSONB</td><td>NOT NULL</td><td>Kết quả chấm từ rule engine, gồm mệnh cung, nhóm mệnh, hướng nhà, danh sách cảnh báo và điểm</td></tr>
+  <tr><td>layout_json</td><td>JSONB</td><td>NOT NULL</td><td>Bản chụp bố cục (boCuc) được trích xuất từ Unity WebGL và gửi sang AI Service</td></tr>
+  <tr><td>created_at</td><td>TIMESTAMP</td><td>NOT NULL,<br>DEFAULT now()</td><td>Thời điểm chấm phong thủy</td></tr>
+  <tr><td colspan="4" class="k">PRIMARY KEY(id),<br>FOREIGN KEY (project_id) REFERENCES projects(id) ON DELETE CASCADE,<br>INDEX(project_id), INDEX(hash_bo_cuc)</td></tr>
+</table>
+
+<!-- ===================== 10. feng_shui_chat_histories ===================== -->
+<h4>2.5.1.10. Bảng feng_shui_chat_histories</h4>
+<ul>
+  <li>Ý nghĩa: lưu lịch sử hỏi đáp giữa chủ nhà và trợ lý phong thủy AI trong từng dự án, kèm nguồn trích dẫn và các đề xuất cải thiện.</li>
+  <li>Tên đầy đủ: feng_shui_chat_histories</li>
+  <li>Các trường dữ liệu có trong bảng:</li>
+</ul>
+<p class="caption">Bảng 2.11. Các thuộc tính bảng feng_shui_chat_histories</p>
+<table>
+  <tr><th>Tên</th><th>Kiểu dữ liệu</th><th>Điều kiện ràng buộc</th><th>Ý nghĩa</th></tr>
+  <tr><td>id</td><td>UUID</td><td>NOT NULL,<br>DEFAULT gen_random_uuid()</td><td>Mã số định danh của lượt hỏi đáp</td></tr>
+  <tr><td>project_id</td><td>UUID</td><td>NOT NULL</td><td>Mã số của dự án mà lượt hỏi đáp thuộc về</td></tr>
+  <tr><td>question</td><td>TEXT</td><td>NOT NULL</td><td>Câu hỏi của chủ nhà</td></tr>
+  <tr><td>answer</td><td>TEXT</td><td>NOT NULL</td><td>Câu trả lời của trợ lý AI</td></tr>
+  <tr><td>hash_bo_cuc</td><td>VARCHAR(32)</td><td>NOT NULL</td><td>Mã băm của bố cục tại thời điểm đặt câu hỏi</td></tr>
+  <tr><td>citations_json</td><td>JSONB</td><td>NOT NULL</td><td>Danh sách trích dẫn nguồn (số trang sách) mà câu trả lời dựa vào</td></tr>
+  <tr><td>suggestions_json</td><td>JSONB</td><td>NULL</td><td>Các phương án cải thiện bố cục đã được rule engine kiểm chứng</td></tr>
+  <tr><td>model</td><td>VARCHAR(100)</td><td>NOT NULL</td><td>Tên mô hình Gemini đã sinh câu trả lời</td></tr>
+  <tr><td>created_at</td><td>TIMESTAMP</td><td>NOT NULL,<br>DEFAULT now()</td><td>Thời điểm hỏi đáp</td></tr>
+  <tr><td colspan="4" class="k">PRIMARY KEY(id),<br>FOREIGN KEY (project_id) REFERENCES projects(id) ON DELETE CASCADE,<br>INDEX(project_id)</td></tr>
+</table>
+
+</body>
+</html>

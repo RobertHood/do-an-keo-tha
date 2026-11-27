@@ -110,6 +110,10 @@ public class PriceCatalogEntry
     [Tooltip("Market prices from different stores. Shown cheapest first; the cheapest is used by default.")]
     public List<PriceOffer> offers = new List<PriceOffer>();
 
+    [Tooltip("Houses: the building materials the house is made of (glass, floor tiles, roof...). If any are set, " +
+             "the price is the sum of their costs instead of the listed price / store offers.")]
+    public List<BuildingMaterial> materials = new List<BuildingMaterial>();
+
     [Header("Phong thủy")]
     [Tooltip("What the model is for the phong thủy rules. Auto = guessed from the catalog tab and prefab name.")]
     public FengShuiType loai = FengShuiType.Auto;
@@ -129,6 +133,8 @@ public class PriceCatalogEntry
 
     public string Id => prefab != null ? prefab.name : prefabId;
 
+    public bool HasMaterials => materials != null && materials.Count > 0;
+
     public FengShuiType ResolvedType => FengShuiTypes.Resolve(loai, category, Id);
 }
 
@@ -137,4 +143,36 @@ public class PriceOffer
 {
     public string storeName;
     public double price;
+}
+
+/// <summary>
+/// One building material of a house, priced on its own: quantity (at scale 1) times the unit price.
+/// The unit decides how the quantity grows when the house is scaled: m² with scale², m³ with scale³,
+/// m with scale, anything else (pieces, sets) stays the same.
+/// </summary>
+[Serializable]
+public class BuildingMaterial
+{
+    [Tooltip("Material ID (the materials table in the database). Saved price choices are matched by it.")]
+    public string id;
+
+    public string name;
+
+    [Tooltip("e.g. Kính, Gạch lát sàn, Ngói lợp")]
+    public string category;
+
+    [Tooltip("Where it is used on the house, e.g. Cửa sổ, Sàn tầng 1")]
+    public string appliedZone;
+
+    [Tooltip("Unit of the quantity and unit price, e.g. m², m³, m, tấm, bộ")]
+    public string unit;
+
+    [Tooltip("Amount used by the house at scale 1, in Unit.")]
+    public double quantity;
+
+    [Tooltip("Price per unit used when there are no store offers.")]
+    public double listedPrice;
+
+    [Tooltip("Price per unit from different stores. The cheapest is used by default.")]
+    public List<PriceOffer> offers = new List<PriceOffer>();
 }

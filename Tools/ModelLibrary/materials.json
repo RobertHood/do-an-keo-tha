@@ -1,0 +1,870 @@
+{
+  "cottage_b72f3de4": [
+    {
+      "id": "be-tong-m250",
+      "name": "Bê tông thương phẩm M250",
+      "category": "Bê tông",
+      "appliedZone": "Móng và sàn trệt",
+      "unit": "m³",
+      "quantity": 43.3,
+      "listedPrice": 1280000,
+      "offers": [
+        {
+          "storeName": "VLXD Minh Phát",
+          "price": 1250000
+        },
+        {
+          "storeName": "Bê tông Hòa An",
+          "price": 1320000
+        }
+      ]
+    },
+    {
+      "id": "op-go-thong",
+      "name": "Ván gỗ thông ốp tường ngoài trời",
+      "category": "Ốp tường",
+      "appliedZone": "Tường ngoài",
+      "unit": "m²",
+      "quantity": 262.6,
+      "listedPrice": 480000,
+      "offers": [
+        {
+          "storeName": "Gỗ Mộc Lâm",
+          "price": 480000
+        }
+      ]
+    },
+    {
+      "id": "da-op-chan-tuong",
+      "name": "Đá chẻ ốp chân tường",
+      "category": "Ốp tường",
+      "appliedZone": "Chân tường",
+      "unit": "m²",
+      "quantity": 71.9,
+      "listedPrice": 430000,
+      "offers": [
+        {
+          "storeName": "Đá Bảo Sơn",
+          "price": 420000
+        },
+        {
+          "storeName": "VLXD Thành Đạt",
+          "price": 450000
+        }
+      ]
+    },
+    {
+      "id": "san-go-cong-nghiep",
+      "name": "Sàn gỗ công nghiệp 12 mm",
+      "category": "Gỗ lát sàn",
+      "appliedZone": "Sàn các tầng",
+      "unit": "m²",
+      "quantity": 182.9,
+      "listedPrice": 320000,
+      "offers": [
+        {
+          "storeName": "Kho Gỗ Phú Gia",
+          "price": 295000
+        },
+        {
+          "storeName": "Gỗ Mộc Lâm",
+          "price": 340000
+        }
+      ]
+    },
+    {
+      "id": "tam-lop-bitum",
+      "name": "Tấm lợp bitum phủ đá",
+      "category": "Mái",
+      "appliedZone": "Mái",
+      "unit": "m²",
+      "quantity": 168.0,
+      "listedPrice": 340000,
+      "offers": [
+        {
+          "storeName": "Mái Đẹp Việt",
+          "price": 340000
+        }
+      ]
+    },
+    {
+      "id": "kinh-cuong-luc-8mm",
+      "name": "Kính cường lực 8 mm",
+      "category": "Kính",
+      "appliedZone": "Cửa sổ",
+      "unit": "m²",
+      "quantity": 58.0,
+      "listedPrice": 650000,
+      "offers": [
+        {
+          "storeName": "Kính Ánh Dương",
+          "price": 620000
+        },
+        {
+          "storeName": "Nhôm Kính Tân Tiến",
+          "price": 680000
+        }
+      ]
+    },
+    {
+      "id": "khung-nhom-he-55",
+      "name": "Khung nhôm hệ 55 sơn tĩnh điện",
+      "category": "Nhôm kính",
+      "appliedZone": "Cửa sổ",
+      "unit": "m²",
+      "quantity": 58.0,
+      "listedPrice": 1600000,
+      "offers": [
+        {
+          "storeName": "Nhôm Kính Tân Tiến",
+          "price": 1550000
+        },
+        {
+          "storeName": "Kính Ánh Dương",
+          "price": 1690000
+        }
+      ]
+    },
+    {
+      "id": "cua-di-go",
+      "name": "Cửa đi gỗ tự nhiên (trọn bộ)",
+      "category": "Cửa",
+      "appliedZone": "Cửa đi",
+      "unit": "bộ",
+      "quantity": 3,
+      "listedPrice": 7000000,
+      "offers": [
+        {
+          "storeName": "Gỗ Mộc Lâm",
+          "price": 6800000
+        },
+        {
+          "storeName": "Kho Gỗ Phú Gia",
+          "price": 7500000
+        }
+      ]
+    }
+  ],
+  "forest_cabin_72521002": [
+    {
+      "id": "be-tong-m250",
+      "name": "Bê tông thương phẩm M250",
+      "category": "Bê tông",
+      "appliedZone": "Móng trụ",
+      "unit": "m³",
+      "quantity": 12.5,
+      "listedPrice": 1280000,
+      "offers": [
+        {
+          "storeName": "VLXD Minh Phát",
+          "price": 1250000
+        },
+        {
+          "storeName": "Bê tông Hòa An",
+          "price": 1320000
+        }
+      ]
+    },
+    {
+      "id": "go-thong-ket-cau",
+      "name": "Gỗ thông xẻ kết cấu",
+      "category": "Gỗ kết cấu",
+      "appliedZone": "Khung nhà và cột đỡ",
+      "unit": "m³",
+      "quantity": 4.2,
+      "listedPrice": 9500000,
+      "offers": [
+        {
+          "storeName": "Gỗ Mộc Lâm",
+          "price": 9200000
+        },
+        {
+          "storeName": "Kho Gỗ Phú Gia",
+          "price": 9800000
+        }
+      ]
+    },
+    {
+      "id": "op-go-thong",
+      "name": "Ván gỗ thông ốp tường ngoài trời",
+      "category": "Ốp tường",
+      "appliedZone": "Tường ngoài",
+      "unit": "m²",
+      "quantity": 183.6,
+      "listedPrice": 480000,
+      "offers": [
+        {
+          "storeName": "Gỗ Mộc Lâm",
+          "price": 480000
+        }
+      ]
+    },
+    {
+      "id": "tam-lop-bitum",
+      "name": "Tấm lợp bitum phủ đá",
+      "category": "Mái",
+      "appliedZone": "Mái",
+      "unit": "m²",
+      "quantity": 158.6,
+      "listedPrice": 340000,
+      "offers": [
+        {
+          "storeName": "Mái Đẹp Việt",
+          "price": 340000
+        }
+      ]
+    },
+    {
+      "id": "san-go-nhua",
+      "name": "Sàn gỗ nhựa ngoài trời",
+      "category": "Gỗ lát sàn",
+      "appliedZone": "Hiên",
+      "unit": "m²",
+      "quantity": 35.3,
+      "listedPrice": 700000,
+      "offers": [
+        {
+          "storeName": "Gỗ Mộc Lâm",
+          "price": 720000
+        },
+        {
+          "storeName": "Kho Gỗ Phú Gia",
+          "price": 680000
+        }
+      ]
+    },
+    {
+      "id": "bac-thang-go",
+      "name": "Bậc thang gỗ",
+      "category": "Cầu thang",
+      "appliedZone": "Cầu thang hiên",
+      "unit": "bậc",
+      "quantity": 14,
+      "listedPrice": 650000,
+      "offers": []
+    },
+    {
+      "id": "kinh-cuong-luc-8mm",
+      "name": "Kính cường lực 8 mm",
+      "category": "Kính",
+      "appliedZone": "Cửa sổ",
+      "unit": "m²",
+      "quantity": 7.5,
+      "listedPrice": 650000,
+      "offers": [
+        {
+          "storeName": "Kính Ánh Dương",
+          "price": 620000
+        },
+        {
+          "storeName": "Nhôm Kính Tân Tiến",
+          "price": 680000
+        }
+      ]
+    },
+    {
+      "id": "khung-cua-so-go",
+      "name": "Khung cửa sổ gỗ",
+      "category": "Cửa",
+      "appliedZone": "Cửa sổ",
+      "unit": "m²",
+      "quantity": 7.5,
+      "listedPrice": 1350000,
+      "offers": [
+        {
+          "storeName": "Gỗ Mộc Lâm",
+          "price": 1350000
+        }
+      ]
+    },
+    {
+      "id": "cua-di-go",
+      "name": "Cửa đi gỗ tự nhiên (trọn bộ)",
+      "category": "Cửa",
+      "appliedZone": "Cửa đi",
+      "unit": "bộ",
+      "quantity": 2,
+      "listedPrice": 7000000,
+      "offers": [
+        {
+          "storeName": "Gỗ Mộc Lâm",
+          "price": 6800000
+        },
+        {
+          "storeName": "Kho Gỗ Phú Gia",
+          "price": 7500000
+        }
+      ]
+    }
+  ],
+  "modern_house_9277d3ad": [
+    {
+      "id": "be-tong-m250",
+      "name": "Bê tông thương phẩm M250",
+      "category": "Bê tông",
+      "appliedZone": "Móng, sàn và mái bằng",
+      "unit": "m³",
+      "quantity": 86.1,
+      "listedPrice": 1280000,
+      "offers": [
+        {
+          "storeName": "VLXD Minh Phát",
+          "price": 1250000
+        },
+        {
+          "storeName": "Bê tông Hòa An",
+          "price": 1320000
+        }
+      ]
+    },
+    {
+      "id": "tuong-gach-220",
+      "name": "Tường gạch 220 xây trát hoàn thiện",
+      "category": "Tường",
+      "appliedZone": "Tường bao",
+      "unit": "m²",
+      "quantity": 353.2,
+      "listedPrice": 520000,
+      "offers": [
+        {
+          "storeName": "VLXD Minh Phát",
+          "price": 540000
+        },
+        {
+          "storeName": "VLXD Thành Đạt",
+          "price": 495000
+        }
+      ]
+    },
+    {
+      "id": "son-ngoai-that",
+      "name": "Sơn ngoại thất chống thấm (2 lớp)",
+      "category": "Sơn",
+      "appliedZone": "Tường bao",
+      "unit": "m²",
+      "quantity": 353.2,
+      "listedPrice": 72000,
+      "offers": [
+        {
+          "storeName": "Sơn Hoàng Gia",
+          "price": 78000
+        },
+        {
+          "storeName": "Sơn Bảo Tín",
+          "price": 65000
+        }
+      ]
+    },
+    {
+      "id": "kinh-cuong-luc-8mm",
+      "name": "Kính cường lực 8 mm",
+      "category": "Kính",
+      "appliedZone": "Mặt kính và cửa sổ",
+      "unit": "m²",
+      "quantity": 186.0,
+      "listedPrice": 650000,
+      "offers": [
+        {
+          "storeName": "Kính Ánh Dương",
+          "price": 620000
+        },
+        {
+          "storeName": "Nhôm Kính Tân Tiến",
+          "price": 680000
+        }
+      ]
+    },
+    {
+      "id": "khung-nhom-he-55",
+      "name": "Khung nhôm hệ 55 sơn tĩnh điện",
+      "category": "Nhôm kính",
+      "appliedZone": "Mặt kính và cửa sổ",
+      "unit": "m²",
+      "quantity": 186.0,
+      "listedPrice": 1600000,
+      "offers": [
+        {
+          "storeName": "Nhôm Kính Tân Tiến",
+          "price": 1550000
+        },
+        {
+          "storeName": "Kính Ánh Dương",
+          "price": 1690000
+        }
+      ]
+    },
+    {
+      "id": "ngoi-mau",
+      "name": "Ngói màu xi măng",
+      "category": "Mái",
+      "appliedZone": "Mái",
+      "unit": "m²",
+      "quantity": 182.7,
+      "listedPrice": 240000,
+      "offers": [
+        {
+          "storeName": "VLXD Minh Phát",
+          "price": 245000
+        },
+        {
+          "storeName": "VLXD Thành Đạt",
+          "price": 230000
+        }
+      ]
+    },
+    {
+      "id": "san-go-soi",
+      "name": "Sàn gỗ sồi tự nhiên 15 mm",
+      "category": "Gỗ lát sàn",
+      "appliedZone": "Sàn trong nhà",
+      "unit": "m²",
+      "quantity": 121.8,
+      "listedPrice": 1000000,
+      "offers": [
+        {
+          "storeName": "Kho Gỗ Phú Gia",
+          "price": 950000
+        },
+        {
+          "storeName": "Gỗ Mộc Lâm",
+          "price": 1080000
+        }
+      ]
+    },
+    {
+      "id": "op-go-thong",
+      "name": "Ván gỗ thông ốp tường ngoài trời",
+      "category": "Ốp tường",
+      "appliedZone": "Ốp mặt tiền",
+      "unit": "m²",
+      "quantity": 73.2,
+      "listedPrice": 480000,
+      "offers": [
+        {
+          "storeName": "Gỗ Mộc Lâm",
+          "price": 480000
+        }
+      ]
+    },
+    {
+      "id": "san-go-nhua",
+      "name": "Sàn gỗ nhựa ngoài trời",
+      "category": "Gỗ lát sàn",
+      "appliedZone": "Sân hiên",
+      "unit": "m²",
+      "quantity": 35.5,
+      "listedPrice": 700000,
+      "offers": [
+        {
+          "storeName": "Gỗ Mộc Lâm",
+          "price": 720000
+        },
+        {
+          "storeName": "Kho Gỗ Phú Gia",
+          "price": 680000
+        }
+      ]
+    },
+    {
+      "id": "lan-can-thep",
+      "name": "Lan can thép sơn tĩnh điện",
+      "category": "Lan can",
+      "appliedZone": "Ban công",
+      "unit": "m",
+      "quantity": 42.0,
+      "listedPrice": 850000,
+      "offers": [
+        {
+          "storeName": "Cơ khí Tiến Thành",
+          "price": 850000
+        }
+      ]
+    }
+  ],
+  "modern_one_story_house_ecee8f3a": [
+    {
+      "id": "be-tong-m250",
+      "name": "Bê tông thương phẩm M250",
+      "category": "Bê tông",
+      "appliedZone": "Móng và sàn trệt",
+      "unit": "m³",
+      "quantity": 103.0,
+      "listedPrice": 1280000,
+      "offers": [
+        {
+          "storeName": "VLXD Minh Phát",
+          "price": 1250000
+        },
+        {
+          "storeName": "Bê tông Hòa An",
+          "price": 1320000
+        }
+      ]
+    },
+    {
+      "id": "tuong-gach-220",
+      "name": "Tường gạch 220 xây trát hoàn thiện",
+      "category": "Tường",
+      "appliedZone": "Tường bao",
+      "unit": "m²",
+      "quantity": 220.4,
+      "listedPrice": 520000,
+      "offers": [
+        {
+          "storeName": "VLXD Minh Phát",
+          "price": 540000
+        },
+        {
+          "storeName": "VLXD Thành Đạt",
+          "price": 495000
+        }
+      ]
+    },
+    {
+      "id": "son-ngoai-that",
+      "name": "Sơn ngoại thất chống thấm (2 lớp)",
+      "category": "Sơn",
+      "appliedZone": "Tường bao",
+      "unit": "m²",
+      "quantity": 220.4,
+      "listedPrice": 72000,
+      "offers": [
+        {
+          "storeName": "Sơn Hoàng Gia",
+          "price": 78000
+        },
+        {
+          "storeName": "Sơn Bảo Tín",
+          "price": 65000
+        }
+      ]
+    },
+    {
+      "id": "gach-the-op",
+      "name": "Gạch thẻ ốp tường trang trí",
+      "category": "Ốp tường",
+      "appliedZone": "Ốp mặt tiền",
+      "unit": "m²",
+      "quantity": 201.6,
+      "listedPrice": 360000,
+      "offers": []
+    },
+    {
+      "id": "ton-lop-cach-nhiet",
+      "name": "Tôn lợp cách nhiệt 3 lớp",
+      "category": "Mái",
+      "appliedZone": "Mái",
+      "unit": "m²",
+      "quantity": 119.5,
+      "listedPrice": 210000,
+      "offers": [
+        {
+          "storeName": "Mái Đẹp Việt",
+          "price": 215000
+        },
+        {
+          "storeName": "VLXD Minh Phát",
+          "price": 198000
+        }
+      ]
+    },
+    {
+      "id": "san-go-cong-nghiep",
+      "name": "Sàn gỗ công nghiệp 12 mm",
+      "category": "Gỗ lát sàn",
+      "appliedZone": "Sàn trong nhà",
+      "unit": "m²",
+      "quantity": 222.4,
+      "listedPrice": 320000,
+      "offers": [
+        {
+          "storeName": "Kho Gỗ Phú Gia",
+          "price": 295000
+        },
+        {
+          "storeName": "Gỗ Mộc Lâm",
+          "price": 340000
+        }
+      ]
+    },
+    {
+      "id": "san-go-nhua",
+      "name": "Sàn gỗ nhựa ngoài trời",
+      "category": "Gỗ lát sàn",
+      "appliedZone": "Sân hiên",
+      "unit": "m²",
+      "quantity": 334.2,
+      "listedPrice": 700000,
+      "offers": [
+        {
+          "storeName": "Gỗ Mộc Lâm",
+          "price": 720000
+        },
+        {
+          "storeName": "Kho Gỗ Phú Gia",
+          "price": 680000
+        }
+      ]
+    },
+    {
+      "id": "gach-lat-60x60",
+      "name": "Gạch lát nền 60x60",
+      "category": "Gạch lát",
+      "appliedZone": "Lối đi và sân",
+      "unit": "m²",
+      "quantity": 245.3,
+      "listedPrice": 270000,
+      "offers": [
+        {
+          "storeName": "VLXD Thành Đạt",
+          "price": 285000
+        },
+        {
+          "storeName": "VLXD Minh Phát",
+          "price": 260000
+        }
+      ]
+    },
+    {
+      "id": "kinh-cuong-luc-8mm",
+      "name": "Kính cường lực 8 mm",
+      "category": "Kính",
+      "appliedZone": "Cửa kính",
+      "unit": "m²",
+      "quantity": 62.3,
+      "listedPrice": 650000,
+      "offers": [
+        {
+          "storeName": "Kính Ánh Dương",
+          "price": 620000
+        },
+        {
+          "storeName": "Nhôm Kính Tân Tiến",
+          "price": 680000
+        }
+      ]
+    },
+    {
+      "id": "khung-nhom-he-55",
+      "name": "Khung nhôm hệ 55 sơn tĩnh điện",
+      "category": "Nhôm kính",
+      "appliedZone": "Cửa kính",
+      "unit": "m²",
+      "quantity": 62.3,
+      "listedPrice": 1600000,
+      "offers": [
+        {
+          "storeName": "Nhôm Kính Tân Tiến",
+          "price": 1550000
+        },
+        {
+          "storeName": "Kính Ánh Dương",
+          "price": 1690000
+        }
+      ]
+    },
+    {
+      "id": "lan-can-thep",
+      "name": "Lan can thép sơn tĩnh điện",
+      "category": "Lan can",
+      "appliedZone": "Hiên",
+      "unit": "m",
+      "quantity": 64.0,
+      "listedPrice": 850000,
+      "offers": [
+        {
+          "storeName": "Cơ khí Tiến Thành",
+          "price": 850000
+        }
+      ]
+    }
+  ],
+  "small_house_db4bb7a9": [
+    {
+      "id": "be-tong-m250",
+      "name": "Bê tông thương phẩm M250",
+      "category": "Bê tông",
+      "appliedZone": "Móng và sàn",
+      "unit": "m³",
+      "quantity": 29.5,
+      "listedPrice": 1280000,
+      "offers": [
+        {
+          "storeName": "VLXD Minh Phát",
+          "price": 1250000
+        },
+        {
+          "storeName": "Bê tông Hòa An",
+          "price": 1320000
+        }
+      ]
+    },
+    {
+      "id": "tuong-gach-220",
+      "name": "Tường gạch 220 xây trát hoàn thiện",
+      "category": "Tường",
+      "appliedZone": "Tường bao",
+      "unit": "m²",
+      "quantity": 112.0,
+      "listedPrice": 520000,
+      "offers": [
+        {
+          "storeName": "VLXD Minh Phát",
+          "price": 540000
+        },
+        {
+          "storeName": "VLXD Thành Đạt",
+          "price": 495000
+        }
+      ]
+    },
+    {
+      "id": "son-ngoai-that",
+      "name": "Sơn ngoại thất chống thấm (2 lớp)",
+      "category": "Sơn",
+      "appliedZone": "Tường bao",
+      "unit": "m²",
+      "quantity": 112.0,
+      "listedPrice": 72000,
+      "offers": [
+        {
+          "storeName": "Sơn Hoàng Gia",
+          "price": 78000
+        },
+        {
+          "storeName": "Sơn Bảo Tín",
+          "price": 65000
+        }
+      ]
+    },
+    {
+      "id": "op-go-thong",
+      "name": "Ván gỗ thông ốp tường ngoài trời",
+      "category": "Ốp tường",
+      "appliedZone": "Ốp tường ngoài",
+      "unit": "m²",
+      "quantity": 173.9,
+      "listedPrice": 480000,
+      "offers": [
+        {
+          "storeName": "Gỗ Mộc Lâm",
+          "price": 480000
+        }
+      ]
+    },
+    {
+      "id": "da-op-chan-tuong",
+      "name": "Đá chẻ ốp chân tường",
+      "category": "Ốp tường",
+      "appliedZone": "Chân tường",
+      "unit": "m²",
+      "quantity": 103.3,
+      "listedPrice": 430000,
+      "offers": [
+        {
+          "storeName": "Đá Bảo Sơn",
+          "price": 420000
+        },
+        {
+          "storeName": "VLXD Thành Đạt",
+          "price": 450000
+        }
+      ]
+    },
+    {
+      "id": "san-go-cong-nghiep",
+      "name": "Sàn gỗ công nghiệp 12 mm",
+      "category": "Gỗ lát sàn",
+      "appliedZone": "Sàn các tầng",
+      "unit": "m²",
+      "quantity": 80.0,
+      "listedPrice": 320000,
+      "offers": [
+        {
+          "storeName": "Kho Gỗ Phú Gia",
+          "price": 295000
+        },
+        {
+          "storeName": "Gỗ Mộc Lâm",
+          "price": 340000
+        }
+      ]
+    },
+    {
+      "id": "ngoi-mau",
+      "name": "Ngói màu xi măng",
+      "category": "Mái",
+      "appliedZone": "Mái",
+      "unit": "m²",
+      "quantity": 62.0,
+      "listedPrice": 240000,
+      "offers": [
+        {
+          "storeName": "VLXD Minh Phát",
+          "price": 245000
+        },
+        {
+          "storeName": "VLXD Thành Đạt",
+          "price": 230000
+        }
+      ]
+    },
+    {
+      "id": "kinh-cuong-luc-8mm",
+      "name": "Kính cường lực 8 mm",
+      "category": "Kính",
+      "appliedZone": "Cửa sổ",
+      "unit": "m²",
+      "quantity": 12.7,
+      "listedPrice": 650000,
+      "offers": [
+        {
+          "storeName": "Kính Ánh Dương",
+          "price": 620000
+        },
+        {
+          "storeName": "Nhôm Kính Tân Tiến",
+          "price": 680000
+        }
+      ]
+    },
+    {
+      "id": "khung-nhom-he-55",
+      "name": "Khung nhôm hệ 55 sơn tĩnh điện",
+      "category": "Nhôm kính",
+      "appliedZone": "Cửa sổ",
+      "unit": "m²",
+      "quantity": 12.7,
+      "listedPrice": 1600000,
+      "offers": [
+        {
+          "storeName": "Nhôm Kính Tân Tiến",
+          "price": 1550000
+        },
+        {
+          "storeName": "Kính Ánh Dương",
+          "price": 1690000
+        }
+      ]
+    },
+    {
+      "id": "cua-di-go",
+      "name": "Cửa đi gỗ tự nhiên (trọn bộ)",
+      "category": "Cửa",
+      "appliedZone": "Cửa đi",
+      "unit": "bộ",
+      "quantity": 2,
+      "listedPrice": 7000000,
+      "offers": [
+        {
+          "storeName": "Gỗ Mộc Lâm",
+          "price": 6800000
+        },
+        {
+          "storeName": "Kho Gỗ Phú Gia",
+          "price": 7500000
+        }
+      ]
+    }
+  ]
+}

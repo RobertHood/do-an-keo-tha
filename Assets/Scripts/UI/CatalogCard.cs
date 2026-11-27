@@ -65,10 +65,10 @@ public class CatalogCard : MonoBehaviour
 
         if (priceText == null) return;
 
-        var offers = entry != null ? ModelEstPrice.GetSortedOffers(entry) : null;
-        double price = entry == null ? 0 : offers.Count > 0 ? offers[0].price : entry.listedPrice;
+        double price = ModelEstPrice.GetCatalogPrice(entry, out bool isFrom);
+        bool hasOffers = entry != null && (entry.HasMaterials || ModelEstPrice.GetSortedOffers(entry).Count > 0);
 
-        if (entry == null || (offers.Count == 0 && price <= 0))
+        if (entry == null || (!hasOffers && price <= 0))
         {
             priceText.text = noPriceLabel;
             priceText.color = UIPalette.Neutral500;
@@ -76,7 +76,7 @@ public class CatalogCard : MonoBehaviour
             return;
         }
 
-        priceText.text = (offers.Count > 1 ? "Từ " : "") + UIPalette.FormatVnd(price);
+        priceText.text = (isFrom ? "Từ " : "") + UIPalette.FormatVnd(price);
         priceText.color = UIPalette.BrandGreen;
         if (priceBadge != null) priceBadge.color = UIPalette.BrandGreenLight;
     }

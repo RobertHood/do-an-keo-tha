@@ -49,6 +49,7 @@ public class ModelLibrary : MonoBehaviour
         public string description;
         public double listedPrice;
         public PriceOffer[] offers;
+        public BuildingMaterial[] materials;
         public string loai;
         public float frontYawOffset;
         public bool hasDoor;
@@ -231,6 +232,7 @@ public class ModelLibrary : MonoBehaviour
                 description = m.description,
                 listedPrice = m.listedPrice,
                 offers = m.offers != null ? new List<PriceOffer>(m.offers) : new List<PriceOffer>(),
+                materials = m.materials != null ? new List<BuildingMaterial>(m.materials) : new List<BuildingMaterial>(),
                 loai = FengShuiTypes.FromId(m.loai),
                 frontYawOffset = m.frontYawOffset,
                 hasDoor = m.hasDoor,

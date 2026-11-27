@@ -27,6 +27,9 @@ public class DraggableModel : MonoBehaviour
     [Tooltip("Price typed in by the user.")]
     public double customPrice;
 
+    [Tooltip("Houses: store / custom unit price chosen for each building material.")]
+    public System.Collections.Generic.List<MaterialChoice> materialChoices = new System.Collections.Generic.List<MaterialChoice>();
+
     /// <summary>
     /// Raised whenever a model appears or disappears (spawn, delete, import), so ModelEstPrice can refresh.
     /// </summary>

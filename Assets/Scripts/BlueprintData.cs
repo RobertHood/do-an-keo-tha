@@ -75,9 +75,47 @@ public class BlueprintModelData
     public string selectedStore;
     public bool useCustomPrice;
     public double customPrice;
+    public List<MaterialChoice> materialChoices = new List<MaterialChoice>(); // Houses: per building material
 
     // Phong thủy facts, worked out when saving (ignored when loading):
     public string loai;      // Model type ID, e.g. "nha", "cong", "cay" (FengShuiTypes.Id)
     public float huong;      // Compass bearing of the model's front: 0 = Bắc, 90 = Đông, 180 = Nam, 270 = Tây (+Z is North)
     public bool trongDat;    // Whole footprint inside the plot of land
+}
+
+/// <summary>
+/// The price choice for one building material of a placed house (see BuildingMaterial).
+/// </summary>
+[Serializable]
+public class MaterialChoice
+{
+    public string materialId;
+    public string selectedStore;
+    public bool useCustomPrice;
+    public double customPrice; // Per unit
+}
+
+public static class MaterialChoices
+{
+    /// <summary>
+    /// Independent copy (models and blueprints must not share choice objects). Never null.
+    /// </summary>
+    public static List<MaterialChoice> Copy(List<MaterialChoice> source)
+    {
+        List<MaterialChoice> copy = new List<MaterialChoice>();
+        if (source == null) return copy;
+
+        foreach (MaterialChoice c in source)
+        {
+            if (c == null || string.IsNullOrEmpty(c.materialId)) continue;
+            copy.Add(new MaterialChoice
+            {
+                materialId = c.materialId,
+                selectedStore = c.selectedStore,
+                useCustomPrice = c.useCustomPrice,
+                customPrice = c.customPrice
+            });
+        }
+        return copy;
+    }
 }

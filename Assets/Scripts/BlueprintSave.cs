@@ -193,6 +193,7 @@ public class BlueprintSave : MonoBehaviour
                 selectedStore = draggable.selectedStore,
                 useCustomPrice = draggable.useCustomPrice,
                 customPrice = draggable.customPrice,
+                materialChoices = MaterialChoices.Copy(draggable.materialChoices),
                 loai = FengShuiTypes.Id(draggable.Loai),
                 huong = Mathf.Round(draggable.Huong * 10f) / 10f,
                 trongDat = land == null || land.Contains(draggable)

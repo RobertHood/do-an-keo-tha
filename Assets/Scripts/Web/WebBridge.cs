@@ -15,6 +15,9 @@ using UnityEngine;
 /// - SelectOffer(json)           { "id": 3, "store": "Store name" } (use that store's price)
 /// - SetCustomPrice(json)        { "id": 3, "price": 150000 }
 /// - ClearCustomPrice(id)        Go back to market prices
+/// - SelectMaterialOffer(json)   { "id": 3, "material": "kinh-8mm", "store": "Store name" } (houses: per material)
+/// - SetMaterialCustomPrice(json) { "id": 3, "material": "kinh-8mm", "price": 650000 } (price per unit)
+/// - ClearMaterialCustomPrice(json) { "id": 3, "material": "kinh-8mm" }
 /// It also sends the page the editor state ("state") and the price panel data ("items") whenever they change.
 /// Created automatically after the first scene loads; no scene setup needed.
 /// </summary>
@@ -27,6 +30,7 @@ public class WebBridge : MonoBehaviour
     private const string PriceSourceStore = "store";
     private const string PriceSourceListed = "listed";
     private const string PriceSourceNone = "none";
+    private const string PriceSourceMaterials = "materials";
 
     public static WebBridge Instance { get; private set; }
 
@@ -71,6 +75,26 @@ public class WebBridge : MonoBehaviour
         public bool useCustomPrice;
         public double customPrice;
         public bool isLocked;
+        public MaterialInfo[] materials;
+    }
+
+    [Serializable]
+    private class MaterialInfo
+    {
+        public string id;
+        public string name;
+        public string category;
+        public string appliedZone;
+        public string unit;
+        public double quantity;   // For the placed house (scaled)
+        public double unitPrice;  // Price per unit in use
+        public double price;      // quantity * unitPrice
+        public string priceSource;
+        public string store;
+        public double listedPrice;
+        public PriceOffer[] offers;
+        public bool useCustomPrice;
+        public double customPrice;
     }
 
     [Serializable]
@@ -99,6 +123,15 @@ public class WebBridge : MonoBehaviour
     private class CustomPriceCommand
     {
         public int id;
+        public double price;
+    }
+
+    [Serializable]
+    private class MaterialCommand
+    {
+        public int id;
+        public string material;
+        public string store;
         public double price;
     }
 
@@ -255,6 +288,27 @@ public class WebBridge : MonoBehaviour
         ModelEstPrice.Instance.ClearCustomPrice(FindModel(id));
     }
 
+    public void SelectMaterialOffer(string json)
+    {
+        MaterialCommand command = Parse<MaterialCommand>(json);
+        if (command == null || ModelEstPrice.Instance == null) return;
+        ModelEstPrice.Instance.SelectMaterialOffer(FindModel(command.id), command.material, command.store);
+    }
+
+    public void SetMaterialCustomPrice(string json)
+    {
+        MaterialCommand command = Parse<MaterialCommand>(json);
+        if (command == null || ModelEstPrice.Instance == null) return;
+        ModelEstPrice.Instance.SetMaterialCustomPrice(FindModel(command.id), command.material, command.price);
+    }
+
+    public void ClearMaterialCustomPrice(string json)
+    {
+        MaterialCommand command = Parse<MaterialCommand>(json);
+        if (command == null || ModelEstPrice.Instance == null) return;
+        ModelEstPrice.Instance.ClearMaterialCustomPrice(FindModel(command.id), command.material);
+    }
+
     private void SubscribeToPrices()
     {
         ModelEstPrice prices = ModelEstPrice.Instance;
@@ -332,8 +386,12 @@ public class WebBridge : MonoBehaviour
             PriceOffer chosen = entry != null ? prices.GetChosenOffer(model, entry) : null;
             bool hasPrice = prices.TryGetPrice(model, out double price);
 
+            bool byMaterials = entry != null && entry.HasMaterials;
+            if (byMaterials) chosen = null;
+
             string source = PriceSourceNone;
             if (model.useCustomPrice) source = PriceSourceCustom;
+            else if (byMaterials) source = PriceSourceMaterials;
             else if (chosen != null) source = PriceSourceStore;
             else if (entry != null) source = PriceSourceListed;
 
@@ -349,15 +407,50 @@ public class WebBridge : MonoBehaviour
                 priceSource = source,
                 store = chosen != null && !model.useCustomPrice ? chosen.storeName : "",
                 listedPrice = entry != null ? entry.listedPrice : 0,
-                offers = ModelEstPrice.GetSortedOffers(entry).ToArray(),
+                offers = byMaterials ? Array.Empty<PriceOffer>() : ModelEstPrice.GetSortedOffers(entry).ToArray(),
                 useCustomPrice = model.useCustomPrice,
                 customPrice = model.customPrice,
-                isLocked = model.isLocked
+                isLocked = model.isLocked,
+                materials = byMaterials ? BuildMaterials(model, entry) : Array.Empty<MaterialInfo>()
             });
         }
 
         state.items = items.ToArray();
         return state;
+    }
+
+    private static MaterialInfo[] BuildMaterials(DraggableModel model, PriceCatalogEntry entry)
+    {
+        List<MaterialInfo> list = new List<MaterialInfo>(entry.materials.Count);
+        foreach (BuildingMaterial material in entry.materials)
+        {
+            if (material == null) continue;
+
+            MaterialChoice choice = ModelEstPrice.FindChoice(model, material.id);
+            bool custom = choice != null && choice.useCustomPrice;
+            PriceOffer chosen = ModelEstPrice.GetChosenOffer(model, material);
+            double quantity = ModelEstPrice.GetMaterialQuantity(model, material);
+            double unitPrice = ModelEstPrice.GetMaterialUnitPrice(model, material);
+
+            list.Add(new MaterialInfo
+            {
+                id = material.id,
+                name = material.name,
+                category = material.category,
+                appliedZone = material.appliedZone,
+                unit = material.unit,
+                quantity = quantity,
+                unitPrice = unitPrice,
+                price = quantity * unitPrice,
+                priceSource = custom ? PriceSourceCustom : chosen != null ? PriceSourceStore : PriceSourceListed,
+                store = chosen != null && !custom ? chosen.storeName : "",
+                listedPrice = material.listedPrice,
+                offers = ModelEstPrice.GetSortedOffers(material).ToArray(),
+                useCustomPrice = custom,
+                customPrice = choice != null ? choice.customPrice : 0
+            });
+        }
+        return list.ToArray();
     }
 
     private static DraggableModel FindModel(string id)
