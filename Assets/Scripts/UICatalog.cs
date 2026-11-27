@@ -155,9 +155,11 @@ public class UICatalog : MonoBehaviour
     public List<PriceCatalogEntry> GetModels(ModelCategory category)
     {
         if (catalog == null || catalog.entries == null) return new List<PriceCatalogEntry>();
+        // Only models that can actually be placed: remote ones, or local prefabs while the editor works offline
         ModelLibrary library = ModelLibrary.Instance;
+        bool local = library == null || library.UsesLocalModels;
         return catalog.entries
-            .Where(e => e != null && e.category == category && (e.prefab != null || (library != null && library.HasRemote(e.Id))))
+            .Where(e => e != null && e.category == category && (local ? e.prefab != null : library.HasRemote(e.Id)))
             .ToList();
     }
 

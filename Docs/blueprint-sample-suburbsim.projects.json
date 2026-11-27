@@ -1,0 +1,216 @@
+[
+  {
+    "id": "mausample01",
+    "name": "Mẫu bố cục phong thủy",
+    "location": "Ba Vì, Hà Nội",
+    "plotArea": 600,
+    "frontage": 20,
+    "createdAt": "2026-11-27T09:40:48.866Z",
+    "updatedAt": "2026-11-27T09:41:03.272Z",
+    "blueprint": {
+      "format": "Blueprint",
+      "version": 2,
+      "id": "mausample01",
+      "name": "Mẫu bố cục phong thủy",
+      "createdAt": "2026-11-27T09:40:48.866Z",
+      "updatedAt": "2026-11-27T09:41:03.2700000Z",
+      "land": {
+        "hasLand": true,
+        "shape": 0,
+        "width": 20,
+        "depth": 30,
+        "backWidth": 20,
+        "cutWidth": 12,
+        "cutDepth": 15,
+        "flip": false,
+        "frontBearing": 180,
+        "centerX": 0,
+        "centerZ": 0
+      },
+      "models": [
+        {
+          "prefabId": "cottage_b72f3de4",
+          "position": {
+            "x": 0,
+            "y": 0,
+            "z": 3
+          },
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0,
+            "w": 1
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "isLocked": false,
+          "selectedStore": "",
+          "useCustomPrice": false,
+          "customPrice": 0,
+          "loai": "nha",
+          "huong": 180,
+          "trongDat": true
+        },
+        {
+          "prefabId": "large_iron_gate_c2158299",
+          "position": {
+            "x": 0,
+            "y": 0,
+            "z": -14.5
+          },
+          "rotation": {
+            "x": 0,
+            "y": 1,
+            "z": 0,
+            "w": 0
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "isLocked": false,
+          "selectedStore": "",
+          "useCustomPrice": false,
+          "customPrice": 0,
+          "loai": "cong",
+          "huong": 180,
+          "trongDat": true
+        },
+        {
+          "prefabId": "Fir_Tree",
+          "position": {
+            "x": -7,
+            "y": 0,
+            "z": -10
+          },
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0,
+            "w": 1
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "isLocked": false,
+          "selectedStore": "",
+          "useCustomPrice": false,
+          "customPrice": 0,
+          "loai": "cay",
+          "huong": 0,
+          "trongDat": true
+        },
+        {
+          "prefabId": "palm_tree_01_ee2492d6",
+          "position": {
+            "x": 7,
+            "y": 0,
+            "z": -10
+          },
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0,
+            "w": 1
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "isLocked": false,
+          "selectedStore": "",
+          "useCustomPrice": false,
+          "customPrice": 0,
+          "loai": "cay",
+          "huong": 0,
+          "trongDat": false
+        },
+        {
+          "prefabId": "fish_pond_e1ac8d65",
+          "position": {
+            "x": 6,
+            "y": 0,
+            "z": 11
+          },
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0,
+            "w": 1
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "isLocked": false,
+          "selectedStore": "",
+          "useCustomPrice": false,
+          "customPrice": 0,
+          "loai": "ho_nuoc",
+          "huong": 0,
+          "trongDat": false
+        },
+        {
+          "prefabId": "garden_lamp_630b7b07",
+          "position": {
+            "x": -3,
+            "y": 0,
+            "z": -12
+          },
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0,
+            "w": 1
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "isLocked": false,
+          "selectedStore": "",
+          "useCustomPrice": false,
+          "customPrice": 0,
+          "loai": "den",
+          "huong": 0,
+          "trongDat": true
+        },
+        {
+          "prefabId": "Oak_Tree",
+          "position": {
+            "x": 14,
+            "y": 0,
+            "z": 0
+          },
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0,
+            "w": 1
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "isLocked": false,
+          "selectedStore": "",
+          "useCustomPrice": false,
+          "customPrice": 0,
+          "loai": "cay",
+          "huong": 0,
+          "trongDat": false
+        }
+      ]
+    }
+  }
+]

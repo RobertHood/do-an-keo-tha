@@ -10,21 +10,22 @@ using UnityEngine.Networking;
 ///   catalog.json in the model storage (R2) or the model database. Each model is a GLB file that is downloaded and
 ///   loaded with glTFast the first time it is needed, then copied for every further placement. Catalog card
 ///   thumbnails are downloaded too.
-/// - Local (editor): models are the prefabs listed in the PriceCatalog asset, as before. Turn on Use Remote In
-///   Editor and set Catalog Url to test the remote library in Play mode.
-/// Player builds leave the local prefabs out (see SuburbsimModelLibraryBuild), so they only use the remote library.
+/// - Without the website (Play mode, or a build opened on its own) the catalog is loaded from Catalog Url.
+/// Only remote models are used: if the catalog can't be loaded, the item catalog stays empty, which shows the
+/// connection isn't working. The prefabs in the PriceCatalog asset are kept for the export tools and for offline
+/// work in the editor (Use Local Models). Player builds leave them out (see SuburbsimModelLibraryBuild).
 /// </summary>
 [AddComponentMenu("Blueprint/Model Library")]
 public class ModelLibrary : MonoBehaviour
 {
     public static ModelLibrary Instance { get; private set; }
 
-    [Tooltip("catalog.json to load when the host page doesn't send a catalog: Play mode with Use Remote In Editor, " +
-             "or a build opened without the website. Relative model/thumbnail URLs are resolved against it.")]
-    [SerializeField] private string catalogUrl = "";
+    [Tooltip("catalog.json to load when the host page doesn't send a catalog (Play mode, or a build opened without " +
+             "the website). Relative model/thumbnail URLs are resolved against it.")]
+    [SerializeField] private string catalogUrl = "https://assets.suburbsim.online/models/catalog.json";
 
-    [Tooltip("Editor only: load the models from Catalog Url instead of the local prefabs.")]
-    [SerializeField] private bool useRemoteInEditor = false;
+    [Tooltip("Editor only: use the local prefabs from the PriceCatalog asset instead of the remote library (offline work).")]
+    [SerializeField] private bool useLocalModels = false;
 
     [Tooltip("Texture filtering for loaded models (1 = off). Higher keeps ground-level textures sharp at an angle.")]
     [SerializeField] private int anisotropicLevel = 4;
@@ -109,23 +110,36 @@ public class ModelLibrary : MonoBehaviour
 
     private void Start()
     {
-        if (!IsRemote && !HostBridge.IsAttached && FetchesOwnCatalog && !string.IsNullOrEmpty(catalogUrl))
+        if (LocalModelsAllowed || IsRemote) return;
+
+        // Nothing local: models (and their prices) only come from the remote catalog
+        if (ModelEstPrice.Instance != null) ModelEstPrice.Instance.Catalog = null;
+
+        if (HostBridge.IsAttached) return; // The website sends the catalog
+        if (string.IsNullOrEmpty(catalogUrl))
         {
-            StartCoroutine(FetchCatalog(catalogUrl));
+            Debug.LogWarning("[ModelLibrary] No Catalog Url set: the item catalog stays empty.");
+            return;
         }
+        StartCoroutine(FetchCatalog(catalogUrl));
     }
 
-    private bool FetchesOwnCatalog
+    private bool LocalModelsAllowed
     {
         get
         {
 #if UNITY_EDITOR
-            return useRemoteInEditor;
+            return useLocalModels;
 #else
-            return true;
+            return false;
 #endif
         }
     }
+
+    /// <summary>
+    /// True while the local prefabs are in use (editor with Use Local Models, before any remote catalog arrived).
+    /// </summary>
+    public bool UsesLocalModels => LocalModelsAllowed && !IsRemote;
 
     private void LateUpdate()
     {
@@ -314,6 +328,11 @@ public class ModelLibrary : MonoBehaviour
             return;
         }
 
+        if (!LocalModelsAllowed)
+        {
+            done(null); // Not in the remote catalog
+            return;
+        }
         SpawnInModel spawner = FindAnyObjectByType<SpawnInModel>();
         done(spawner != null ? spawner.FindPrefab(id) : null);
     }
