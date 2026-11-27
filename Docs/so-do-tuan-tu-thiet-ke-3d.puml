@@ -1,0 +1,185 @@
+@startuml ThietKePhoiCanh3D
+hide footbox
+skinparam style strictuml
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam defaultFontSize 11
+skinparam ArrowColor #000000
+skinparam sequence {
+  LifeLineBorderColor #000000
+  LifeLineBackgroundColor #6EC6EE
+  ActorBorderColor #000000
+  ActorBackgroundColor #6EC6EE
+  GroupBorderColor #000000
+}
+skinparam boundary {
+  BackgroundColor #6EC6EE
+  BorderColor #000000
+}
+skinparam control {
+  BackgroundColor #6EC6EE
+  BorderColor #000000
+}
+autonumber "0:"
+
+actor Homeowner as HO
+boundary ProjectsPage as PP
+boundary Design3DPage as DP
+boundary UICatalog as UC
+boundary DraggableModel as DM
+control WebBridge as WB
+control BlueprintExport as BE
+control SpawnInModel as SM
+control ModelMovement as MM
+control BlueprintSave as BS
+control ProjectController as PC
+control ProjectService as PS
+control ProjectRepository as PR
+control PrismaService as PRS
+
+activate HO
+
+' ---------- Mở dự án và nạp bản thiết kế từ CSDL ----------
+HO -> PP : click "Mở" (project)
+activate PP
+PP -> DP : call
+deactivate PP
+activate DP
+DP -> DP : getProjectIdFromPath()
+activate DP
+DP -> PC : call
+activate PC
+PC -> PC : getProject(userId, projectId)
+activate PC
+PC -> PS : call
+activate PS
+PS -> PS : getProjectById(userId, projectId)
+activate PS
+PS -> PR : call
+activate PR
+PR -> PR : findById(projectId)
+activate PR
+PR -> PRS : call
+activate PRS
+PRS -> PRS : prisma.project.findUnique()
+activate PRS
+PRS --> PR : return Project
+deactivate PRS
+deactivate PRS
+PR --> PS : return Project
+deactivate PR
+deactivate PR
+PS --> PC : return ProjectRes
+deactivate PS
+deactivate PS
+PC --> DP : return ProjectRes
+deactivate PC
+deactivate PC
+deactivate DP
+
+DP -> DP : loadBlueprint(blueprint)
+activate DP
+DP -> WB : call(BlueprintData)
+activate WB
+WB -> BE : call(BlueprintData)
+activate BE
+BE -> BE : ApplyToScene(data)
+activate BE
+loop mỗi mô hình trong data.models
+  BE -> SM : call(BlueprintModelData)
+  activate SM
+  SM -> SM : SpawnFromBlueprint(modelData)
+  activate SM
+  deactivate SM
+  deactivate SM
+end
+BE --> WB : return ok, loaded
+deactivate BE
+deactivate BE
+WB --> DP : return LoadResult
+deactivate WB
+DP --> HO : display
+deactivate DP
+deactivate DP
+
+' ---------- Thêm mô hình từ thư viện ----------
+HO -> UC : click thẻ mô hình
+activate UC
+UC -> SM : call(prefab)
+activate SM
+SM -> SM : Spawn(prefab)
+activate SM
+SM -> DM : create
+activate DM
+deactivate DM
+SM --> HO : display
+deactivate SM
+deactivate SM
+deactivate UC
+
+' ---------- Chỉnh sửa mô hình ----------
+HO -> MM : kéo / xoay / đổi kích thước
+activate MM
+MM -> MM : StartDragging(model, hitPoint)
+activate MM
+MM --> HO : display
+deactivate MM
+deactivate MM
+
+' ---------- Lưu bản thiết kế ----------
+HO -> DP : click "Lưu"
+activate DP
+DP -> WB : call("Save")
+activate WB
+WB -> BS : call
+activate BS
+BS -> BS : Save(), Capture()
+activate BS
+BS -> DP : call(BlueprintData)
+deactivate BS
+deactivate BS
+deactivate WB
+DP -> DP : handleSaveRequest(blueprint)
+activate DP
+DP -> PC : call(SaveBlueprintReq)
+activate PC
+PC -> PC : saveBlueprint(userId, projectId, SaveBlueprintReq)
+activate PC
+PC -> PS : call(SaveBlueprintReq)
+activate PS
+PS -> PS : saveBlueprint(userId, projectId, SaveBlueprintReq)
+activate PS
+PS -> PR : call
+activate PR
+PR -> PR : updateBlueprint(projectId, blueprint)
+activate PR
+PR -> PRS : call
+activate PRS
+PRS -> PRS : prisma.project.update()
+activate PRS
+PRS --> PR : return Project
+deactivate PRS
+deactivate PRS
+PR --> PS : return Project
+deactivate PR
+deactivate PR
+PS --> PC : return ProjectRes
+deactivate PS
+deactivate PS
+PC --> DP : return ProjectRes
+deactivate PC
+deactivate PC
+DP --> HO : show success
+deactivate DP
+deactivate DP
+
+' ---------- Thoát khỏi môi trường 3D ----------
+HO -> DP : click "Quay lại"
+activate DP
+DP -> PP : call
+deactivate DP
+activate PP
+PP --> HO : display
+deactivate PP
+
+@enduml

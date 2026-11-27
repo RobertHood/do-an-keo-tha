@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 /// <summary>
@@ -45,6 +46,19 @@ public static class FengShuiTypes
             case FengShuiType.GheBan: return "ghe_ban";
             default: return "khac";
         }
+    }
+
+    /// <summary>
+    /// The type for an ID from Id() (e.g. from the model database). Empty or unknown IDs give Auto.
+    /// </summary>
+    public static FengShuiType FromId(string id)
+    {
+        if (string.IsNullOrEmpty(id)) return FengShuiType.Auto;
+        foreach (FengShuiType type in Enum.GetValues(typeof(FengShuiType)))
+        {
+            if (type != FengShuiType.Auto && Id(type) == id) return type;
+        }
+        return FengShuiType.Auto;
     }
 
     public static string Name(FengShuiType type)

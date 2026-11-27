@@ -429,6 +429,11 @@ public static class NotificationTexts
     public const string LandAdjusted = "Một số kích thước đã được điều chỉnh: {0}.";
     public const string LandInvalidNumber = "Vui lòng nhập một số hợp lệ (ví dụ: 12 hoặc 12,5).";
     public const string CompassNorth = "Đã xoay camera về hướng Bắc.";
+
+    public const string ModelLoading = "Đang tải mô hình \"{0}\"...";
+    public const string ModelLoadFailed = "Không tải được mô hình \"{0}\". Vui lòng kiểm tra kết nối mạng và thử lại.";
+    public const string ModelLibraryFailed = "Không tải được thư viện mô hình. Vui lòng tải lại trang.";
+    public const string BlueprintStillLoading = "Bản thiết kế vẫn đang được tải, vui lòng đợi trong giây lát.";
 }
 
 /// <summary>

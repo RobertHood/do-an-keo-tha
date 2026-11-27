@@ -8,7 +8,8 @@ using UnityEngine;
 /// Builds the UI that would otherwise be created when Play starts into the open scene, so it can be seen and
 /// arranged in the editor:
 /// - the land panel (inside the Canvas child "Land Settings") and the "Thửa đất" toolbar button (UILandBoundary),
-/// - the compass in the top-right corner (Canvas child "Compass", UICompass).
+/// - the compass in the top-right corner (Canvas child "Compass", UICompass),
+/// - the "Thư viện mô hình" button that brings the item catalog back after it is hidden (Canvas child "Show Catalog").
 /// Parts that already exist are left alone; delete one and run the menu again to rebuild it.
 /// Editor: Tools > Suburbsim > Build Land Panel and Compass (then save the scene)
 /// </summary>
@@ -78,6 +79,21 @@ public static class SuburbsimRuntimeUITool
         else
         {
             report.Add("- Compass: already in the scene (delete \"Compass\" to rebuild).");
+        }
+
+        // Button that brings the item catalog back after "—" hides it
+        UICatalog catalog = Object.FindAnyObjectByType<UICatalog>(FindObjectsInactive.Include);
+        if (catalog != null)
+        {
+            if (catalog.BuildShowButtonInEditor())
+            {
+                EditorUtility.SetDirty(catalog);
+                report.Add("- Catalog: \"Thư viện mô hình\" button added (Canvas child \"Show Catalog\", hidden until the catalog is closed).");
+            }
+            else
+            {
+                report.Add("- Catalog: show button already in the scene.");
+            }
         }
 
         // Undo for everything that was created

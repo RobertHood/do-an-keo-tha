@@ -1,0 +1,174 @@
+@startuml SuburbsimERD
+hide circle
+hide empty methods
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam defaultFontSize 11
+skinparam linetype ortho
+skinparam nodesep 60
+skinparam ranksep 70
+skinparam ArrowColor #000000
+skinparam class {
+  BackgroundColor #E8F6FC
+  HeaderBackgroundColor #6EC6EE
+  BorderColor #000000
+  FontStyle bold
+  AttributeFontSize 11
+}
+
+' Ký hiệu: <&key> = khóa chính (PK), chữ nghiêng = khóa ngoại (FK),
+' <<U>> = duy nhất, N = cho phép NULL. Mọi đường nối là nét đứt (Non-Identifying).
+
+entity "users" as users {
+  <&key> id : UUID
+  --
+  email : VARCHAR(255) <<U>>
+  password : VARCHAR(255)
+  full_name : VARCHAR(150)
+  phone_number : VARCHAR(20)  N
+  avatar_url : VARCHAR(500)  N
+  role : Role (ENUM)
+  is_active : BOOLEAN
+  otp_code : VARCHAR(6)  N
+  otp_expires_at : TIMESTAMP  N
+  hashed_refresh_token : VARCHAR(255)  N
+  created_at : TIMESTAMP
+  updated_at : TIMESTAMP
+}
+
+entity "feng_shui_profiles" as feng_shui_profiles {
+  <&key> id : UUID
+  --
+  <i>user_id : UUID</i> <<FK, U>>
+  birth_year : INTEGER
+  gender : VARCHAR(10)
+  kua_number : INTEGER
+  destiny_palace : VARCHAR(50)
+  fate_group : VARCHAR(20)
+  auspicious_directions : JSONB
+  inauspicious_directions : JSONB
+  created_at : TIMESTAMP
+  updated_at : TIMESTAMP
+}
+
+entity "design_templates" as design_templates {
+  <&key> id : UUID
+  --
+  name : VARCHAR(200)
+  style : VARCHAR(100)
+  suggested_plot_area : DOUBLE PRECISION
+  preview_image_url : VARCHAR(500)
+  scene_config_json : JSONB
+  is_published : BOOLEAN
+  created_at : TIMESTAMP
+  updated_at : TIMESTAMP
+}
+
+entity "projects" as projects {
+  <&key> id : UUID
+  --
+  <i>user_id : UUID</i> <<FK>>
+  <i>template_id : UUID</i> <<FK>>  N
+  name : VARCHAR(200)
+  location : VARCHAR(255)
+  description : TEXT  N
+  thumbnail_url : VARCHAR(500)  N
+  target_budget : DECIMAL(14,2)  N
+  init_type : VARCHAR(30)
+  scene_json : JSONB  N
+  created_at : TIMESTAMP
+  updated_at : TIMESTAMP
+  deleted_at : TIMESTAMP  N
+}
+
+entity "plots" as plots {
+  <&key> id : UUID
+  --
+  <i>project_id : UUID</i> <<FK, U>>
+  width : DOUBLE PRECISION
+  depth : DOUBLE PRECISION
+  area : DOUBLE PRECISION
+  orientation_degree : DOUBLE PRECISION
+  orientation_label : VARCHAR(30)
+  boundary_polygon : JSONB  N
+  created_at : TIMESTAMP
+  updated_at : TIMESTAMP
+}
+
+entity "house_structures" as house_structures {
+  <&key> id : UUID
+  --
+  <i>project_id : UUID</i> <<FK, U>>
+  house_model_name : VARCHAR(200)
+  footprint_width : DOUBLE PRECISION
+  footprint_depth : DOUBLE PRECISION
+  footprint_area : DOUBLE PRECISION
+  floor_count : INTEGER
+  total_floor_area : DOUBLE PRECISION
+  front_setback : DOUBLE PRECISION
+  side_setback : DOUBLE PRECISION
+  rear_setback : DOUBLE PRECISION
+  facing_direction : VARCHAR(30)
+  created_at : TIMESTAMP
+  updated_at : TIMESTAMP
+}
+
+entity "materials" as materials {
+  <&key> id : UUID
+  --
+  name : VARCHAR(200)
+  category : VARCHAR(100)
+  applied_zone : VARCHAR(150)
+  unit : VARCHAR(20)
+  min_unit_price : DECIMAL(12,2)
+  max_unit_price : DECIMAL(12,2)
+  texture_url : VARCHAR(500)
+  created_at : TIMESTAMP
+  updated_at : TIMESTAMP
+}
+
+entity "project_materials" as project_materials {
+  <&key> id : UUID
+  --
+  <i>project_id : UUID</i> <<FK>>
+  <i>material_id : UUID</i> <<FK>>
+  applied_surface : VARCHAR(100)
+  quantity_area : DOUBLE PRECISION
+  created_at : TIMESTAMP
+  updated_at : TIMESTAMP
+}
+
+entity "feng_shui_audits" as feng_shui_audits {
+  <&key> id : UUID
+  --
+  <i>project_id : UUID</i> <<FK>>
+  overview_table_json : JSONB
+  layout_suggestions_json : JSONB
+  created_at : TIMESTAMP
+}
+
+entity "feng_shui_chat_histories" as feng_shui_chat_histories {
+  <&key> id : UUID
+  --
+  <i>project_id : UUID</i> <<FK>>
+  question : TEXT
+  answer : TEXT
+  created_at : TIMESTAMP
+}
+
+' Hàng trên: users, feng_shui_profiles, design_templates
+users ||.o| feng_shui_profiles
+users ||..o{ projects
+design_templates |o..o{ projects
+
+' Hai bên projects: plots (trái), house_structures (phải)
+plots |o.|| projects
+projects ||.o| house_structures
+
+' Hàng dưới: project_materials, materials, feng_shui_audits, feng_shui_chat_histories
+projects ||..o{ project_materials
+project_materials }o..|| materials
+projects ||..o{ feng_shui_audits
+projects ||..o{ feng_shui_chat_histories
+
+@enduml

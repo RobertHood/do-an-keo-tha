@@ -174,18 +174,31 @@ public class WebBridge : MonoBehaviour
         else
         {
             result.total = data.models.Count;
-            result.ok = BlueprintExport.Instance.ApplyToScene(data, out result.loaded);
-            if (result.ok)
+            bool started = BlueprintExport.Instance.ApplyToScene(data, loaded =>
+            {
+                // Models may still have to be downloaded, so the result is sent once all of them are in
+                result.ok = true;
+                result.loaded = loaded;
+                HostBridge.Send(HostBridge.EventLoaded, JsonUtility.ToJson(result));
+            });
+            if (started)
             {
                 BlueprintSave.Instance.OpenExisting(data);
+                return;
             }
-            else
-            {
-                result.error = "apply-failed";
-            }
+            result.error = "apply-failed";
         }
 
         HostBridge.Send(HostBridge.EventLoaded, JsonUtility.ToJson(result));
+    }
+
+    /// <summary>
+    /// Uses the model catalog sent by the host page (catalog.json from the model storage or the model database,
+    /// with baseUrl set to where relative model/thumbnail URLs are resolved). Must arrive before LoadBlueprint.
+    /// </summary>
+    public void LoadModelCatalog(string json)
+    {
+        if (ModelLibrary.Instance != null) ModelLibrary.Instance.LoadCatalogJson(json);
     }
 
     public void SetBlueprintName(string blueprintName)

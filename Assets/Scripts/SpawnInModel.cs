@@ -140,7 +140,8 @@ public class SpawnInModel : MonoBehaviour
         }
         draggable.prefabId = prefab.name;
 
-        if (FindPrefab(prefab.name) == null)
+        PriceCatalog catalog = ModelEstPrice.Instance != null ? ModelEstPrice.Instance.Catalog : null;
+        if ((catalog == null || catalog.FindEntry(prefab.name) == null) && FindPrefab(prefab.name) == null)
         {
             Debug.LogWarning($"[SpawnInModel] '{prefab.name}' is not in the Model Prefabs list or the price catalog, so it can't be rebuilt when loading a blueprint. Add it to the catalog.");
         }
@@ -206,6 +207,66 @@ public class SpawnInModel : MonoBehaviour
     }
 
     /// <summary>
+    /// Spawns a model from the model library by its ID (the catalog cards use this). A model that still has to be
+    /// downloaded shows a loading message and appears once it has loaded.
+    /// </summary>
+    public void SpawnById(string id)
+    {
+        ModelLibrary library = ModelLibrary.Instance;
+        if (library == null)
+        {
+            SpawnByName(id);
+            return;
+        }
+
+        if (!library.IsReady(id))
+        {
+            UINotification.ShowInfo(string.Format(NotificationTexts.ModelLoading, GetDisplayName(id)));
+        }
+
+        library.Get(id, prefab =>
+        {
+            if (this == null) return;
+            if (prefab == null)
+            {
+                UINotification.ShowError(string.Format(NotificationTexts.ModelLoadFailed, GetDisplayName(id)));
+                return;
+            }
+            Spawn(prefab);
+        });
+    }
+
+    private static string GetDisplayName(string id)
+    {
+        PriceCatalog catalog = ModelEstPrice.Instance != null ? ModelEstPrice.Instance.Catalog : null;
+        PriceCatalogEntry entry = catalog != null ? catalog.FindEntry(id) : null;
+        return entry != null && !string.IsNullOrEmpty(entry.displayName) ? entry.displayName : id;
+    }
+
+    /// <summary>
+    /// Rebuilds a model from saved blueprint data through the model library, downloading it first if needed.
+    /// done gets the new model, or null if it could not be found or loaded.
+    /// </summary>
+    public void SpawnFromBlueprint(BlueprintModelData data, System.Action<GameObject> done)
+    {
+        ModelLibrary library = ModelLibrary.Instance;
+        if (library == null)
+        {
+            done?.Invoke(SpawnFromBlueprint(data));
+            return;
+        }
+
+        library.Get(data.prefabId, prefab =>
+        {
+            if (prefab == null)
+            {
+                Debug.LogWarning($"[SpawnInModel] Cannot load '{data.prefabId}': not in the model library.");
+            }
+            done?.Invoke(prefab != null && this != null ? BuildFromBlueprint(prefab, data) : null);
+        });
+    }
+
+    /// <summary>
     /// Rebuilds a model from saved blueprint data. Skips placement search, scaling and ground alignment
     /// so the model lands exactly where it was saved.
     /// </summary>
@@ -218,6 +279,11 @@ public class SpawnInModel : MonoBehaviour
             return null;
         }
 
+        return BuildFromBlueprint(prefab, data);
+    }
+
+    private GameObject BuildFromBlueprint(GameObject prefab, BlueprintModelData data)
+    {
         GameObject instance = Instantiate(prefab, modelsContainer);
         instance.name = prefab.name;
         instance.transform.localPosition = data.position;

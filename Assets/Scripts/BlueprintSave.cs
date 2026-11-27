@@ -81,6 +81,13 @@ public class BlueprintSave : MonoBehaviour
     {
         if (IsSaving) return; // Ignore double-clicks while a (web) save is still in flight
 
+        if (BlueprintExport.Instance != null && BlueprintExport.Instance.IsApplying)
+        {
+            // Saving now would drop the models that are still downloading
+            UINotification.ShowError(NotificationTexts.BlueprintStillLoading);
+            return;
+        }
+
         BlueprintData data = Capture();
         if (data == null)
         {

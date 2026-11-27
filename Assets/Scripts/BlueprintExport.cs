@@ -209,16 +209,24 @@ public class BlueprintExport : MonoBehaviour
     /// </summary>
     public bool ApplyToScene(BlueprintData data)
     {
-        return ApplyToScene(data, out _);
+        return ApplyToScene(data, null);
     }
 
     /// <summary>
-    /// Same as ApplyToScene(data); loaded = how many models were rebuilt (models whose prefab is
-    /// missing from SpawnInModel's list are skipped).
+    /// True while models of the last applied blueprint are still being downloaded from the model library.
     /// </summary>
-    public bool ApplyToScene(BlueprintData data, out int loaded)
+    public bool IsApplying => pendingModels > 0;
+
+    private int applyGeneration;
+    private int pendingModels;
+
+    /// <summary>
+    /// Same as ApplyToScene(data). Models from the remote model library may have to be downloaded first, so they
+    /// appear over the next moments; onLoaded gets how many models were rebuilt once all are done (models missing
+    /// from the library are skipped). Returns false if the blueprint can't be applied at all.
+    /// </summary>
+    public bool ApplyToScene(BlueprintData data, Action<int> onLoaded)
     {
-        loaded = 0;
         if (spawner == null)
         {
             Debug.LogWarning("[BlueprintExport] No SpawnInModel found in the scene.");
@@ -232,12 +240,41 @@ public class BlueprintExport : MonoBehaviour
             LandBoundary.Instance.Apply(data.land, false);
         }
 
-        foreach (BlueprintModelData model in data.models)
+        int generation = ++applyGeneration;
+        int total = data.models.Count;
+        int remaining = total;
+        int loaded = 0;
+        pendingModels = remaining;
+
+        void Finish()
         {
-            if (spawner.SpawnFromBlueprint(model) != null) loaded++;
+            Debug.Log($"[BlueprintExport] Loaded '{data.name}': {loaded}/{total} model(s).");
+            onLoaded?.Invoke(loaded);
         }
 
-        Debug.Log($"[BlueprintExport] Loaded '{data.name}': {loaded}/{data.models.Count} model(s).");
+        if (remaining == 0)
+        {
+            Finish();
+            return true;
+        }
+
+        foreach (BlueprintModelData model in data.models)
+        {
+            spawner.SpawnFromBlueprint(model, instance =>
+            {
+                if (generation != applyGeneration)
+                {
+                    // A newer blueprint replaced this one while the model was downloading
+                    if (instance != null) Destroy(instance);
+                    return;
+                }
+
+                if (instance != null) loaded++;
+                remaining--;
+                pendingModels = remaining;
+                if (remaining == 0) Finish();
+            });
+        }
         return true;
     }
 

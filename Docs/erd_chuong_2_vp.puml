@@ -1,0 +1,140 @@
+@startuml SuburbsimDatabase
+
+class users {
+  id : UUID <<PK>>
+  email : VARCHAR(255) <<U>>
+  password : VARCHAR(255)
+  full_name : VARCHAR(150)
+  phone_number : VARCHAR(20)
+  avatar_url : VARCHAR(500)
+  role : Role
+  is_active : BOOLEAN
+  otp_code : VARCHAR(6)
+  otp_expires_at : TIMESTAMP
+  hashed_refresh_token : VARCHAR(255)
+  created_at : TIMESTAMP
+  updated_at : TIMESTAMP
+}
+
+class feng_shui_profiles {
+  id : UUID <<PK>>
+  user_id : UUID <<FK>>
+  birth_year : INTEGER
+  gender : VARCHAR(10)
+  kua_number : INTEGER
+  destiny_palace : VARCHAR(50)
+  fate_group : VARCHAR(20)
+  auspicious_directions : JSONB
+  inauspicious_directions : JSONB
+  created_at : TIMESTAMP
+  updated_at : TIMESTAMP
+}
+
+class design_templates {
+  id : UUID <<PK>>
+  name : VARCHAR(200)
+  style : VARCHAR(100)
+  suggested_plot_area : DOUBLE PRECISION
+  preview_image_url : VARCHAR(500)
+  scene_config_json : JSONB
+  is_published : BOOLEAN
+  created_at : TIMESTAMP
+  updated_at : TIMESTAMP
+}
+
+class projects {
+  id : UUID <<PK>>
+  user_id : UUID <<FK>>
+  template_id : UUID <<FK>>
+  name : VARCHAR(200)
+  location : VARCHAR(255)
+  description : TEXT
+  thumbnail_url : VARCHAR(500)
+  target_budget : DECIMAL(14,2)
+  init_type : VARCHAR(30)
+  scene_json : JSONB
+  created_at : TIMESTAMP
+  updated_at : TIMESTAMP
+  deleted_at : TIMESTAMP
+}
+
+class plots {
+  id : UUID <<PK>>
+  project_id : UUID <<FK>>
+  width : DOUBLE PRECISION
+  depth : DOUBLE PRECISION
+  area : DOUBLE PRECISION
+  orientation_degree : DOUBLE PRECISION
+  orientation_label : VARCHAR(30)
+  boundary_polygon : JSONB
+  created_at : TIMESTAMP
+  updated_at : TIMESTAMP
+}
+
+class house_structures {
+  id : UUID <<PK>>
+  project_id : UUID <<FK>>
+  house_model_name : VARCHAR(200)
+  footprint_width : DOUBLE PRECISION
+  footprint_depth : DOUBLE PRECISION
+  footprint_area : DOUBLE PRECISION
+  floor_count : INTEGER
+  total_floor_area : DOUBLE PRECISION
+  front_setback : DOUBLE PRECISION
+  side_setback : DOUBLE PRECISION
+  rear_setback : DOUBLE PRECISION
+  facing_direction : VARCHAR(30)
+  created_at : TIMESTAMP
+  updated_at : TIMESTAMP
+}
+
+class materials {
+  id : UUID <<PK>>
+  name : VARCHAR(200)
+  category : VARCHAR(100)
+  applied_zone : VARCHAR(150)
+  unit : VARCHAR(20)
+  min_unit_price : DECIMAL(12,2)
+  max_unit_price : DECIMAL(12,2)
+  texture_url : VARCHAR(500)
+  created_at : TIMESTAMP
+  updated_at : TIMESTAMP
+}
+
+class project_materials {
+  id : UUID <<PK>>
+  project_id : UUID <<FK>>
+  material_id : UUID <<FK>>
+  applied_surface : VARCHAR(100)
+  quantity_area : DOUBLE PRECISION
+  created_at : TIMESTAMP
+  updated_at : TIMESTAMP
+}
+
+class feng_shui_audits {
+  id : UUID <<PK>>
+  project_id : UUID <<FK>>
+  overview_table_json : JSONB
+  layout_suggestions_json : JSONB
+  created_at : TIMESTAMP
+}
+
+class feng_shui_chat_histories {
+  id : UUID <<PK>>
+  project_id : UUID <<FK>>
+  question : TEXT
+  answer : TEXT
+  created_at : TIMESTAMP
+}
+
+users "1" -- "0..1" feng_shui_profiles
+users "1" -- "0..*" projects
+design_templates "0..1" -- "0..*" projects
+projects "1" -- "0..1" plots
+projects "1" -- "0..1" house_structures
+projects "1" -- "0..*" project_materials
+materials "1" -- "0..*" project_materials
+projects "1" -- "0..*" feng_shui_audits
+projects "1" -- "0..*" feng_shui_chat_histories
+
+@enduml

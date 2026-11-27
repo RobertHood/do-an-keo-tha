@@ -857,6 +857,9 @@ public class LandBoundary : MonoBehaviour
     /// </summary>
     private class ModelTint
     {
+        // Colour property of the glTFast shaders used by models loaded from the model library
+        private const string GltfBaseColor = "baseColorFactor";
+
         private readonly Renderer[] renderers;
         private readonly Color[][] baseColors;
         private readonly MaterialPropertyBlock block = new MaterialPropertyBlock();
@@ -880,6 +883,7 @@ public class LandBoundary : MonoBehaviour
                 {
                     Material mat = materials[m];
                     baseColors[i][m] = mat == null ? Color.white
+                        : mat.HasProperty(GltfBaseColor) ? mat.GetColor(GltfBaseColor)
                         : mat.HasProperty("_BaseColor") ? mat.GetColor("_BaseColor")
                         : mat.HasProperty("_Color") ? mat.GetColor("_Color")
                         : Color.white;
@@ -905,6 +909,7 @@ public class LandBoundary : MonoBehaviour
                         c.a = baseColors[i][m].a;
                         block.SetColor("_BaseColor", c);
                         block.SetColor("_Color", c);
+                        block.SetColor(GltfBaseColor, c);
                     }
                     r.SetPropertyBlock(block, m);
                 }

@@ -1,0 +1,1059 @@
+{
+  "format": "SuburbsimModelCatalog",
+  "version": 1,
+  "models": [
+    {
+      "id": "Fir_Tree",
+      "category": "Plants",
+      "displayName": "Cây thông",
+      "description": "Its a fir tree",
+      "listedPrice": 2000.0,
+      "offers": [],
+      "loai": "cay",
+      "frontYawOffset": 0.0,
+      "hasDoor": false,
+      "doorOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "baseSize": {
+        "x": 3.772,
+        "y": 5.713,
+        "z": 3.77
+      },
+      "modelUrl": "models/Plants/Fir_Tree.glb",
+      "thumbnailUrl": "thumbnails/Fir_Tree.png",
+      "author": "Darth_Artisan",
+      "license": "Unity Asset Store EULA",
+      "sourceUrl": "",
+      "fileSize": 15328
+    },
+    {
+      "id": "Oak_Tree",
+      "category": "Plants",
+      "displayName": "Cây sồi",
+      "description": "Cây bóng mát tán rộng.",
+      "listedPrice": 0.0,
+      "offers": [],
+      "loai": "cay",
+      "frontYawOffset": 0.0,
+      "hasDoor": false,
+      "doorOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "baseSize": {
+        "x": 3.956,
+        "y": 5.314,
+        "z": 2.837
+      },
+      "modelUrl": "models/Plants/Oak_Tree.glb",
+      "thumbnailUrl": "thumbnails/Oak_Tree.png",
+      "author": "Darth_Artisan",
+      "license": "Unity Asset Store EULA",
+      "sourceUrl": "",
+      "fileSize": 38464
+    },
+    {
+      "id": "Palm_Tree",
+      "category": "Plants",
+      "displayName": "Cây cọ",
+      "description": "\"C\\xE2y nhi\\u1EC7t \\u0111\\u1EDBi, h\\u1EE3p s\\xE2n v\\u01B0\\u1EDDn",
+      "listedPrice": 0.0,
+      "offers": [],
+      "loai": "cay",
+      "frontYawOffset": 0.0,
+      "hasDoor": false,
+      "doorOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "baseSize": {
+        "x": 3.241,
+        "y": 5.396,
+        "z": 3.239
+      },
+      "modelUrl": "models/Plants/Palm_Tree.glb",
+      "thumbnailUrl": "thumbnails/Palm_Tree.png",
+      "author": "Darth_Artisan",
+      "license": "Unity Asset Store EULA",
+      "sourceUrl": "",
+      "fileSize": 17428
+    },
+    {
+      "id": "Poplar_Tree",
+      "category": "Plants",
+      "displayName": "Cây bạch dương",
+      "description": "\"C\\xE2y d\\xE1ng cao, th\\xEDch h\\u1EE3p tr\\u1ED3ng h\\xE0ng r\\xE0o",
+      "listedPrice": 0.0,
+      "offers": [],
+      "loai": "cay",
+      "frontYawOffset": 0.0,
+      "hasDoor": false,
+      "doorOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "baseSize": {
+        "x": 2.694,
+        "y": 5.82,
+        "z": 2.963
+      },
+      "modelUrl": "models/Plants/Poplar_Tree.glb",
+      "thumbnailUrl": "thumbnails/Poplar_Tree.png",
+      "author": "Darth_Artisan",
+      "license": "Unity Asset Store EULA",
+      "sourceUrl": "",
+      "fileSize": 34824
+    },
+    {
+      "id": "barrel_planter_6d6628e8",
+      "category": "Decor",
+      "displayName": "Chậu cây thùng gỗ",
+      "description": "\"Barrel Planter \\xB7 BlenderKit, Royalty-Free, t\\xE1c gi\\u1EA3 Levi",
+      "listedPrice": 0.0,
+      "offers": [],
+      "loai": "chau_cay",
+      "frontYawOffset": 0.0,
+      "hasDoor": false,
+      "doorOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "baseSize": {
+        "x": 0.454,
+        "y": 0.71,
+        "z": 0.488
+      },
+      "modelUrl": "models/Decor/barrel_planter_6d6628e8.glb",
+      "thumbnailUrl": "thumbnails/barrel_planter_6d6628e8.png",
+      "author": "Levi Magony",
+      "license": "royalty_free",
+      "sourceUrl": "https://www.blenderkit.com/asset-gallery-detail/6d6628e8-8ad0-4573-860b-f3c13a7d01c8/",
+      "fileSize": 129860
+    },
+    {
+      "id": "garden_ram_bronze_statue_b26fd36b",
+      "category": "Decor",
+      "displayName": "Tượng cừu đồng",
+      "description": "\"Garden ram bronze statue \\xB7 BlenderKit, Royalty-Free, t\\xE1c",
+      "listedPrice": 0.0,
+      "offers": [],
+      "loai": "tuong",
+      "frontYawOffset": 0.0,
+      "hasDoor": false,
+      "doorOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "baseSize": {
+        "x": 0.699,
+        "y": 1.004,
+        "z": 1.436
+      },
+      "modelUrl": "models/Decor/garden_ram_bronze_statue_b26fd36b.glb",
+      "thumbnailUrl": "thumbnails/garden_ram_bronze_statue_b26fd36b.png",
+      "author": "Eleanie ",
+      "license": "royalty_free",
+      "sourceUrl": "https://www.blenderkit.com/asset-gallery-detail/b26fd36b-77f6-4a36-8623-898bba20b857/",
+      "fileSize": 216120
+    },
+    {
+      "id": "old_greek_style_flower_pot_780b126b",
+      "category": "Decor",
+      "displayName": "Chậu hoa kiểu Hy Lạp",
+      "description": "\"Old Greek style flower pot \\xB7 BlenderKit, Royalty-Free, t\\xE1c",
+      "listedPrice": 0.0,
+      "offers": [],
+      "loai": "chau_cay",
+      "frontYawOffset": 0.0,
+      "hasDoor": false,
+      "doorOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "baseSize": {
+        "x": 0.48,
+        "y": 0.905,
+        "z": 0.472
+      },
+      "modelUrl": "models/Decor/old_greek_style_flower_pot_780b126b.glb",
+      "thumbnailUrl": "thumbnails/old_greek_style_flower_pot_780b126b.png",
+      "author": "Matvey Sheyanov",
+      "license": "royalty_free",
+      "sourceUrl": "https://www.blenderkit.com/asset-gallery-detail/780b126b-411f-409c-afab-5c9a8a169ee8/",
+      "fileSize": 224600
+    },
+    {
+      "id": "rusty_mushroom_garden_statue_4588b925",
+      "category": "Decor",
+      "displayName": "Tượng nấm sân vườn",
+      "description": "\"Rusty mushroom garden statue \\xB7 BlenderKit, Royalty-Free, t\\xE1c",
+      "listedPrice": 0.0,
+      "offers": [],
+      "loai": "tuong",
+      "frontYawOffset": 0.0,
+      "hasDoor": false,
+      "doorOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "baseSize": {
+        "x": 0.593,
+        "y": 1.597,
+        "z": 0.596
+      },
+      "modelUrl": "models/Decor/rusty_mushroom_garden_statue_4588b925.glb",
+      "thumbnailUrl": "thumbnails/rusty_mushroom_garden_statue_4588b925.png",
+      "author": "Rous Kristall",
+      "license": "royalty_free",
+      "sourceUrl": "https://www.blenderkit.com/asset-gallery-detail/4588b925-bacf-4004-aa67-c912de7d8197/",
+      "fileSize": 200124
+    },
+    {
+      "id": "turtle_garden_statue_841a39dd",
+      "category": "Decor",
+      "displayName": "Tượng rùa sân vườn",
+      "description": "\"Turtle Garden Statue \\xB7 BlenderKit, Royalty-Free, t\\xE1c gi\\u1EA3",
+      "listedPrice": 0.0,
+      "offers": [],
+      "loai": "tuong",
+      "frontYawOffset": 270.0,
+      "hasDoor": false,
+      "doorOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "baseSize": {
+        "x": 0.555,
+        "y": 0.215,
+        "z": 0.331
+      },
+      "modelUrl": "models/Decor/turtle_garden_statue_841a39dd.glb",
+      "thumbnailUrl": "thumbnails/turtle_garden_statue_841a39dd.png",
+      "author": "Vavrinec Foltan",
+      "license": "royalty_free",
+      "sourceUrl": "https://www.blenderkit.com/asset-gallery-detail/841a39dd-f688-41ae-832d-02cd25ff7f5d/",
+      "fileSize": 250880
+    },
+    {
+      "id": "brick_and_iron_segment_fence_5990a780",
+      "category": "FenceGate",
+      "displayName": "Hàng rào gạch và sắt",
+      "description": "\"Brick and Iron Segment Fence \\xB7 BlenderKit, Royalty-Free, t\\xE1c",
+      "listedPrice": 0.0,
+      "offers": [],
+      "loai": "hang_rao",
+      "frontYawOffset": 0.0,
+      "hasDoor": false,
+      "doorOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "baseSize": {
+        "x": 6.572,
+        "y": 1.7,
+        "z": 0.411
+      },
+      "modelUrl": "models/FenceGate/brick_and_iron_segment_fence_5990a780.glb",
+      "thumbnailUrl": "thumbnails/brick_and_iron_segment_fence_5990a780.png",
+      "author": "Dal Roron",
+      "license": "royalty_free",
+      "sourceUrl": "https://www.blenderkit.com/asset-gallery-detail/5990a780-31c4-41b7-bc17-9a3ad5063a6f/",
+      "fileSize": 220820
+    },
+    {
+      "id": "cast_iron_fence_02_87468baa",
+      "category": "FenceGate",
+      "displayName": "Hàng rào sắt",
+      "description": "\"Cast Iron Fence 02 \\xB7 BlenderKit, CC0, t\\xE1c gi\\u1EA3 The Doctor",
+      "listedPrice": 0.0,
+      "offers": [],
+      "loai": "hang_rao",
+      "frontYawOffset": 0.0,
+      "hasDoor": false,
+      "doorOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "baseSize": {
+        "x": 1.488,
+        "y": 1.5,
+        "z": 0.057
+      },
+      "modelUrl": "models/FenceGate/cast_iron_fence_02_87468baa.glb",
+      "thumbnailUrl": "thumbnails/cast_iron_fence_02_87468baa.png",
+      "author": "The Doctor By Design ",
+      "license": "cc_zero",
+      "sourceUrl": "https://www.blenderkit.com/asset-gallery-detail/87468baa-bb9a-4b9a-bba4-6eea55de662f/",
+      "fileSize": 123828
+    },
+    {
+      "id": "fence_wood_15f4dbf8",
+      "category": "FenceGate",
+      "displayName": "Hàng rào gỗ",
+      "description": "\"Fence wood \\xB7 BlenderKit, Royalty-Free, t\\xE1c gi\\u1EA3 Amirkhan",
+      "listedPrice": 0.0,
+      "offers": [],
+      "loai": "hang_rao",
+      "frontYawOffset": 0.0,
+      "hasDoor": false,
+      "doorOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "baseSize": {
+        "x": 1.873,
+        "y": 1.586,
+        "z": 0.071
+      },
+      "modelUrl": "models/FenceGate/fence_wood_15f4dbf8.glb",
+      "thumbnailUrl": "thumbnails/fence_wood_15f4dbf8.png",
+      "author": "Amirkhan Manapov",
+      "license": "royalty_free",
+      "sourceUrl": "https://www.blenderkit.com/asset-gallery-detail/15f4dbf8-8d31-415d-bedb-6ed5cf5ddf77/",
+      "fileSize": 173176
+    },
+    {
+      "id": "large_iron_gate_c2158299",
+      "category": "FenceGate",
+      "displayName": "Cổng sắt lớn",
+      "description": "Large Iron Gate · BlenderKit, CC0, tác giả Poly Haven ",
+      "listedPrice": 0.0,
+      "offers": [],
+      "loai": "cong",
+      "frontYawOffset": 0.0,
+      "hasDoor": false,
+      "doorOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "baseSize": {
+        "x": 2.95,
+        "y": 2.929,
+        "z": 0.097
+      },
+      "modelUrl": "models/FenceGate/large_iron_gate_c2158299.glb",
+      "thumbnailUrl": "thumbnails/large_iron_gate_c2158299.png",
+      "author": "Poly Haven ",
+      "license": "cc_zero",
+      "sourceUrl": "https://www.blenderkit.com/asset-gallery-detail/c2158299-e938-4baa-b06e-ae21f18de704/",
+      "fileSize": 182636
+    },
+    {
+      "id": "wooden_slat_fence_f100a82c",
+      "category": "FenceGate",
+      "displayName": "Hàng rào nan gỗ",
+      "description": "\"Wooden Slat Fence \\xB7 BlenderKit, Royalty-Free, t\\xE1c gi\\u1EA3",
+      "listedPrice": 0.0,
+      "offers": [],
+      "loai": "hang_rao",
+      "frontYawOffset": 0.0,
+      "hasDoor": false,
+      "doorOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "baseSize": {
+        "x": 1.508,
+        "y": 1.491,
+        "z": 0.068
+      },
+      "modelUrl": "models/FenceGate/wooden_slat_fence_f100a82c.glb",
+      "thumbnailUrl": "thumbnails/wooden_slat_fence_f100a82c.png",
+      "author": "Andrew Crook",
+      "license": "royalty_free",
+      "sourceUrl": "https://www.blenderkit.com/asset-gallery-detail/f100a82c-4061-48d3-8e30-29043dca544d/",
+      "fileSize": 116716
+    },
+    {
+      "id": "park_bench_3c855baf",
+      "category": "GardenFurniture",
+      "displayName": "Ghế băng công viên",
+      "description": "Park Bench · BlenderKit, Royalty-Free, tác giả Dal Roron",
+      "listedPrice": 0.0,
+      "offers": [],
+      "loai": "ghe_ban",
+      "frontYawOffset": 0.0,
+      "hasDoor": false,
+      "doorOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "baseSize": {
+        "x": 1.573,
+        "y": 0.929,
+        "z": 0.72
+      },
+      "modelUrl": "models/GardenFurniture/park_bench_3c855baf.glb",
+      "thumbnailUrl": "thumbnails/park_bench_3c855baf.png",
+      "author": "Dal Roron",
+      "license": "royalty_free",
+      "sourceUrl": "https://www.blenderkit.com/asset-gallery-detail/3c855baf-ec36-4b48-aeb5-773f66fa4e0f/",
+      "fileSize": 202220
+    },
+    {
+      "id": "porch_rocking_chair_7d17d0f0",
+      "category": "GardenFurniture",
+      "displayName": "Ghế bập bênh hiên nhà",
+      "description": "\"Porch Rocking Chair \\xB7 BlenderKit, Royalty-Free, t\\xE1c gi\\u1EA3",
+      "listedPrice": 0.0,
+      "offers": [],
+      "loai": "ghe_ban",
+      "frontYawOffset": 0.0,
+      "hasDoor": false,
+      "doorOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "baseSize": {
+        "x": 0.515,
+        "y": 1.123,
+        "z": 0.805
+      },
+      "modelUrl": "models/GardenFurniture/porch_rocking_chair_7d17d0f0.glb",
+      "thumbnailUrl": "thumbnails/porch_rocking_chair_7d17d0f0.png",
+      "author": "Pushover ",
+      "license": "royalty_free",
+      "sourceUrl": "https://www.blenderkit.com/asset-gallery-detail/7d17d0f0-fc28-4c74-a290-e557d5871c34/",
+      "fileSize": 504832
+    },
+    {
+      "id": "sun_lounger_for_pool_1c8842e8",
+      "category": "GardenFurniture",
+      "displayName": "Ghế tắm nắng",
+      "description": "\"Sun lounger for pool \\xB7 BlenderKit, Royalty-Free, t\\xE1c gi\\u1EA3",
+      "listedPrice": 0.0,
+      "offers": [],
+      "loai": "ghe_ban",
+      "frontYawOffset": 0.0,
+      "hasDoor": false,
+      "doorOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "baseSize": {
+        "x": 0.756,
+        "y": 0.668,
+        "z": 1.89
+      },
+      "modelUrl": "models/GardenFurniture/sun_lounger_for_pool_1c8842e8.glb",
+      "thumbnailUrl": "thumbnails/sun_lounger_for_pool_1c8842e8.png",
+      "author": "jhon maycon",
+      "license": "royalty_free",
+      "sourceUrl": "https://www.blenderkit.com/asset-gallery-detail/1c8842e8-89d3-4409-bbb5-59c2084f6ca7/",
+      "fileSize": 220732
+    },
+    {
+      "id": "the_modern_swing_7c561f8a",
+      "category": "GardenFurniture",
+      "displayName": "Xích đu hiện đại",
+      "description": "\"The modern swing \\xB7 BlenderKit, Royalty-Free, t\\xE1c gi\\u1EA3",
+      "listedPrice": 0.0,
+      "offers": [],
+      "loai": "ghe_ban",
+      "frontYawOffset": 90.0,
+      "hasDoor": false,
+      "doorOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "baseSize": {
+        "x": 0.448,
+        "y": 1.346,
+        "z": 1.755
+      },
+      "modelUrl": "models/GardenFurniture/the_modern_swing_7c561f8a.glb",
+      "thumbnailUrl": "thumbnails/the_modern_swing_7c561f8a.png",
+      "author": "Branislav Kubečka",
+      "license": "royalty_free",
+      "sourceUrl": "https://www.blenderkit.com/asset-gallery-detail/7c561f8a-80ad-4f5a-98b3-ed67a4d4273a/",
+      "fileSize": 268456
+    },
+    {
+      "id": "white_outdoor_standing_table_81b62867",
+      "category": "GardenFurniture",
+      "displayName": "Bàn đứng ngoài trời",
+      "description": "\"White outdoor Standing Table \\xB7 BlenderKit, CC0, t\\xE1c gi\\u1EA3",
+      "listedPrice": 0.0,
+      "offers": [],
+      "loai": "ghe_ban",
+      "frontYawOffset": 0.0,
+      "hasDoor": false,
+      "doorOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "baseSize": {
+        "x": 0.759,
+        "y": 1.15,
+        "z": 0.759
+      },
+      "modelUrl": "models/GardenFurniture/white_outdoor_standing_table_81b62867.glb",
+      "thumbnailUrl": "thumbnails/white_outdoor_standing_table_81b62867.png",
+      "author": "Roland Schuller",
+      "license": "cc_zero",
+      "sourceUrl": "https://www.blenderkit.com/asset-gallery-detail/81b62867-ad6e-4bf4-bbde-2757738a127e/",
+      "fileSize": 115600
+    },
+    {
+      "id": "cottage_b72f3de4",
+      "category": "House",
+      "displayName": "Nhà kiểu cottage",
+      "description": "Cottage · BlenderKit, Royalty-Free, tác giả Jan Holinka",
+      "listedPrice": 0.0,
+      "offers": [],
+      "loai": "nha",
+      "frontYawOffset": 180.0,
+      "hasDoor": true,
+      "doorOffset": {
+        "x": -1.4,
+        "y": 0.0,
+        "z": -3.9
+      },
+      "baseSize": {
+        "x": 15.729,
+        "y": 9.125,
+        "z": 7.857
+      },
+      "modelUrl": "models/House/cottage_b72f3de4.glb",
+      "thumbnailUrl": "thumbnails/cottage_b72f3de4.png",
+      "author": "Jan Holinka",
+      "license": "royalty_free",
+      "sourceUrl": "https://www.blenderkit.com/asset-gallery-detail/b72f3de4-31cc-4c21-897e-36d67576766b/",
+      "fileSize": 2424748
+    },
+    {
+      "id": "forest_cabin_72521002",
+      "category": "House",
+      "displayName": "Nhà gỗ trong rừng",
+      "description": "Forest Cabin · BlenderKit, CC0, tác giả 3dquads blender",
+      "listedPrice": 0.0,
+      "offers": [],
+      "loai": "nha",
+      "frontYawOffset": 270.0,
+      "hasDoor": true,
+      "doorOffset": {
+        "x": -4.4,
+        "y": 0.0,
+        "z": -2.3
+      },
+      "baseSize": {
+        "x": 9.617,
+        "y": 7.411,
+        "z": 19.11
+      },
+      "modelUrl": "models/House/forest_cabin_72521002.glb",
+      "thumbnailUrl": "thumbnails/forest_cabin_72521002.png",
+      "author": "3dquads blender",
+      "license": "cc_zero",
+      "sourceUrl": "https://www.blenderkit.com/asset-gallery-detail/72521002-7689-43fe-a95c-ef5cc9fbbbb7/",
+      "fileSize": 4342488
+    },
+    {
+      "id": "modern_house_9277d3ad",
+      "category": "House",
+      "displayName": "Nhà hiện đại mái bằng",
+      "description": "Modern house · BlenderKit, Royalty-Free, tác giả Mesk911 ",
+      "listedPrice": 0.0,
+      "offers": [],
+      "loai": "nha",
+      "frontYawOffset": 90.0,
+      "hasDoor": true,
+      "doorOffset": {
+        "x": 5.6,
+        "y": 0.0,
+        "z": -1.2
+      },
+      "baseSize": {
+        "x": 13.758,
+        "y": 6.298,
+        "z": 17.898
+      },
+      "modelUrl": "models/House/modern_house_9277d3ad.glb",
+      "thumbnailUrl": "thumbnails/modern_house_9277d3ad.png",
+      "author": "Mesk911 ",
+      "license": "royalty_free",
+      "sourceUrl": "https://www.blenderkit.com/asset-gallery-detail/9277d3ad-2f67-4980-a00e-145071419d9a/",
+      "fileSize": 1509460
+    },
+    {
+      "id": "modern_one_story_house_ecee8f3a",
+      "category": "House",
+      "displayName": "Nhà hiện đại một tầng",
+      "description": "\"Modern One-Story House \\xB7 BlenderKit, Royalty-Free, t\\xE1c gi\\u1EA3",
+      "listedPrice": 0.0,
+      "offers": [],
+      "loai": "nha",
+      "frontYawOffset": 180.0,
+      "hasDoor": true,
+      "doorOffset": {
+        "x": -1.0,
+        "y": 0.0,
+        "z": -2.4
+      },
+      "baseSize": {
+        "x": 21.67,
+        "y": 5.401,
+        "z": 19.015
+      },
+      "modelUrl": "models/House/modern_one_story_house_ecee8f3a.glb",
+      "thumbnailUrl": "thumbnails/modern_one_story_house_ecee8f3a.png",
+      "author": "Abbos Mirzayev",
+      "license": "royalty_free",
+      "sourceUrl": "https://www.blenderkit.com/asset-gallery-detail/ecee8f3a-0ae6-4239-9aa5-fa2ef4d9027a/",
+      "fileSize": 4951248
+    },
+    {
+      "id": "small_house_db4bb7a9",
+      "category": "House",
+      "displayName": "Nhà nhỏ hai tầng",
+      "description": "\"Small house \\xB7 BlenderKit, Royalty-Free, t\\xE1c gi\\u1EA3 ali",
+      "listedPrice": 0.0,
+      "offers": [],
+      "loai": "nha",
+      "frontYawOffset": 0.0,
+      "hasDoor": true,
+      "doorOffset": {
+        "x": -3.9,
+        "y": 0.0,
+        "z": 3.3
+      },
+      "baseSize": {
+        "x": 10.632,
+        "y": 11.008,
+        "z": 7.921
+      },
+      "modelUrl": "models/House/small_house_db4bb7a9.glb",
+      "thumbnailUrl": "thumbnails/small_house_db4bb7a9.png",
+      "author": "ali alipour",
+      "license": "royalty_free",
+      "sourceUrl": "https://www.blenderkit.com/asset-gallery-detail/db4bb7a9-4d01-429d-a43e-9cb698aa4e52/",
+      "fileSize": 2262492
+    },
+    {
+      "id": "garden_lamp_630b7b07",
+      "category": "Lighting",
+      "displayName": "Đèn sân vườn",
+      "description": "\"Garden Lamp \\xB7 BlenderKit, Royalty-Free, t\\xE1c gi\\u1EA3 Dal",
+      "listedPrice": 0.0,
+      "offers": [],
+      "loai": "den",
+      "frontYawOffset": 0.0,
+      "hasDoor": false,
+      "doorOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "baseSize": {
+        "x": 0.411,
+        "y": 1.75,
+        "z": 0.876
+      },
+      "modelUrl": "models/Lighting/garden_lamp_630b7b07.glb",
+      "thumbnailUrl": "thumbnails/garden_lamp_630b7b07.png",
+      "author": "Dal Roron",
+      "license": "royalty_free",
+      "sourceUrl": "https://www.blenderkit.com/asset-gallery-detail/630b7b07-0f5d-4882-b196-9a159b18796c/",
+      "fileSize": 89660
+    },
+    {
+      "id": "garden_lamp_post_e4045355",
+      "category": "Lighting",
+      "displayName": "Cột đèn sân vườn",
+      "description": "\"Garden lamp post \\xB7 BlenderKit, Royalty-Free, t\\xE1c gi\\u1EA3",
+      "listedPrice": 0.0,
+      "offers": [],
+      "loai": "den",
+      "frontYawOffset": 0.0,
+      "hasDoor": false,
+      "doorOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "baseSize": {
+        "x": 0.29,
+        "y": 1.802,
+        "z": 0.71
+      },
+      "modelUrl": "models/Lighting/garden_lamp_post_e4045355.glb",
+      "thumbnailUrl": "thumbnails/garden_lamp_post_e4045355.png",
+      "author": "Flareworks Studio",
+      "license": "royalty_free",
+      "sourceUrl": "https://www.blenderkit.com/asset-gallery-detail/e4045355-cdf1-4478-a721-54dad9d114d7/",
+      "fileSize": 97532
+    },
+    {
+      "id": "japanese_stone_toro_lantern_7e42122d",
+      "category": "Lighting",
+      "displayName": "Đèn đá kiểu Nhật",
+      "description": "\"Japanese Stone Toro Lantern \\xB7 BlenderKit, Royalty-Free, t\\xE1c",
+      "listedPrice": 0.0,
+      "offers": [],
+      "loai": "den",
+      "frontYawOffset": 0.0,
+      "hasDoor": false,
+      "doorOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "baseSize": {
+        "x": 0.957,
+        "y": 2.448,
+        "z": 0.886
+      },
+      "modelUrl": "models/Lighting/japanese_stone_toro_lantern_7e42122d.glb",
+      "thumbnailUrl": "thumbnails/japanese_stone_toro_lantern_7e42122d.png",
+      "author": "naman sharma",
+      "license": "royalty_free",
+      "sourceUrl": "https://www.blenderkit.com/asset-gallery-detail/7e42122d-4be7-4e63-92ed-f38564c85686/",
+      "fileSize": 212816
+    },
+    {
+      "id": "street_lamp_eafdf1a1",
+      "category": "Lighting",
+      "displayName": "Cột đèn đường",
+      "description": "\"Street lamp \\xB7 BlenderKit, Royalty-Free, t\\xE1c gi\\u1EA3 Adam",
+      "listedPrice": 0.0,
+      "offers": [],
+      "loai": "den",
+      "frontYawOffset": 0.0,
+      "hasDoor": false,
+      "doorOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "baseSize": {
+        "x": 0.783,
+        "y": 3.814,
+        "z": 0.783
+      },
+      "modelUrl": "models/Lighting/street_lamp_eafdf1a1.glb",
+      "thumbnailUrl": "thumbnails/street_lamp_eafdf1a1.png",
+      "author": "Adam Krhanek",
+      "license": "royalty_free",
+      "sourceUrl": "https://www.blenderkit.com/asset-gallery-detail/eafdf1a1-0e65-4256-95d2-5319514cd77e/",
+      "fileSize": 90256
+    },
+    {
+      "id": "vintage_street_lamp_1d0bd5cb",
+      "category": "Lighting",
+      "displayName": "Đèn đường cổ điển",
+      "description": "\"Vintage Street Lamp \\xB7 BlenderKit, Royalty-Free, t\\xE1c gi\\u1EA3",
+      "listedPrice": 0.0,
+      "offers": [],
+      "loai": "den",
+      "frontYawOffset": 0.0,
+      "hasDoor": false,
+      "doorOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "baseSize": {
+        "x": 0.258,
+        "y": 1.752,
+        "z": 0.298
+      },
+      "modelUrl": "models/Lighting/vintage_street_lamp_1d0bd5cb.glb",
+      "thumbnailUrl": "thumbnails/vintage_street_lamp_1d0bd5cb.png",
+      "author": "Crazy0_0Cat ",
+      "license": "royalty_free",
+      "sourceUrl": "https://www.blenderkit.com/asset-gallery-detail/1d0bd5cb-429e-4d8f-9b32-66d98d19ccb1/",
+      "fileSize": 378276
+    },
+    {
+      "id": "cobblestone_road_d1fdf1b4",
+      "category": "PathWater",
+      "displayName": "Đường lát đá cuội",
+      "description": "\"Cobblestone road \\xB7 BlenderKit, Royalty-Free, t\\xE1c gi\\u1EA3",
+      "listedPrice": 0.0,
+      "offers": [],
+      "loai": "loi_di",
+      "frontYawOffset": 0.0,
+      "hasDoor": false,
+      "doorOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "baseSize": {
+        "x": 3.642,
+        "y": 0.119,
+        "z": 7.36
+      },
+      "modelUrl": "models/PathWater/cobblestone_road_d1fdf1b4.glb",
+      "thumbnailUrl": "thumbnails/cobblestone_road_d1fdf1b4.png",
+      "author": "Paweł Wałasiewicz",
+      "license": "royalty_free",
+      "sourceUrl": "https://www.blenderkit.com/asset-gallery-detail/d1fdf1b4-8443-4b62-a585-cb97c0fefb9a/",
+      "fileSize": 377832
+    },
+    {
+      "id": "fish_pond_e1ac8d65",
+      "category": "PathWater",
+      "displayName": "Hồ cá",
+      "description": "Fish pond · BlenderKit, Royalty-Free, tác giả M X",
+      "listedPrice": 0.0,
+      "offers": [],
+      "loai": "ho_nuoc",
+      "frontYawOffset": 0.0,
+      "hasDoor": false,
+      "doorOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "baseSize": {
+        "x": 7.696,
+        "y": 6.126,
+        "z": 9.332
+      },
+      "modelUrl": "models/PathWater/fish_pond_e1ac8d65.glb",
+      "thumbnailUrl": "thumbnails/fish_pond_e1ac8d65.png",
+      "author": "M X",
+      "license": "royalty_free",
+      "sourceUrl": "https://www.blenderkit.com/asset-gallery-detail/e1ac8d65-f636-443d-87e1-73af2d85100b/",
+      "fileSize": 1157672
+    },
+    {
+      "id": "gravel_pathway_01_022c0418",
+      "category": "PathWater",
+      "displayName": "Lối đi sỏi",
+      "description": "\"Gravel Pathway 01 \\xB7 BlenderKit, CC0, t\\xE1c gi\\u1EA3 Joshua",
+      "listedPrice": 0.0,
+      "offers": [],
+      "loai": "loi_di",
+      "frontYawOffset": 0.0,
+      "hasDoor": false,
+      "doorOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "baseSize": {
+        "x": 2.924,
+        "y": 0.179,
+        "z": 6.597
+      },
+      "modelUrl": "models/PathWater/gravel_pathway_01_022c0418.glb",
+      "thumbnailUrl": "thumbnails/gravel_pathway_01_022c0418.png",
+      "author": "Joshua Whitney",
+      "license": "cc_zero",
+      "sourceUrl": "https://www.blenderkit.com/asset-gallery-detail/022c0418-2833-4610-864b-b62720262c03/",
+      "fileSize": 425052
+    },
+    {
+      "id": "old_concrete_fountain_02baeb64",
+      "category": "PathWater",
+      "displayName": "Đài phun nước bê tông",
+      "description": "\"Old concrete fountain \\xB7 BlenderKit, Royalty-Free, t\\xE1c gi\\u1EA3",
+      "listedPrice": 0.0,
+      "offers": [],
+      "loai": "dai_phun_nuoc",
+      "frontYawOffset": 0.0,
+      "hasDoor": false,
+      "doorOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "baseSize": {
+        "x": 3.275,
+        "y": 2.114,
+        "z": 3.28
+      },
+      "modelUrl": "models/PathWater/old_concrete_fountain_02baeb64.glb",
+      "thumbnailUrl": "thumbnails/old_concrete_fountain_02baeb64.png",
+      "author": "mDav давыдова",
+      "license": "royalty_free",
+      "sourceUrl": "https://www.blenderkit.com/asset-gallery-detail/02baeb64-9813-43a8-b7d9-8bf8d0c5a31e/",
+      "fileSize": 647140
+    },
+    {
+      "id": "pool_5d205cc7",
+      "category": "PathWater",
+      "displayName": "Bể bơi",
+      "description": "Pool · BlenderKit, Royalty-Free, tác giả Russo 3D",
+      "listedPrice": 0.0,
+      "offers": [],
+      "loai": "be_boi",
+      "frontYawOffset": 0.0,
+      "hasDoor": false,
+      "doorOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "baseSize": {
+        "x": 3.377,
+        "y": 1.445,
+        "z": 6.778
+      },
+      "modelUrl": "models/PathWater/pool_5d205cc7.glb",
+      "thumbnailUrl": "thumbnails/pool_5d205cc7.png",
+      "author": "Russo 3D",
+      "license": "royalty_free",
+      "sourceUrl": "https://www.blenderkit.com/asset-gallery-detail/5d205cc7-247a-4dd7-88c2-79f45b3480ca/",
+      "fileSize": 236612
+    },
+    {
+      "id": "fluffy_pampass_grass_2f656baa",
+      "category": "Plants",
+      "displayName": "Cỏ lau cảnh",
+      "description": "\"Fluffy pampass grass \\xB7 BlenderKit, Royalty-Free, t\\xE1c gi\\u1EA3",
+      "listedPrice": 0.0,
+      "offers": [],
+      "loai": "cay",
+      "frontYawOffset": 0.0,
+      "hasDoor": false,
+      "doorOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "baseSize": {
+        "x": 0.697,
+        "y": 1.053,
+        "z": 0.682
+      },
+      "modelUrl": "models/Plants/fluffy_pampass_grass_2f656baa.glb",
+      "thumbnailUrl": "thumbnails/fluffy_pampass_grass_2f656baa.png",
+      "author": "Tomasz Czerniak",
+      "license": "royalty_free",
+      "sourceUrl": "https://www.blenderkit.com/asset-gallery-detail/2f656baa-fe76-4ff1-9eb0-a8a43ae83ae0/",
+      "fileSize": 521352
+    },
+    {
+      "id": "palm_tree_01_ee2492d6",
+      "category": "Plants",
+      "displayName": "Cây cọ thấp",
+      "description": "Palm Tree 01 · BlenderKit, Royalty-Free, tác giả Nobody ",
+      "listedPrice": 0.0,
+      "offers": [],
+      "loai": "cay",
+      "frontYawOffset": 0.0,
+      "hasDoor": false,
+      "doorOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "baseSize": {
+        "x": 6.941,
+        "y": 7.161,
+        "z": 6.619
+      },
+      "modelUrl": "models/Plants/palm_tree_01_ee2492d6.glb",
+      "thumbnailUrl": "thumbnails/palm_tree_01_ee2492d6.png",
+      "author": "Nobody ",
+      "license": "royalty_free",
+      "sourceUrl": "https://www.blenderkit.com/asset-gallery-detail/ee2492d6-c912-4e4f-989e-df575fb9d5c6/",
+      "fileSize": 420540
+    },
+    {
+      "id": "palm_tree_medium_dense_a0afd1bf",
+      "category": "Plants",
+      "displayName": "Cây cọ dày lá",
+      "description": "\"Palm Tree Medium Dense \\xB7 BlenderKit, CC0, t\\xE1c gi\\u1EA3 Amanpreet",
+      "listedPrice": 0.0,
+      "offers": [],
+      "loai": "cay",
+      "frontYawOffset": 0.0,
+      "hasDoor": false,
+      "doorOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "baseSize": {
+        "x": 7.952,
+        "y": 15.286,
+        "z": 8.113
+      },
+      "modelUrl": "models/Plants/palm_tree_medium_dense_a0afd1bf.glb",
+      "thumbnailUrl": "thumbnails/palm_tree_medium_dense_a0afd1bf.png",
+      "author": "Amanpreet Bajwa",
+      "license": "cc_zero",
+      "sourceUrl": "https://www.blenderkit.com/asset-gallery-detail/a0afd1bf-1b58-4123-b197-b5f90d239097/",
+      "fileSize": 1842184
+    },
+    {
+      "id": "periwinkle_plant_e3d7caa4",
+      "category": "Plants",
+      "displayName": "Bụi dừa cạn",
+      "description": "Periwinkle Plant · BlenderKit, CC0, tác giả Poly Haven ",
+      "listedPrice": 0.0,
+      "offers": [],
+      "loai": "cay",
+      "frontYawOffset": 0.0,
+      "hasDoor": false,
+      "doorOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "baseSize": {
+        "x": 1.235,
+        "y": 0.411,
+        "z": 0.321
+      },
+      "modelUrl": "models/Plants/periwinkle_plant_e3d7caa4.glb",
+      "thumbnailUrl": "thumbnails/periwinkle_plant_e3d7caa4.png",
+      "author": "Poly Haven ",
+      "license": "cc_zero",
+      "sourceUrl": "https://www.blenderkit.com/asset-gallery-detail/e3d7caa4-5687-4368-9fb1-b85e751888d4/",
+      "fileSize": 503948
+    },
+    {
+      "id": "tree_fern_large_fe1198b6",
+      "category": "Plants",
+      "displayName": "Cây dương xỉ lớn",
+      "description": "\"Tree Fern Large \\xB7 BlenderKit, Royalty-Free, t\\xE1c gi\\u1EA3",
+      "listedPrice": 0.0,
+      "offers": [],
+      "loai": "cay",
+      "frontYawOffset": 0.0,
+      "hasDoor": false,
+      "doorOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "baseSize": {
+        "x": 9.122,
+        "y": 11.741,
+        "z": 8.517
+      },
+      "modelUrl": "models/Plants/tree_fern_large_fe1198b6.glb",
+      "thumbnailUrl": "thumbnails/tree_fern_large_fe1198b6.png",
+      "author": "Amanpreet Bajwa",
+      "license": "royalty_free",
+      "sourceUrl": "https://www.blenderkit.com/asset-gallery-detail/fe1198b6-5cd4-4a69-a7a6-64b549f0d350/",
+      "fileSize": 899284
+    }
+  ]
+}
